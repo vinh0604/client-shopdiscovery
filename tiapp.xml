@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <property name="acs-oauth-secret-production" type="string">PcS0IaQGipxGaJaVLh2chOdWV5FmNHpS</property>
+    <property name="acs-oauth-key-production" type="string">9oeE2GHoNDutm2y7JxP8l71oxCxCOnxj</property>
+    <property name="acs-api-key-production" type="string">eo46u0J5QiOvpKZ3aYqEWO2oOAZ4FMbK</property>
+    <property name="acs-oauth-secret-development" type="string">Ut5MtuU229EotNRCqVXiBMMaXHu9RmnS</property>
+    <property name="acs-oauth-key-development" type="string">vi0ZJGbzHTUDFWfCJ1AjucJD3qAoYVkS</property>
+    <property name="acs-api-key-development" type="string">llbahcVmrrqktg0DWlozT0fOPwzjslSs</property>
+    <deployment-targets>
+        <target device="mobileweb">true</target>
+        <target device="iphone">false</target>
+        <target device="ipad">false</target>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+    </deployment-targets>
+    <sdk-version>2.1.3.GA</sdk-version>
+    <id>com.vinhmob.shopdiscover</id>
+    <name>client-shopdiscover</name>
+    <version>1.0</version>
+    <publisher>USER</publisher>
+    <url>http://</url>
+    <description>not specified</description>
+    <copyright>2012 by USER</copyright>
+    <icon>appicon.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>bf6579cb-1c63-4c70-802e-ae9f52f50eee</guid>
+    <property name="ti.ui.defaultunit">system</property>
+    <iphone>
+        <orientations device="iphone">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+        </orientations>
+        <orientations device="ipad">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
+        </orientations>
+    </iphone>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="commonjs" version="2.3.0">ti.cloud</module>
+    </modules>
+</ti:app>
