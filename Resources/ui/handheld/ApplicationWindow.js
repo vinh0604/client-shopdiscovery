@@ -1,16 +1,18 @@
 //Application Window Component Constructor
-function ApplicationWindow() {
+function ApplicationWindow(_args) {
 	//load component dependencies
-	var FirstView = require('ui/common/FirstView');
+	var _ = require('lib/underscore'),
+		theme = require('helpers/theme'),
+		SearchView = require('ui/common/SearchView');
 		
 	//create component instance
-	var self = Ti.UI.createWindow({
+	var self = Ti.UI.createWindow(_.extend(theme.styles.Window, {
 		backgroundColor:'#ffffff'
-	});
+	}));
 		
 	//construct UI
-	var firstView = new FirstView();
-	self.add(firstView);
+	var searchView = new SearchView();
+	self.add(searchView);
 	
 	return self;
 }

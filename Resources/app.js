@@ -9,36 +9,50 @@
  *  
  */
 
-//bootstrap and check dependencies
-if (Ti.version < 1.8 ) {
-	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');	  	
-}
-
-// This is a single context application with mutliple windows in a stack
 (function() {
-	//determine platform and form factor and render approproate components
-	var osname = Ti.Platform.osname,
-		version = Ti.Platform.version,
-		height = Ti.Platform.displayCaps.platformHeight,
-		width = Ti.Platform.displayCaps.platformWidth;
-	
-	//considering tablet to have one dimension over 900px - this is imperfect, so you should feel free to decide
-	//yourself what you consider a tablet form factor for android
-	var isTablet = osname === 'ipad' || (osname === 'android' && (width > 899 || height > 899));
-	
-	var Window;
-	if (isTablet) {
-		Window = require('ui/tablet/ApplicationWindow');
-	}
-	else {
-		// Android uses platform-specific properties to create windows.
-		// All other platforms follow a similar UI pattern.
-		if (osname === 'android') {
-			Window = require('ui/handheld/android/ApplicationWindow');
-		}
-		else {
-			Window = require('ui/handheld/ApplicationWindow');
-		}
-	}
-	new Window().open();
+    //determine platform and form factor and render approproate components
+    var osname = Ti.Platform.osname,
+        version = Ti.Platform.version,
+        height = Ti.Platform.displayCaps.platformHeight,
+        width = Ti.Platform.displayCaps.platformWidth,
+        NavigationController = require('business/NavigationController');
+    
+    var Window = require('ui/common/PromotionWindow'),
+        controller = new NavigationController();
+    // Android uses platform-specific properties to create windows.
+    // All other platforms follow a similar UI pattern.
+    // if (osname === 'android') {
+    //     // Window = require('ui/handheld/android/ApplicationWindow');
+    // }
+    // else {
+    //     // Window = require('ui/handheld/ApplicationWindow');
+    // }
+    var data = {
+            first_name: 'Vinh',
+            last_name: 'Bachsy',
+            gender: 1,
+            phone: '01689951370',
+            identity: '024340647',
+            address: '108/7, duong 11, Linh Xuan, Thu Duc'
+        },
+        win = new Window({controller: controller}),
+        activity = win.activity;
+
+    activity.onCreateOptionsMenu = function(e){
+        var menu = e.menu;
+        var home = menu.add({title: L('home')}),
+            my_shop = menu.add({title: L('my_shop')}),
+            profile = menu.add({title: L('my_profile')}),
+            logout = menu.add({title: L('log_out')});
+
+        home.setIcon('/images/house.png');
+        my_shop.setIcon('/images/shop.png');
+        profile.setIcon('/images/user.png');
+        logout.setIcon('/images/power.png');
+        home.addEventListener("click", function(e) {
+            controller.home();
+        });
+    };
+
+    win.open();
 })();

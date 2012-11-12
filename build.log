@@ -1,0 +1,216 @@
+Logfile initialized
+[INFO] logfile = D:\Mobile\client-shopdiscovery\build.log
+[DEBUG] C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\builder.py install client-shopdiscover C:\Program Files\Android\android-sdk D:\Mobile\client-shopdiscovery com.vinhmob.shopdiscover 6
+[INFO] Titanium SDK version: 2.1.3 (10/02/12 16:16 15997d0)
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.009000 seconds on emulator to get ready
+[DEBUG] com.vinhmob.shopdiscover installed? False
+[INFO] Copying CommonJS modules...
+[INFO] Copying project resources..
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\PromotionWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\PromotionWindow.js
+[TRACE] Generating Java Classes
+[DEBUG] Processing Android resource drawables
+[DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
+[DEBUG] generating theme.xml
+[DEBUG] found drawable-long-land-hdpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-land-hdpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-land-hdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-long-land-hdpi\background.png
+[DEBUG] found drawable-long-land-ldpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-land-ldpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-land-ldpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-long-land-ldpi\background.png
+[DEBUG] found drawable-long-port-hdpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-port-hdpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-port-hdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-long-port-hdpi\background.png
+[DEBUG] found drawable-long-port-ldpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-port-ldpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-port-ldpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-long-port-ldpi\background.png
+[DEBUG] found drawable-notlong-land-hdpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-land-hdpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-land-hdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-land-hdpi\background.png
+[DEBUG] found drawable-notlong-land-ldpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-land-ldpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-land-ldpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-land-ldpi\background.png
+[DEBUG] found drawable-notlong-land-mdpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-land-mdpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-land-mdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-land-mdpi\background.png
+[DEBUG] found drawable-notlong-port-hdpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-hdpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-hdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-port-hdpi\background.png
+[DEBUG] found drawable-notlong-port-ldpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-ldpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-ldpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-port-ldpi\background.png
+[DEBUG] found drawable-notlong-port-mdpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-mdpi\default.png
+[DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-mdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-port-mdpi\background.png
+[DEBUG] found splash screen at D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\default.png
+[TRACE] Writing out AndroidManifest.xml
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\ClientShopdiscoverActivity.java to javac build list
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\ClientShopdiscoverAppInfo.java to javac build list
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\ClientShopdiscoverApplication.java to javac build list
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\R.java to javac build list
+[DEBUG] Building Java Sources: "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\ClientShopdiscoverActivity.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\ClientShopdiscoverAppInfo.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\ClientShopdiscoverApplication.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\R.java"
+[INFO] Compiling Android Resources... This could take some time
+[DEBUG] Android classes.dex built
+[DEBUG] creating unsigned apk: D:\Mobile\client-shopdiscovery\build\android\bin\app-unsigned.apk
+[DEBUG] from resource zip => assets/Resources/business/NavigationController.js
+[DEBUG] from resource zip => assets/Resources/business/constants.js
+[DEBUG] from resource zip => assets/Resources/helpers/theme.js
+[DEBUG] from resource zip => assets/Resources/helpers/utility.js
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-00.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-01.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-02.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-03.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-04.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-05.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-06.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-07.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-08.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-09.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-10.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-11.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-12.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-13.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-14.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-15.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-16.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-17.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-18.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-19.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-20.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-21.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-22.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-23.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-24.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-25.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-26.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-27.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-28.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-29.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-30.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-31.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-32.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-33.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-34.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-35.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-36.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-37.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-38.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-39.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-40.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-41.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-42.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-43.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-44.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-45.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-46.png
+[DEBUG] from resource zip => assets/Resources/images/loading/loading-47.png
+[DEBUG] from resource zip => assets/Resources/images/Phone.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_right.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_up.png
+[DEBUG] from resource zip => assets/Resources/images/barcode.png
+[DEBUG] from resource zip => assets/Resources/images/cancel.png
+[DEBUG] from resource zip => assets/Resources/images/check.png
+[DEBUG] from resource zip => assets/Resources/images/favorites.png
+[DEBUG] from resource zip => assets/Resources/images/heart.png
+[DEBUG] from resource zip => assets/Resources/images/house.png
+[DEBUG] from resource zip => assets/Resources/images/list.png
+[DEBUG] from resource zip => assets/Resources/images/mail.png
+[DEBUG] from resource zip => assets/Resources/images/mylocation.png
+[DEBUG] from resource zip => assets/Resources/images/notification.png
+[DEBUG] from resource zip => assets/Resources/images/power.png
+[DEBUG] from resource zip => assets/Resources/images/sale.png
+[DEBUG] from resource zip => assets/Resources/images/search_icon.png
+[DEBUG] from resource zip => assets/Resources/images/shop.png
+[DEBUG] from resource zip => assets/Resources/images/star.png
+[DEBUG] from resource zip => assets/Resources/images/star_half.png
+[DEBUG] from resource zip => assets/Resources/images/star_off.png
+[DEBUG] from resource zip => assets/Resources/images/user.png
+[DEBUG] from resource zip => assets/Resources/lib/accounting.js
+[DEBUG] from resource zip => assets/Resources/lib/underscore.deferred.js
+[DEBUG] from resource zip => assets/Resources/lib/underscore.js
+[DEBUG] from resource zip => assets/Resources/network/GeoCoding.js
+[DEBUG] from resource zip => assets/Resources/ui/common/filter/CategoryWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/filter/ConditionWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/filter/DistanceWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/filter/PriceWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/filter/ReviewWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/CategoryListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ChangePasswordWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/FilterWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/LoginWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/MainWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/MapView.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ProductListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ProfileWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/PromotionWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SavedSearchWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SearchResultWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SearchView.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SearchWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ShopListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SignupWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SortDialog.js
+[DEBUG] from resource zip => assets/Resources/ui/components/CustomButtonBar.js
+[DEBUG] from resource zip => assets/Resources/ui/components/DoneCancelButtonBar.js
+[DEBUG] from resource zip => assets/Resources/ui/components/InfiniteScrollTableView.js
+[DEBUG] from resource zip => assets/Resources/ui/components/ProductGroupRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/ProductRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/ProgressBar.js
+[DEBUG] from resource zip => assets/Resources/ui/components/PromotionRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/Rating.js
+[DEBUG] from resource zip => assets/Resources/ui/components/RatingStarBar.js
+[DEBUG] from resource zip => assets/Resources/ui/components/SearchBar.js
+[DEBUG] from resource zip => assets/Resources/ui/components/SelectLocationWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/SelectPhotoDialog.js
+[DEBUG] from resource zip => assets/Resources/ui/components/ShopRow.js
+[DEBUG] from resource zip => assets/Resources/ui/handheld/android/ApplicationWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/handheld/ApplicationWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/tablet/ApplicationWindow.js
+[DEBUG] from resource zip => assets/Resources/KS_nav_ui.png
+[DEBUG] from resource zip => assets/Resources/KS_nav_views.png
+[DEBUG] from resource zip => assets/Resources/app.js
+[DEBUG] from resource zip => assets/Resources/appicon.png
+[DEBUG] from resource zip => assets/Resources/default.png
+[DEBUG] from resource zip => assets/Resources/map.html
+[DEBUG] from resource zip => assets/Resources/ti.cloud.js
+[DEBUG] from resource zip => assets/app.json
+[DEBUG] from resource zip => assets/index.json
+[DEBUG] from resource zip => assets/tiapp.xml
+[DEBUG] from resource zip => res/drawable/appicon.png
+[DEBUG] from resource zip => res/drawable/background.png
+[DEBUG] from resource zip => res/layout/titanium_tabgroup.xml
+[DEBUG] from resource zip => AndroidManifest.xml
+[DEBUG] from resource zip => resources.arsc
+[DEBUG] from resource zip => res/drawable-long-land-hdpi/background.png
+[DEBUG] from resource zip => res/drawable-long-land-ldpi/background.png
+[DEBUG] from resource zip => res/drawable-long-port-hdpi/background.png
+[DEBUG] from resource zip => res/drawable-long-port-ldpi/background.png
+[DEBUG] from resource zip => res/drawable-notlong-land-hdpi/background.png
+[DEBUG] from resource zip => res/drawable-notlong-land-ldpi/background.png
+[DEBUG] from resource zip => res/drawable-notlong-land-mdpi/background.png
+[DEBUG] from resource zip => res/drawable-notlong-port-hdpi/background.png
+[DEBUG] from resource zip => res/drawable-notlong-port-ldpi/background.png
+[DEBUG] from resource zip => res/drawable-notlong-port-mdpi/background.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/build.properties
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/background.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_18.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_48.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_more.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_18.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_48.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_normal.9.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_pressed.9.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_selected.9.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/default_icon.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\titanium.jar => org/appcelerator/titanium/res/drawable/photoDefault.png
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\modules\titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.js
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\modules\titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.min.js
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\modules\titanium-ui.jar => ti/modules/titanium/ui/widget/webview/json2.js
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\modules\titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.js
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\modules\titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.min.js
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\thirdparty.jar => org/apache/Commons-NOTICE.txt
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\thirdparty.jar => org/apache/HttpComponents-NOTICE.txt
+[DEBUG] from JAR C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\thirdparty.jar => org/apache/mime4j-NOTICE.txt
+[DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\com.mwaysolutions.barcode\0.3\libs\armeabi\libcom.mwaysolutions.barcode.so
+[DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\com.mwaysolutions.barcode\0.3\libs\armeabi-v7a\libcom.mwaysolutions.barcode.so
+[DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\com.mwaysolutions.barcode\0.3\libs\x86\libcom.mwaysolutions.barcode.so
+[DEBUG] installing native SDK libs
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.012000 seconds on emulator to get ready
+[INFO] Installing application on device
+[INFO] Application installed. Launch from drawer on Home Screen

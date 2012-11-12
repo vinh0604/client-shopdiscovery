@@ -1,18 +1,25 @@
 //Application Window Component Constructor
-function ApplicationWindow() {
+function ApplicationWindow(_args) {
 	//load component dependencies
-	var FirstView = require('ui/common/FirstView');
+	var $$ = require('helpers/utility'),
+		theme = require('helpers/theme'),
+		SearchView = require('ui/common/SearchView');
 		
 	//create component instance
-	var self = Ti.UI.createWindow({
+	var opts = $$.combine(theme.styles.Window, {
 		backgroundColor:'#ffffff',
-		navBarHidden:true,
 		exitOnClose:true
 	});
+	var self = Ti.UI.createWindow(opts),
+		controller = _args.controller;
 		
 	//construct UI
-	var firstView = new FirstView();
-	self.add(firstView);
+	var searchView = new SearchView({controller: controller});
+	self.add(searchView);
+
+	self.addEventListener('open', function (e) {
+		controller.register(self);
+	});
 	
 	return self;
 }

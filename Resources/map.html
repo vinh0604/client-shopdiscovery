@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDS5bb-pXbt4N27kkA9y1AS0nGxgciqTiU&sensor=true&language=vi" type="text/javascript"></script>
+    <script type="text/javascript">
+    var map, geocoder, marker;
+    var infowindow = new google.maps.InfoWindow({
+        maxWidth: 100
+    });
+
+    Ti.App.addEventListener('app:locationMoved',function (e) {
+        var latlng = new google.maps.LatLng(e.latitude, e.longitude);
+        marker.setPosition(latlng);
+        map.panTo(latlng);
+        showAddress();
+    });
+
+    function showAddress() { 
+        var latlng = new google.maps.LatLng(marker.getPosition().lat(),marker.getPosition().lng());
+        geocoder.geocode({'latLng': latlng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var location = {
+                    latitude: latlng.lat(),
+                    longitude: latlng.lng()
+                };
+
+                if (results[0]) {
+                    location.address = results[0].formatted_address;
+                    infowindow.setContent(results[0].formatted_address);
+                    infowindow.open(map, marker);
+                }
+
+                Ti.App.fireEvent('webview:locationSelected', location);
+            }
+        });
+    }
+    
+    function initialize () {
+        var myLatlng = new google.maps.LatLng(10.75, 106.67);
+        var myOptions = {
+                            zoom: 16,
+                            zoomControl: true,
+                            zoomControlOptions: {
+                                style: google.maps.ZoomControlStyle.SMALL
+                            },
+                            streetViewControl: false,
+                            center: myLatlng,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        geocoder = new google.maps.Geocoder();
+        marker = new google.maps.Marker({position: myLatlng,
+            draggable: true
+        });
+
+        google.maps.event.addListener(marker, 'dragend', function() {
+            showAddress();
+        });
+        marker.setMap(map);
+        showAddress();
+    }
+    </script>
+</head>
+<body onload="initialize()">
+    <div id="map_canvas"></div>     
+</body>
+</html>
