@@ -84,4 +84,17 @@
     <string name="claimed">claimed</string>
     <string name="deal_price">Deal price: %s</string>
     <string name="deals">Shops' deals</string>
+    <string name="my_shops">My shops</string>
+    <string name="notifications">Notifications</string>
+    <string name="new_shop">New shop</string>
+    <string name="new_product">New product</string>
+    <string name="transaction">Transaction</string>
+    <string name="promotion">Promotion</string>
+    <string name="messages">Messages</string>
+    <string name="inbox">Inbox</string>
+    <string name="sent">Sent</string>
+    <string name="new_message">Compose new message</string>
+    <string name="sent_messages">Sent messages</string>
+    <string name="subject">Subject</string>
+    <string name="compose_message">Compose message...</string>
 </resources>

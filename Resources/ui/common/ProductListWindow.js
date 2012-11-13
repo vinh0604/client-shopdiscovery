@@ -1,10 +1,13 @@
 function ProductListWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
-        ProductGroupRow = require('ui/components/ProductGroupRow'),
+        InfiniteScrollTableView = require('ui/components/InfiniteScrollTableView'),
+        ProductGroupRow = require('ui/components/tablerow/ProductGroupRow'),
         opts = _args,
         controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
+
+    _.mixin( require('lib/underscore.deferred') );
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
     headerLabel = Ti.UI.createLabel(_.extend({text: L('products')},theme.styles.header.label)),
@@ -20,11 +23,10 @@ function ProductListWindow (_args) {
         font: {fontWeight: 'bold', fontSize: 30},
         color: '#000'
     }),
-    productTableView = Ti.UI.createTableView({
-        top: 135,
-        left: 0,
-        right: 0,
-        bottom: 0
+    productTableView = new InfiniteScrollTableView({
+        config: {top: 135,bottom: 0},
+        fetchDataFunc: fetchData,
+        appendDataFunc: appendData
     });
 
     headerView.add(headerLabel);
@@ -60,6 +62,16 @@ function ProductListWindow (_args) {
             productTableView.appendRow(row);
         }
     });
+
+    function fetchData () {
+        var deferred = new _.Deferred();
+
+        return deferred;
+    }
+
+    function appendData (result) {
+        
+    }
 
     return self;
 }

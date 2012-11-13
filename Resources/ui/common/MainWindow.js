@@ -10,7 +10,7 @@ function MainWindow (_args) {
             font: {fontWeight: 'bold', fontSize: 30},
             backgroundColor: '#4D8EFF',
             textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-            height: 60,
+            height: 45,
             width: 75,
             borderRadius: 15,
             touchEnabled: false

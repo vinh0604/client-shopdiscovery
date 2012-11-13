@@ -5,11 +5,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.009000 seconds on emulator to get ready
+[DEBUG] waited 0.010000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscover installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\PromotionWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\PromotionWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ComposeMessageWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ComposeMessageWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -116,8 +116,11 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/star.png
 [DEBUG] from resource zip => assets/Resources/images/star_half.png
 [DEBUG] from resource zip => assets/Resources/images/star_off.png
+[DEBUG] from resource zip => assets/Resources/images/trash_blue.png
+[DEBUG] from resource zip => assets/Resources/images/trash_red.png
 [DEBUG] from resource zip => assets/Resources/images/user.png
 [DEBUG] from resource zip => assets/Resources/lib/accounting.js
+[DEBUG] from resource zip => assets/Resources/lib/moment.js
 [DEBUG] from resource zip => assets/Resources/lib/underscore.deferred.js
 [DEBUG] from resource zip => assets/Resources/lib/underscore.js
 [DEBUG] from resource zip => assets/Resources/network/GeoCoding.js
@@ -128,10 +131,15 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/ReviewWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/CategoryListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ChangePasswordWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ComposeMessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/FilterWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/LoginWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MainWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MapView.js
+[DEBUG] from resource zip => assets/Resources/ui/common/MessageInboxWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/MessageWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/MyShopWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/NotificationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ProductListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ProfileWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/PromotionWindow.js
@@ -139,22 +147,27 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchResultWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SentMessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SignupWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SortDialog.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MessageRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MyShopRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/NotificationRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ProductGroupRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ProductRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/PromotionRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/SentMessageRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ShopRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/CustomButtonBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/DoneCancelButtonBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/InfiniteScrollTableView.js
-[DEBUG] from resource zip => assets/Resources/ui/components/ProductGroupRow.js
-[DEBUG] from resource zip => assets/Resources/ui/components/ProductRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/ProgressBar.js
-[DEBUG] from resource zip => assets/Resources/ui/components/PromotionRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/Rating.js
 [DEBUG] from resource zip => assets/Resources/ui/components/RatingStarBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SearchBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SelectLocationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SelectPhotoDialog.js
-[DEBUG] from resource zip => assets/Resources/ui/components/ShopRow.js
 [DEBUG] from resource zip => assets/Resources/ui/handheld/android/ApplicationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/handheld/ApplicationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/tablet/ApplicationWindow.js

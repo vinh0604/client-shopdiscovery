@@ -1,14 +1,14 @@
 var _ = require('lib/underscore'),
     theme = require('helpers/theme'),
-    accounting = require('lib/accounting'),
-    ProgressBar = require('ui/components/ProgressBar');
+    RatingStarBar = require('ui/components/RatingStarBar');
 
-function PromotionRow (_args) {
+function ShopRow (_args) {
     var item = _args.data,
+        deleteHandler = _args.deleteHandler,
         self = Ti.UI.createTableViewRow({
             _id: item.id,
             height: 200,
-            className: 'productDetail'
+            className: 'shopDetail'
         });
 
     var photoView = Ti.UI.createImageView({
@@ -20,10 +20,18 @@ function PromotionRow (_args) {
     }),
     detailView = Ti.UI.createView({
         touchEnabled: false,
-        right: 10,
+        right: 90,
         top: 0,
         left: 210,
         layout: 'vertical'
+    }),
+    deleteView = Ti.UI.createView({
+        right: 10,
+        width: 80,
+        height: 80,
+        backgroundImage: '/images/trash_blue.png',
+        backgroundFocusedImage: '/images/trash_red.png',
+        backgroundSelectedImage: '/images/trash_red.png'
     }),
     nameLabel = Ti.UI.createLabel({
         touchEnabled: false,
@@ -32,33 +40,37 @@ function PromotionRow (_args) {
         font: {fontWeight: 'bold', fontSize: 20},
         color: '#000'
     }),
-    priceLabel = Ti.UI.createLabel({
+    ratingStarBar = new RatingStarBar({max: 5, rating: item.rating, count: item.rating_count}),
+    addressLabel = Ti.UI.createLabel({
         touchEnabled: false,
         left: 0,
+        text: item.address,
         font: {fontSize: 20},
-        text: L('price')+': '+accounting.formatMoney(item.price, {symbol: item.price_unit}),
         color: '#000'
     }),
-    dealPriceLabel = Ti.UI.createLabel({
+    tagsLabel = Ti.UI.createLabel({
         touchEnabled: false,
         left: 0,
-        text: String.format(L('deal_price'),accounting.formatMoney(item.deal_price, {symbol: item.price_unit})),
+        text: item.tags.join(', '),
         font: {fontSize: 20},
-        color: '#EB0C17'
+        color: '#666'
     });
 
     detailView.add(nameLabel);
-    detailView.add(priceLabel);
-    detailView.add(dealPriceLabel);
-    if (item.amount > 0) {
-        var progessBar = new ProgressBar({config: {top: 5, left: 0, height: 30}, current: item.bid_count, total: item.amount});
-        detailView.add(progessBar);
-    }
+    detailView.add(ratingStarBar);
+    detailView.add(addressLabel);
+    detailView.add(tagsLabel);
 
     self.add(photoView);
     self.add(detailView);
+    self.add(deleteView);
+
+    deleteView.addEventListener('click', function (e) {
+        e.item_id = item.id;
+        deleteHandler(e);
+    });
 
     return self;
 }
 
-module.exports = PromotionRow;
+module.exports = ShopRow;

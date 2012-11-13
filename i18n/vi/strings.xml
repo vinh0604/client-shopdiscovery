@@ -84,4 +84,17 @@
     <string name="claimed">đã bán</string>
     <string name="deal_price">Giá KM: %s</string>
     <string name="deals">Sản phẩm khuyến mãi</string>
+    <string name="my_shops">Cửa hàng của tôi</string>
+    <string name="notifications">Thông báo</string>
+    <string name="new_shop">Cửa hàng mới</string>
+    <string name="new_product">Sản phẩm mới</string>
+    <string name="transaction">Giao dịch</string>
+    <string name="promotion">Khuyến mãi</string>
+    <string name="messages">Tin nhắn</string>
+    <string name="inbox">Inbox</string>
+    <string name="sent">Tin đã gửi</string>
+    <string name="new_message">Soạn tin mới</string>
+    <string name="sent_messages">Tin đã gửi</string>
+    <string name="subject">Tiêu đề</string>
+    <string name="compose_message">Nhập nội dung tin...</string>
 </resources>

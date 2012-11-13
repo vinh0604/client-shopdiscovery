@@ -1,49 +1,31 @@
-function ShopListWindow (_args) {
+function MyShopWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
-        ShopRow = require('ui/components/tablerow/ShopRow'),
+        MyShopRow = require('ui/components/tablerow/MyShopRow'),
         controller = _args.controller,
-        opts = _args,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
-    headerLabel = Ti.UI.createLabel(_.extend({text: L('shops')},theme.styles.header.label)),
-    shopTableView = Ti.UI.createTableView({
-        top: 180,
-        left: 0,
-        right: 0,
-        bottom: 0
-    }),
-    searchBar = Ti.UI.createSearchBar({
+    headerLabel = Ti.UI.createLabel(_.extend({text: L('my_shops')},theme.styles.header.label)),
+    myShopTableView = Ti.UI.createTableView({
         top: 90,
         left: 0,
         right: 0,
-        hintText: L('search'),
-        visible: false,
-        showCancel: true,
-        height: 90
+        bottom: 90
+    }),
+    newShopButton = Ti.UI.createButton({
+        bottom: 0,
+        height: 90,
+        left: 0,
+        right: 0,
+        title: L('new_shop')
     });
 
     headerView.add(headerLabel);
 
     self.add(headerView);
-    self.add(searchBar);
-    self.add(shopTableView);
-
-    shopTableView.addEventListener('click', function (e) {
-        if (Ti.Platform.name === 'android') {
-            searchBar.blur();
-            searchBar.hide();
-            searchBar.show();
-        }
-    });
-
-    searchBar.addEventListener('cancel', function (e) {
-        if (Ti.Platform.name === 'android') {
-            searchBar.value = "";
-        }
-    });
-    searchBar.addEventListener('return', searchHandler);
+    self.add(myShopTableView);
+    self.add(newShopButton);
 
     self.addEventListener('open', function (e) {
         controller.register(self);
@@ -58,20 +40,16 @@ function ShopListWindow (_args) {
         ];
 
         for (var i = 0, l = data.length; i < l; ++i) {
-            var row = new ShopRow({data: data[i]});
-            shopTableView.appendRow(row);
+            var row = new MyShopRow({data: data[i], deleteHandler: deleteHandler});
+            myShopTableView.appendRow(row);
         }
-
-        setTimeout(function(e){
-            searchBar.show();
-        },200);
     });
 
-    function searchHandler (e) {
+    function deleteHandler (e) {
         
     }
 
     return self;
 }
 
-module.exports = ShopListWindow;
+module.exports = MyShopWindow;

@@ -6,7 +6,7 @@ function SearchResultWindow (_args) {
         FilterWindow = require('ui/common/FilterWindow'),
         CustomButtonBar = require('ui/components/CustomButtonBar'),
         InfiniteScrollTableView = require('ui/components/InfiniteScrollTableView'),
-        ProductRow = require('ui/components/ProductRow'),
+        ProductRow = require('ui/components/tablerow/ProductRow'),
         SearchWindow = require('ui/common/SearchWindow'),
         controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));

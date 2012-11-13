@@ -17,7 +17,7 @@
         width = Ti.Platform.displayCaps.platformWidth,
         NavigationController = require('business/NavigationController');
     
-    var Window = require('ui/common/PromotionWindow'),
+    var Window = require('ui/common/MessageWindow'),
         controller = new NavigationController();
     // Android uses platform-specific properties to create windows.
     // All other platforms follow a similar UI pattern.
@@ -35,24 +35,7 @@
             identity: '024340647',
             address: '108/7, duong 11, Linh Xuan, Thu Duc'
         },
-        win = new Window({controller: controller}),
-        activity = win.activity;
-
-    activity.onCreateOptionsMenu = function(e){
-        var menu = e.menu;
-        var home = menu.add({title: L('home')}),
-            my_shop = menu.add({title: L('my_shop')}),
-            profile = menu.add({title: L('my_profile')}),
-            logout = menu.add({title: L('log_out')});
-
-        home.setIcon('/images/house.png');
-        my_shop.setIcon('/images/shop.png');
-        profile.setIcon('/images/user.png');
-        logout.setIcon('/images/power.png');
-        home.addEventListener("click", function(e) {
-            controller.home();
-        });
-    };
+        win = new Window({controller: controller});
 
     win.open();
 })();
