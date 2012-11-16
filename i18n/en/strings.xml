@@ -97,4 +97,15 @@
     <string name="sent_messages">Sent messages</string>
     <string name="subject">Subject</string>
     <string name="compose_message">Compose message...</string>
+    <string name="date">Date</string>
+    <string name="warranty">Warranty</string>
+    <string name="description">Description</string>
+    <string name="specific">Item's specifics</string>
+    <string name="origin">Origin</string>
+    <string name="genuine">Genuine distribution</string>
+    <string name="imported">Imported</string>
+    <string name="shop">Shop</string>
+    <string name="review">Review</string>
+    <string name="buy">Buy this item</string>
+    <string name="month">month(s)</string>
 </resources>

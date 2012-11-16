@@ -97,4 +97,15 @@
     <string name="sent_messages">Tin đã gửi</string>
     <string name="subject">Tiêu đề</string>
     <string name="compose_message">Nhập nội dung tin...</string>
+    <string name="date">Ngày</string>
+    <string name="warranty">Bảo hành</string>
+    <string name="description">Mô tả</string>
+    <string name="specific">Đặc tính sản phẩm</string>
+    <string name="origin">Xuất xứ</string>
+    <string name="genuine">Chính hãng</string>
+    <string name="imported">Xách tay</string>
+    <string name="shop">Cửa hàng</string>
+    <string name="review">Đánh giá</string>
+    <string name="buy">Đặt mua sản phẩm</string>
+    <string name="month">tháng</string>
 </resources>

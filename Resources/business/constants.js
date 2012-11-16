@@ -9,6 +9,16 @@ var CONSTANTS = {
             1: L('promotion'),
             2: L('new_product'),
             3: L('transaction')
+        },
+        CONDITION: {
+            0: L('not_specified'),
+            1: L('new_label'),
+            2: L('used')
+        },
+        ORIGIN: {
+            0: L('not_specified'),
+            1: L('genuine'),
+            2: L('imported')
         }
     },
     DEFAULT: {

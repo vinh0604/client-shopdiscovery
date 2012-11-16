@@ -1,15 +1,15 @@
 Logfile initialized
 [INFO] logfile = D:\Mobile\client-shopdiscovery\build.log
-[DEBUG] C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\builder.py install client-shopdiscover C:\Program Files\Android\android-sdk D:\Mobile\client-shopdiscovery com.vinhmob.shopdiscover 6
+[DEBUG] C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\builder.py install A-Shop Discovery C:\Program Files\Android\android-sdk D:\Mobile\client-shopdiscovery com.vinhmob.shopdiscovery 6
 [INFO] Titanium SDK version: 2.1.3 (10/02/12 16:16 15997d0)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
 [DEBUG] waited 0.010000 seconds on emulator to get ready
-[DEBUG] com.vinhmob.shopdiscover installed? False
+[DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ComposeMessageWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ComposeMessageWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\app.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\app.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -36,11 +36,11 @@ Logfile initialized
 [DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-mdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-port-mdpi\background.png
 [DEBUG] found splash screen at D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\default.png
 [TRACE] Writing out AndroidManifest.xml
-[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\ClientShopdiscoverActivity.java to javac build list
-[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\ClientShopdiscoverAppInfo.java to javac build list
-[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\ClientShopdiscoverApplication.java to javac build list
-[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscover\R.java to javac build list
-[DEBUG] Building Java Sources: "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\ClientShopdiscoverActivity.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\ClientShopdiscoverAppInfo.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\ClientShopdiscoverApplication.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscover\\R.java"
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\AShopDiscoveryActivity.java to javac build list
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\AShopDiscoveryAppInfo.java to javac build list
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\AShopDiscoveryApplication.java to javac build list
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\R.java to javac build list
+[DEBUG] Building Java Sources: "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryActivity.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryAppInfo.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryApplication.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\R.java"
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: D:\Mobile\client-shopdiscovery\build\android\bin\app-unsigned.apk
@@ -97,13 +97,21 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/loading/loading-46.png
 [DEBUG] from resource zip => assets/Resources/images/loading/loading-47.png
 [DEBUG] from resource zip => assets/Resources/images/Phone.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_down_blue.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_down_gray.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_down_red.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_right.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_up.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_up_blue.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_up_gray.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_up_red.png
 [DEBUG] from resource zip => assets/Resources/images/barcode.png
 [DEBUG] from resource zip => assets/Resources/images/cancel.png
 [DEBUG] from resource zip => assets/Resources/images/check.png
 [DEBUG] from resource zip => assets/Resources/images/favorites.png
 [DEBUG] from resource zip => assets/Resources/images/heart.png
+[DEBUG] from resource zip => assets/Resources/images/heart_gray.png
+[DEBUG] from resource zip => assets/Resources/images/heart_yellow.png
 [DEBUG] from resource zip => assets/Resources/images/house.png
 [DEBUG] from resource zip => assets/Resources/images/list.png
 [DEBUG] from resource zip => assets/Resources/images/mail.png
@@ -118,6 +126,8 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/star_off.png
 [DEBUG] from resource zip => assets/Resources/images/trash_blue.png
 [DEBUG] from resource zip => assets/Resources/images/trash_red.png
+[DEBUG] from resource zip => assets/Resources/images/undo_blue.png
+[DEBUG] from resource zip => assets/Resources/images/undo_red.png
 [DEBUG] from resource zip => assets/Resources/images/user.png
 [DEBUG] from resource zip => assets/Resources/lib/accounting.js
 [DEBUG] from resource zip => assets/Resources/lib/moment.js
@@ -136,19 +146,24 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/LoginWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MainWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MapView.js
+[DEBUG] from resource zip => assets/Resources/ui/common/MessageDetailWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageInboxWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MyShopWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/NotificationWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/PhotoWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ProductListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ProductWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ProfileWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/PromotionWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ReviewWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SavedSearchWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchResultWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SentMessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ShopWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SignupWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SortDialog.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MessageRow.js
@@ -224,6 +239,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.012000 seconds on emulator to get ready
+[DEBUG] waited 0.013000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen
