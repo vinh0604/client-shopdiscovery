@@ -108,4 +108,14 @@
     <string name="review">Review</string>
     <string name="buy">Buy this item</string>
     <string name="month">month(s)</string>
+    <string name="reviews">Reviews</string>
+    <string name="new_review">Write a review</string>
+    <string name="star">star</string>
+    <string name="item_number">Item number</string>
+    <string name="website">Website</string>
+    <string name="location_map">View location on map</string>
+    <string name="shop_product_list">Browse products of shop</string>
+    <string name="send_message_to_shop">Send message to shop</string>
+    <string name="get_direction">GET DIRECTIONS</string>
+    <string name="direction_list">DIRECTIONS LIST</string>
 </resources>

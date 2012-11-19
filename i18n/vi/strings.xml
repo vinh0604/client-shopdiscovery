@@ -63,7 +63,7 @@
     <string name="phone_number">Số điện thoại</string>
     <string name="identity">CMND</string>
     <string name="identity_number">Số CMND</string>
-    <string name="address">Km</string>
+    <string name="address">Địa chỉ</string>
     <string name="change_password">Đổi mật khẩu</string>
     <string name="clear">Xóa trắng</string>
     <string name="reset">Làm lại</string>
@@ -108,4 +108,14 @@
     <string name="review">Đánh giá</string>
     <string name="buy">Đặt mua sản phẩm</string>
     <string name="month">tháng</string>
+    <string name="reviews">Đánh giá</string>
+    <string name="new_review">Viết bình luận</string>
+    <string name="star">sao</string>
+    <string name="item_number">Mã sản phẩm</string>
+    <string name="website">Website</string>
+    <string name="location_map">Xem vị trí trên bản đồ</string>
+    <string name="shop_product_list">Duyệt danh mục sản phẩm</string>
+    <string name="send_message_to_shop">Nhắn tin cho cửa hàng</string>
+    <string name="get_direction">DẪN ĐƯỜNG</string>
+    <string name="direction_list">CHỈ DẪN</string>
 </resources>

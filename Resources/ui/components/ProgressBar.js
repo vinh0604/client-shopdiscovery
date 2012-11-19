@@ -9,10 +9,11 @@ function ProgressBar (_args) {
         width: '50%'
     },
     defaults = {
-        backgroundColor: '#75C6FF',
-        current: 0, 
+        color: '#75C6FF',
+        current: 0,
         total: 0,
-        text: L('claimed')
+        text: L('claimed'),
+        showText: true
     },
     config = _.extend(defaultConfig, _args.config),
     opts = _.extend(defaults, _args),
@@ -21,21 +22,23 @@ function ProgressBar (_args) {
     progressView = Ti.UI.createView({
         touchEnabled: false,
         left: 0,
-        backgroundColor: opts.backgroundColor,
+        backgroundColor: opts.color,
         height: Ti.UI.FILL,
         width: percent + '%'
-    }),
-    label = Ti.UI.createLabel({
-        touchEnabled: false,
-        zIndex: 1,
-        font: {fontSize: 20},
-        color: '#000',
-        text: opts.current + ' / ' + opts.total + ' ' + opts.text
     });
 
     self.add(progressView);
-    self.add(label);
-
+    if (opts.showText) {
+        var label = Ti.UI.createLabel({
+            touchEnabled: false,
+            zIndex: 1,
+            font: {fontSize: 20},
+            color: '#000',
+            text: opts.current + ' / ' + opts.total + ' ' + opts.text
+        });
+        self.add(label);
+    }
+    
     return self;
 }
 

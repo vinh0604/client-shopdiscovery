@@ -17,7 +17,7 @@
         width = Ti.Platform.displayCaps.platformWidth,
         NavigationController = require('business/NavigationController');
     
-    var Window = require('ui/common/ProductWindow'),
+    var Window = require('ui/common/LocationWindow'),
         controller = new NavigationController();
     // Android uses platform-specific properties to create windows.
     // All other platforms follow a similar UI pattern.

@@ -9,7 +9,7 @@ Logfile initialized
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\app.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\app.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\LocationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\LocationWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -100,6 +100,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/arrow_down_blue.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_down_gray.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_down_red.png
+[DEBUG] from resource zip => assets/Resources/images/arrow_left.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_right.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_up.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_up_blue.png
@@ -108,6 +109,8 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/barcode.png
 [DEBUG] from resource zip => assets/Resources/images/cancel.png
 [DEBUG] from resource zip => assets/Resources/images/check.png
+[DEBUG] from resource zip => assets/Resources/images/favorite_gray.png
+[DEBUG] from resource zip => assets/Resources/images/favorite_yellow.png
 [DEBUG] from resource zip => assets/Resources/images/favorites.png
 [DEBUG] from resource zip => assets/Resources/images/heart.png
 [DEBUG] from resource zip => assets/Resources/images/heart_gray.png
@@ -117,7 +120,9 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/mail.png
 [DEBUG] from resource zip => assets/Resources/images/mylocation.png
 [DEBUG] from resource zip => assets/Resources/images/notification.png
+[DEBUG] from resource zip => assets/Resources/images/pin.png
 [DEBUG] from resource zip => assets/Resources/images/power.png
+[DEBUG] from resource zip => assets/Resources/images/round.png
 [DEBUG] from resource zip => assets/Resources/images/sale.png
 [DEBUG] from resource zip => assets/Resources/images/search_icon.png
 [DEBUG] from resource zip => assets/Resources/images/shop.png
@@ -130,6 +135,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/undo_red.png
 [DEBUG] from resource zip => assets/Resources/images/user.png
 [DEBUG] from resource zip => assets/Resources/lib/accounting.js
+[DEBUG] from resource zip => assets/Resources/lib/direction.js
 [DEBUG] from resource zip => assets/Resources/lib/moment.js
 [DEBUG] from resource zip => assets/Resources/lib/underscore.deferred.js
 [DEBUG] from resource zip => assets/Resources/lib/underscore.js
@@ -139,10 +145,13 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/DistanceWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/PriceWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/ReviewWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/modal/DirectionListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/CategoryListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ChangePasswordWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ComposeMessageWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/DescriptionWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/FilterWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/LocationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/LoginWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MainWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MapView.js
@@ -166,12 +175,14 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SignupWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SortDialog.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SpecificationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MessageRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MyShopRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/NotificationRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ProductGroupRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ProductRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/PromotionRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ReviewRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/SentMessageRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ShopRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/CustomButtonBar.js
@@ -180,6 +191,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/components/ProgressBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/Rating.js
 [DEBUG] from resource zip => assets/Resources/ui/components/RatingStarBar.js
+[DEBUG] from resource zip => assets/Resources/ui/components/ReviewSummaryView.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SearchBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SelectLocationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SelectPhotoDialog.js
