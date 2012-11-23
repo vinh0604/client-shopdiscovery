@@ -33,8 +33,7 @@ function SearchResultWindow (_args) {
     }),
     customButtonBar = new CustomButtonBar({
         buttons: [L('sort'),L('refine')],
-        handler: sortFilterHandler,
-        width: theme.platformWidth
+        handler: sortFilterHandler
     });
 
     var sample_data = [

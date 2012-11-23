@@ -4,6 +4,7 @@ function ReviewWindow (_args) {
         InfiniteScrollTableView = require('ui/components/InfiniteScrollTableView'),
         ReviewRow = require('ui/components/tablerow/ReviewRow'),
         ReviewSummaryView = require('ui/components/ReviewSummaryView'),
+        WriteReviewWindow = require('ui/common/modal/WriteReviewWindow'),
         item = _args.data,
         controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
@@ -58,6 +59,11 @@ function ReviewWindow (_args) {
     self.add(headerView);
     self.add(tableView);
     self.add(newReviewButton);
+
+    newReviewButton.addEventListener('click', function (e) {
+        writeReviewWindow = new WriteReviewWindow({});
+        writeReviewWindow.open({modal: true});
+    });
 
     self.addEventListener('open', function (e) {
         controller.register(self);

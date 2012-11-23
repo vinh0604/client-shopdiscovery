@@ -9,7 +9,7 @@ Logfile initialized
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\LocationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\LocationWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SellingDetailWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SellingDetailWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -146,6 +146,10 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/PriceWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/ReviewWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/DirectionListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/modal/NewProductStep2Window.js
+[DEBUG] from resource zip => assets/Resources/ui/common/modal/NewSpecificWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/modal/PromotionFormWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/modal/WriteReviewWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/CategoryListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ChangePasswordWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ComposeMessageWindow.js
@@ -159,6 +163,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageInboxWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MyShopWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/NewProductWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/NotificationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/PhotoWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ProductListWindow.js
@@ -170,6 +175,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchResultWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SellingDetailWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SentMessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopWindow.js
@@ -186,15 +192,18 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/SentMessageRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ShopRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/CustomButtonBar.js
+[DEBUG] from resource zip => assets/Resources/ui/components/DatePickerDialog.js
 [DEBUG] from resource zip => assets/Resources/ui/components/DoneCancelButtonBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/InfiniteScrollTableView.js
 [DEBUG] from resource zip => assets/Resources/ui/components/ProgressBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/Rating.js
+[DEBUG] from resource zip => assets/Resources/ui/components/RatingBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/RatingStarBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/ReviewSummaryView.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SearchBar.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SelectLocationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/SelectPhotoDialog.js
+[DEBUG] from resource zip => assets/Resources/ui/components/TimePickerDialog.js
 [DEBUG] from resource zip => assets/Resources/ui/handheld/android/ApplicationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/handheld/ApplicationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/tablet/ApplicationWindow.js
@@ -251,6 +260,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.013000 seconds on emulator to get ready
+[DEBUG] waited 0.012000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

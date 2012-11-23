@@ -27,6 +27,7 @@ function DoneCancelButtonBar (_args) {
             backgroundFocusedColor: '#FFA600',
             backgroundSelectedColor: '#FFA600'
         },
+        // flag to fix bug container window being closed when click on cancel button location before displaying
         isReady = false;
 
     self.handler = _args.handler;
