@@ -5,6 +5,11 @@ var CONSTANTS = {
             1: L('male'),
             2: L('other')
         },
+        GENDER_ARRAY: [
+            {code: 0, value: L('female')},
+            {code: 1, value: L('male')},
+            {code: 2, value: L('other')}
+        ],
         NOTIFY_TYPE: {
             1: L('promotion'),
             2: L('new_product'),

@@ -53,6 +53,11 @@ function CustomButtonBar (_args) {
         isReady = true;
     });
 
+    self.enableButton = function (index, enabled) {
+        self.buttons[index].enabled = !!enabled;
+        self.buttons[index].color = enabled ? '#fff' : 'gray';
+    };
+
     return self;
 }
 

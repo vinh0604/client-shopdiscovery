@@ -9,7 +9,7 @@ Logfile initialized
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SellingDetailWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SellingDetailWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\network\ShopDiscoveryAPI.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\network\ShopDiscoveryAPI.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -44,8 +44,13 @@ Logfile initialized
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: D:\Mobile\client-shopdiscovery\build\android\bin\app-unsigned.apk
+[DEBUG] from resource zip => assets/Resources/business/services/LoginService.js
+[DEBUG] from resource zip => assets/Resources/business/services/LogoutService.js
+[DEBUG] from resource zip => assets/Resources/business/services/ProfileService.js
+[DEBUG] from resource zip => assets/Resources/business/services/SignupService.js
 [DEBUG] from resource zip => assets/Resources/business/NavigationController.js
 [DEBUG] from resource zip => assets/Resources/business/constants.js
+[DEBUG] from resource zip => assets/Resources/database/appdata
 [DEBUG] from resource zip => assets/Resources/helpers/theme.js
 [DEBUG] from resource zip => assets/Resources/helpers/utility.js
 [DEBUG] from resource zip => assets/Resources/images/loading/loading-00.png
@@ -140,6 +145,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/lib/underscore.deferred.js
 [DEBUG] from resource zip => assets/Resources/lib/underscore.js
 [DEBUG] from resource zip => assets/Resources/network/GeoCoding.js
+[DEBUG] from resource zip => assets/Resources/network/ShopDiscoveryAPI.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/CategoryWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/ConditionWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/DistanceWindow.js

@@ -21,6 +21,12 @@ NavigationController.prototype.registerMenu = function (win) {
         home.addEventListener("click", function (e) {
             self.home();
         });
+        logout.addEventListener("click", function (e) {
+            self.logout();
+        });
+        profile.addEventListener("click", function (e) {
+            self.openProfile();
+        });
     };
 };
 
@@ -41,6 +47,33 @@ NavigationController.prototype.home = function () {
         windows[i].close();
     }
     this.windowStack = [this.windowStack[0]];
+};
+
+NavigationController.prototype.logout = function () {
+    var LogoutService = require('business/services/LogoutService'),
+        self = this,
+        activityIndicator = Ti.UI.createActivityIndicator({
+            message: L('logging_out')
+        }),
+        service = new LogoutService({});
+
+    service.process().done(function () {
+        var LoginWindow = require('ui/common/LoginWindow'),
+            win = new LoginWindow({controller: self}),
+            windows = self.windowStack.concat([]);
+        win.open();
+        for(var i = 0, l = windows.length; i < l; i++) {
+            windows[i].close();
+        }
+    }).fail(function (e) {
+        alert(e.error);
+    });
+};
+
+NavigationController.prototype.openProfile = function () {
+    var ProfileWindow = require('ui/common/ProfileWindow'),
+        win = new ProfileWindow({controller: this});
+    win.open();
 };
 
 module.exports = NavigationController;

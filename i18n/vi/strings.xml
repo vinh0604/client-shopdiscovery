@@ -67,7 +67,7 @@
     <string name="change_password">Đổi mật khẩu</string>
     <string name="clear">Xóa trắng</string>
     <string name="reset">Làm lại</string>
-    <string name="old_password">Mật khẩu cũ</string>
+    <string name="old_password">Mật khẩu hiện tại</string>
     <string name="new_password">Mật khẩu mới</string>
     <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
     <string name="select_photo_from">Chọn ảnh từ</string>
@@ -144,4 +144,21 @@
     <string name="time">Giờ</string>
     <string name="select_time">Chọn giờ</string>
     <string name="select_date">Chọn ngày</string>
+    <string name="login_failed">Thông tin đăng nhập không chính xác.</string>
+    <string name="logging_in">Đăng nhập...</string>
+    <string name="ok">OK</string>
+    <string name="signup_success">Đăng kí thành công</string>
+    <string name="login_now">Bạn có thể sử dụng tài khoản này để đăng nhập.</string>
+    <string name="processing">Đang xử lý...</string>
+    <string name="loading">Đang tải...</string>
+    <string name="username_invalid">Tên đăng nhập không hợp lệ</string>
+    <string name="username_length_invalid">Độ dài tên đăng nhập không hợp lệ (phải từ 4-20 kí tự).</string>
+    <string name="email_invalid">Email không hợp lệ.</string>
+    <string name="password_not_match">Mật khẩu xác nhận không khớp.</string>
+    <string name="password_short">Mật khẩu quá ngắn (phải có ít nhất 6 kí tự).</string>
+    <string name="username_existed">Tên đăng nhập đã được sử dụng.</string>
+    <string name="email_existed">Email đã được sử dụng.</string>
+    <string name="logging_out">Đăng xuất...</string>
+    <string name="authentication_fail">Xác thực thất bại.</string>
+    <string name="current_password_invalid">Mật khẩu không chính xác.</string>
 </resources>
