@@ -41,7 +41,6 @@ function SignupService (_args) {
 
         api_deferred.fail(function (e) {
             var errors = {};
-            alert(JSON.stringify(e));
             if (e.status == 400) {
                 if (e.error.username &&
                         _.any(e.error.username, function(str) {return str.indexOf('taken') !== -1;})) {

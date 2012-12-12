@@ -7,39 +7,51 @@ function RatingStarBar (_args) {
             touchEnabled: false
         },
         opts = _.extend(defaults, _args.config),
-        self = Ti.UI.createView(opts);
+        self = Ti.UI.createView(opts),
+        starImageViews = [];
 
-    var max = _args.max,
-        count = _args.count;
-        rating = _args.rating;
+    var max = _args.max;
 
     for (var i = 0; i < max; ++i) {
         var starImageView = Ti.UI.createImageView({
             height: size,
-            width: size
+            width: size,
+            image: '/images/star_off.png'
         });
+        self.add(starImageView);
+        starImageViews.push(starImageView);
+    }
 
-        if (i >= rating) {
-            starImageView.image = '/images/star_off.png';
-        } else if (rating >= i+1) {
-            starImageView.image = '/images/star.png';
-        } else {
-            starImageView.image = '/images/star_half.png';
+    var countLabel = Ti.UI.createLabel({
+        left: 5,
+        height: size,
+        font: {fontSize: size - 5},
+        color: '#000',
+        text: ''
+    });
+    self.add(countLabel);
+    
+    self.setRating = function (data) {
+        if (data.rating === undefined) {
+            return;
+        }
+        
+        for (var i = 0, l = starImageViews.length; i < l; ++i) {
+            if (i >= data.rating) {
+                starImageViews[i].image = '/images/star_off.png';
+            } else if (data.rating >= i+1) {
+                starImageViews[i].image = '/images/star.png';
+            } else {
+                starImageViews[i].image = '/images/star_half.png';
+            }
         }
 
-        self.add(starImageView);
-    }
-    if (count !== undefined) {
-        var countLabel = Ti.UI.createLabel({
-            left: 5,
-            height: size,
-            font: {fontSize: size - 5},
-            color: '#000',
-            text: count ? '(' + count + ')' : ''
-        });
-        self.add(countLabel);
-    }
-    
+        if (data.count) {
+            countLabel.text = '(' + data.count + ')';
+        }
+    };
+
+    self.setRating(_args);
 
     return self;
 }

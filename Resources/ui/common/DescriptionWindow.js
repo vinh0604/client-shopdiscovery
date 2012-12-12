@@ -3,14 +3,8 @@ function DescriptionWindow (_args) {
         theme = require('helpers/theme'),
         item = _args.data,
         controller = _args.controller,
-        self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
-
-    // mock data
-    item =  {
-        id: 1,
-        name: 'Sample product name with some details',
-        description: 'Sample description.'
-    };
+        self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window)),
+        meta = '<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />';
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
     headerLabel = Ti.UI.createLabel(_.extend({text: L('description')},theme.styles.header.label)),
@@ -37,7 +31,7 @@ function DescriptionWindow (_args) {
     descriptionWebView = Ti.UI.createWebView({
         left: 0,
         right: 0,
-        html: '<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />' + item.description
+        html: meta + (item.description ? item.description : '')
     });
 
     headerView.add(headerLabel);

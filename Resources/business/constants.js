@@ -27,7 +27,8 @@ var CONSTANTS = {
         }
     },
     DEFAULT: {
-        USER_PHOTO: '/images/user.png'
+        USER_PHOTO: '/images/user.png',
+        SHOP_PHOTO: '/images/shop.png'
     }
 };
 

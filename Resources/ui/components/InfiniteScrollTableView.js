@@ -3,7 +3,8 @@ function InfiniteScrollTableView (_args) {
         theme = require('helpers/theme'),
         defaults = {
             left: 0,
-            right: 0
+            right: 0,
+            data: []
         },
         opts = _.extend(defaults, _args.config),
         self = Ti.UI.createTableView(opts),
@@ -76,7 +77,6 @@ function InfiniteScrollTableView (_args) {
     }
 
     function endUpdate (result) {
-
         updating = false;
         self.deleteRow(loadingRowIndex, {});
 

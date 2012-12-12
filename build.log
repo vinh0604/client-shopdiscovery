@@ -5,11 +5,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.010000 seconds on emulator to get ready
+[DEBUG] waited 0.013000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\network\ShopDiscoveryAPI.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\network\ShopDiscoveryAPI.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\LocationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\LocationWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -47,10 +47,12 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/business/services/LoginService.js
 [DEBUG] from resource zip => assets/Resources/business/services/LogoutService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProfileService.js
+[DEBUG] from resource zip => assets/Resources/business/services/ShopService.js
 [DEBUG] from resource zip => assets/Resources/business/services/SignupService.js
 [DEBUG] from resource zip => assets/Resources/business/NavigationController.js
 [DEBUG] from resource zip => assets/Resources/business/constants.js
 [DEBUG] from resource zip => assets/Resources/database/appdata
+[DEBUG] from resource zip => assets/Resources/helpers/geo.js
 [DEBUG] from resource zip => assets/Resources/helpers/theme.js
 [DEBUG] from resource zip => assets/Resources/helpers/utility.js
 [DEBUG] from resource zip => assets/Resources/images/loading/loading-00.png

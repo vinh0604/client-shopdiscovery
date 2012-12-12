@@ -2,7 +2,8 @@ function LocationWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
         DirectionListWindow = require('ui/common/modal/DirectionListWindow'),
-        mapView = require('ui/common/MapView').getInstance(),
+        MapView = require('ui/common/MapView'),
+        mapView = new MapView(),
         item = _args.data,
         annotations = [],
         steps = [],
@@ -10,13 +11,6 @@ function LocationWindow (_args) {
         route = null,
         controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
-
-    // mock data
-    item = {
-        id: 1,
-        name: 'Sample Shop Name with some details',
-        location: {latitude: 10.8060861, longitude: 106.6634488}
-    };
 
     var mapContainerView = Ti.UI.createView({
         left: 0,
@@ -102,14 +96,7 @@ function LocationWindow (_args) {
         controller.register(self);
         mapView.selectAnnotation(annotations[0]);
     });
-
-    self.addEventListener('close', function (e) {
-        mapView.removeAllAnnotations();
-        if (route) {
-            mapView.removeRoute(route);
-        }
-    });
-
+    
     function setupLocation (item) {
         var annotation = Ti.Map.createAnnotation({
             image: '/images/pin.png',

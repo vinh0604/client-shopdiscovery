@@ -1,28 +1,29 @@
 function ShopWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        APP_CONST = require('business/constants'),
+        ShopService = require('business/services/ShopService'),
         RatingStarBar = require('ui/components/RatingStarBar'),
-        item = _args.data,
+        item = {id: _args.data.id},
         controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     // mock data
-    item = {
-        id: 1,
-        photos: [
-            {thumb: '/images/shop.png', url: '/images/shop.png'},
-            {thumb: '/images/shop.png', url: '/images/shop.png'}],
-        name: 'Sample Shop Name with some details',
-        tags: ['điện thoại', 'máy tính bảng', 'thẻ nhớ', 'phụ kiện'],
-        street_address: '12 Nam Kỳ Khởi Nghĩa',
-        city: 'Hồ Chí Minh',
-        district: 'Quận 3',
-        website: 'http://www.example.com',
-        phones: ['01689951370', '090909090'],
-        location: {latitude: 10, longitude: 108},
-        rating: 4.2,
-        rating_count: 200
-    };
+    // item = {
+    //     id: 1,
+    //     photos: [
+    //         {url: '/images/shop.png'},
+    //         {url: '/images/shop.png'}],
+    //     name: 'Sample Shop Name with some details',
+    //     tags: ['điện thoại', 'máy tính bảng', 'thẻ nhớ', 'phụ kiện'],
+    //     description: '',
+    //     address: '12 Nam Kỳ Khởi Nghĩa, quận 3, Hồ Chí Minh',
+    //     website: 'http://www.example.com',
+    //     phones: ['01689951370', '090909090'],
+    //     location: {latitude: 10, longitude: 108},
+    //     rating: 4.2,
+    //     rating_count: 200
+    // };
 
     var tableView = Ti.UI.createTableView({
         left: 0,
@@ -57,13 +58,11 @@ function ShopWindow (_args) {
     nameLabel = Ti.UI.createLabel({
         left: 0,
         font: {fontWeight: 'bold', fontSize: 30},
-        color: '#000',
-        text: item.name
+        color: '#000'
     }),
     tagLabel = Ti.UI.createLabel({
         left: 0,
-        font: {fontSize: 28},
-        text: item.tags.join(', ')
+        font: {fontSize: 28}
     }),
     seperatorView = Ti.UI.createView({
         width: 1,
@@ -101,7 +100,6 @@ function ShopWindow (_args) {
     addressValueLabel = Ti.UI.createLabel({
         left: 200,
         right: 0,
-        text: item.street_address + ', ' + item.district + ', ' + item.city,
         font: {fontSize: 28},
         color: '#000'
     }),
@@ -136,7 +134,6 @@ function ShopWindow (_args) {
     websiteValueLabel = Ti.UI.createLabel({
         left: 200,
         right: 0,
-        text: item.website,
         font: {fontSize: 28},
         autoLink: Ti.UI.Android.LINKIFY_WEB_URLS
     }),
@@ -155,9 +152,7 @@ function ShopWindow (_args) {
     ratingStarBar = new RatingStarBar({
         config: {left: 210},
         size: 35,
-        max: 5,
-        rating: item.rating,
-        count: item.rating_count
+        max: 5
     }),
     descriptionRow = Ti.UI.createTableViewRow({
         height: 75,
@@ -206,10 +201,11 @@ function ShopWindow (_args) {
         color: '#fff',
         title: L('send_message_to_shop'),
         font: {fontSize: '18dp', fontWeight: 'bold'}
+    }),
+    shopService = new ShopService(),
+    activityIndicator = Ti.UI.createActivityIndicator({
+        message: L('loading')
     });
-
-    setPhotos(item.photos);
-    addPhoneLabels(item.phones);
 
     photoView.add(photoScrollView);
     photoRow.add(photoView);
@@ -242,21 +238,57 @@ function ShopWindow (_args) {
 
     self.add(tableView);
 
+    descriptionRow.addEventListener('click', function (e) {
+        var DescriptionWindow = require('ui/common/DescriptionWindow'),
+            descriptionWindow = new DescriptionWindow({
+                controller: controller,
+                data: item
+            });
+        descriptionWindow.open();
+    });
+
+    locationRow.addEventListener('click', function (e) {
+        var LocationWindow = require('ui/common/LocationWindow'),
+            locationWindow = new LocationWindow({
+                controller: controller,
+                data: item
+            });
+        locationWindow.open();
+    });
+
     self.addEventListener('open', function (e) {
         controller.register(self);
+        activityIndicator.show();
+        shopService.one(item.id).done(function (result) {
+            item = result;
+            setData();
+            activityIndicator.hide();
+        }).fail(function (e) {
+            alert(e.error);
+        });
     });
 
     function setPhotos (photos) {
-        for (var i = 0, l = photos.length; i < l; ++i) {
-            var imageView = Ti.UI.createImageView({
-                _index: i,
-                left: 250 * i + 10,
-                image: photos[i].thumb,
+        if (photos && photos.length) {
+            for (var i = 0, l = photos.length; i < l; ++i) {
+                var imageView = Ti.UI.createImageView({
+                    _index: i,
+                    left: 250 * i + 10,
+                    image: photos[i].url,
+                    height: 250,
+                    width: 250
+                });
+                imageView.addEventListener('click', imageClickHandler);
+                photoScrollView.add(imageView);
+            }
+        } else{
+            var image = Ti.UI.createImageView({
+                left: 10,
+                image: APP_CONST.DEFAULT.SHOP_PHOTO,
                 height: 250,
                 width: 250
             });
-            imageView.addEventListener('click', imageClickHandler);
-            photoScrollView.add(imageView);
+            photoScrollView.add(image);
         }
     }
 
@@ -277,6 +309,16 @@ function ShopWindow (_args) {
             photoWindow = new PhotoWindow({photos: item.photos, index: e.source._index, controller: controller});
 
         photoWindow.open();
+    }
+
+    function setData () {
+        nameLabel.text = item.name;
+        tagLabel.text = item.tags.join(', ');
+        addressValueLabel.text = item.address;
+        addPhoneLabels(item.phones);
+        websiteValueLabel.text = item.website;
+        setPhotos(item.photos);
+        ratingStarBar.setRating({count: item.rating_count, rating: item.rating});
     }
 
     return self;

@@ -1,6 +1,7 @@
 var _ = require('lib/underscore'),
     theme = require('helpers/theme'),
-    RatingStarBar = require('ui/components/RatingStarBar');
+    RatingStarBar = require('ui/components/RatingStarBar'),
+    APP_CONST = require('business/constants');
 
 function ShopRow (_args) {
     var item = _args.data,
@@ -13,7 +14,7 @@ function ShopRow (_args) {
     var photoView = Ti.UI.createImageView({
         left: 0,
         touchEnabled: false,
-        image: item.photo,
+        image: item.photo ? item.photo : APP_CONST.DEFAULT.SHOP_PHOTO,
         height: 200,
         width: 200
     }),

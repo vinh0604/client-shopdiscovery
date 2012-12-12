@@ -91,6 +91,11 @@ function MainWindow (_args) {
         searchWin = new SearchWindow({controller: controller});
         searchWin.open();
     });
+    browseShopRow.addEventListener('click', function (e) {
+        var ShopListWindow = require('ui/common/ShopListWindow'),
+            shopListWindow = new ShopListWindow({controller: controller});
+        shopListWindow.open();
+    });
 
     self.addEventListener('open', function (e) {
         controller.register(self);
