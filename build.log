@@ -5,11 +5,13 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.013000 seconds on emulator to get ready
+[DEBUG] waited 0.010000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\LocationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\LocationWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ProductListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ProductListWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SearchResultWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SearchResultWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ShopListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ShopListWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -44,13 +46,19 @@ Logfile initialized
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: D:\Mobile\client-shopdiscovery\build\android\bin\app-unsigned.apk
+[DEBUG] from resource zip => assets/Resources/business/services/CategoryService.js
 [DEBUG] from resource zip => assets/Resources/business/services/LoginService.js
 [DEBUG] from resource zip => assets/Resources/business/services/LogoutService.js
+[DEBUG] from resource zip => assets/Resources/business/services/ProductService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProfileService.js
+[DEBUG] from resource zip => assets/Resources/business/services/ReviewService.js
+[DEBUG] from resource zip => assets/Resources/business/services/SearchService.js
+[DEBUG] from resource zip => assets/Resources/business/services/ShopProductService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ShopService.js
 [DEBUG] from resource zip => assets/Resources/business/services/SignupService.js
 [DEBUG] from resource zip => assets/Resources/business/NavigationController.js
 [DEBUG] from resource zip => assets/Resources/business/constants.js
+[DEBUG] from resource zip => assets/Resources/business/database.js
 [DEBUG] from resource zip => assets/Resources/database/appdata
 [DEBUG] from resource zip => assets/Resources/helpers/geo.js
 [DEBUG] from resource zip => assets/Resources/helpers/theme.js
@@ -126,6 +134,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/list.png
 [DEBUG] from resource zip => assets/Resources/images/mail.png
 [DEBUG] from resource zip => assets/Resources/images/mylocation.png
+[DEBUG] from resource zip => assets/Resources/images/no_image.jpg
 [DEBUG] from resource zip => assets/Resources/images/notification.png
 [DEBUG] from resource zip => assets/Resources/images/pin.png
 [DEBUG] from resource zip => assets/Resources/images/power.png
@@ -158,6 +167,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/NewSpecificWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/PromotionFormWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/WriteReviewWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/CategoryListView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/CategoryListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ChangePasswordWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ComposeMessageWindow.js
@@ -183,9 +193,12 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchResultWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/SecondProductListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SellingDetailWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SentMessageWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ShopCategoryListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ShopProductListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SignupWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SortDialog.js
@@ -268,6 +281,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.012000 seconds on emulator to get ready
+[DEBUG] waited 0.014000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

@@ -3,7 +3,6 @@ function RatingStarBar (_args) {
         size = _args.size || 20,
         defaults = {
             height:size,
-            layout: 'horizontal',
             touchEnabled: false
         },
         opts = _.extend(defaults, _args.config),
@@ -13,17 +12,36 @@ function RatingStarBar (_args) {
     var max = _args.max;
 
     for (var i = 0; i < max; ++i) {
-        var starImageView = Ti.UI.createImageView({
+        var starImageView = {};
+        starImageView.off = Ti.UI.createImageView({
+            left: i * size,
             height: size,
             width: size,
-            image: '/images/star_off.png'
+            image: '/images/star_off.png',
+            visible: true
         });
-        self.add(starImageView);
+        starImageView.full = Ti.UI.createImageView({
+            left: i * size,
+            height: size,
+            width: size,
+            image: '/images/star.png',
+            visible: false
+        });
+        starImageView.half = Ti.UI.createImageView({
+            left: i * size,
+            height: size,
+            width: size,
+            image: '/images/star_half.png',
+            visible: false
+        });
+        self.add(starImageView.off);
+        self.add(starImageView.full);
+        self.add(starImageView.half);
         starImageViews.push(starImageView);
     }
 
     var countLabel = Ti.UI.createLabel({
-        left: 5,
+        left: size * 5 + 5,
         height: size,
         font: {fontSize: size - 5},
         color: '#000',
@@ -37,12 +55,15 @@ function RatingStarBar (_args) {
         }
         
         for (var i = 0, l = starImageViews.length; i < l; ++i) {
+            starImageViews[i].off.visible = false;
+            starImageViews[i].full.visible = false;
+            starImageViews[i].half.visible = false;
             if (i >= data.rating) {
-                starImageViews[i].image = '/images/star_off.png';
+                starImageViews[i].off.visible = true;
             } else if (data.rating >= i+1) {
-                starImageViews[i].image = '/images/star.png';
+                starImageViews[i].full.visible = true;
             } else {
-                starImageViews[i].image = '/images/star_half.png';
+                starImageViews[i].half.visible = true;
             }
         }
 

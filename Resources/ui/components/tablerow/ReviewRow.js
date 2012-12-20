@@ -32,13 +32,13 @@ function ReviewRow (_args) {
     }),
     nameLabel = Ti.UI.createLabel({
         left: 10,
-        text: item.reviewer.name,
+        text: item.user.full_name,
         color: '#000',
         font: {fontSize: 28, fontWeight: 'bold'}
     }),
     dateLabel = Ti.UI.createLabel({
         left: 10,
-        text: moment(item.updated_date, "YYYY-MM-DD").format("MM/DD/YY"),
+        text: moment(item.updated_date).format("MM/DD/YY"),
         font: {fontSize: 28}
     }),
     contentLabel = Ti.UI.createLabel({

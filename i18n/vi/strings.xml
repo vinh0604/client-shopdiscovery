@@ -8,7 +8,7 @@
     <string name="scan">Quét mã vạch</string>
     <string name="clear_history">Xóa lịch sử</string>
     <string name="category">Danh mục: %s</string>
-    <string name="distance">Cách: %f km</string>
+    <string name="distance">Cách: %.2f km</string>
     <string name="relevance">Độ liên quan</string>
     <string name="popular">Phổ biến nhất</string>
     <string name="price_high_sort">Giá: Cao đến Thấp</string>
@@ -161,4 +161,7 @@
     <string name="logging_out">Đăng xuất...</string>
     <string name="authentication_fail">Xác thực thất bại.</string>
     <string name="current_password_invalid">Mật khẩu không chính xác.</string>
+    <string name="NA">N/A</string>
+    <string name="your_review">Đánh giá của bạn</string>
+    <string name="product_text">Sản phẩm: %s</string>
 </resources>

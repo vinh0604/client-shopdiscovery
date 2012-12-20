@@ -73,7 +73,7 @@ function InfiniteScrollTableView (_args) {
         self.appendRow(loadingRow);
         loadingImageView.start();
 
-        self.fetchDataFunc().then(endUpdate).then(self.appendDataFunc);
+        self.fetchDataFunc().always(endUpdate).done(self.appendDataFunc);
     }
 
     function endUpdate (result) {

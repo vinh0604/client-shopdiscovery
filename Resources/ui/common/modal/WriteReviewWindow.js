@@ -1,9 +1,11 @@
 function WriteReviewWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        ReviewService = require('business/services/ReviewService'),
         DoneCancelButtonBar = require('ui/components/DoneCancelButtonBar'),
         RatingBar = require('ui/components/RatingBar'),
         opts = _args,
+        data = _.extend({},_args.data),
         self = Ti.UI.createWindow({
             navBarHidden: true,
             backgroundColor: '#40000000'
@@ -34,7 +36,14 @@ function WriteReviewWindow (_args) {
         right: 10,
         bottom: 90
     }),
-    bottomBar = new DoneCancelButtonBar({parentWin: self});
+    bottomBar = new DoneCancelButtonBar({
+        parentWin: self,
+        disabled: true,
+        handler: doneClickHandler
+    }),
+    activityIndicator = Ti.UI.createActivityIndicator({
+        message: L('loading')
+    });
 
     headerView.add(headerLabel);
 
@@ -44,6 +53,26 @@ function WriteReviewWindow (_args) {
     view.add(contentField);
     view.add(bottomBar);
     self.add(view);
+
+    ratingBar.addEventListener('star:click', function (e) {
+        bottomBar.enableButton();
+    });
+
+    function doneClickHandler (e) {
+        data.title = titleField.value;
+        data.content = contentField.value;
+        data.rating = ratingBar.getCurrentStar();
+        var service = new ReviewService();
+        activityIndicator.show();
+        service.postReview(data).done(function (result) {
+            activityIndicator.hide();
+            self.close();
+            opts.handler({success: true});
+        }).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
+    }
 
     return self;
 }

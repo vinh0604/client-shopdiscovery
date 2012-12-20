@@ -6,6 +6,7 @@ function ProductGroupRow(_args) {
     var item = _args.data,
         self = Ti.UI.createTableViewRow({
             _id: item.id,
+            _name: item.name,
             height: 200,
             className: 'productGroupDetail'
         });

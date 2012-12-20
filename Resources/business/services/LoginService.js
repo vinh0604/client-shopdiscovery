@@ -24,15 +24,9 @@ function LoginService (_args) {
 
         api_deferred.done(function (json) {
             var db = Ti.Database.install('/database/appdata', 'appdata');
-            userRs = db.execute('SELECT * FROM users WHERE email = ? LIMIT 1', json.email);
-            if (userRs.isValidRow()) {
-                db.execute('UPDATE users SET authentication_token = ? WHERE email = ?', json.authentication_token, json.email);
-            } else {
-                db.execute('INSERT INTO users(username, password, email, authentication_token) VALUES(?,?,?,?)',
-                            json.username, data.password, json.email, json.authentication_token);
-            }
-
-            userRs.close();
+            db.execute('DELETE FROM users');
+            db.execute('INSERT INTO users(username, password, email, authentication_token) VALUES(?,?,?,?)',
+                json.username, data.password, json.email, json.authentication_token);
             db.close();
 
             deferred.resolve(json);

@@ -7,6 +7,7 @@ function SearchView(_args) {
         SavedSearchWindow = require('ui/common/SavedSearchWindow'),
         defaults = {backgroundColor:'#ffffff'},
         opts = _.extend(defaults, _args),
+        params = opts.params,
         controller = _args.controller,
         self = Ti.UI.createView(_.extend({layout: 'vertical', backgroundColor: '#fff'},theme.styles.stretch));
 
@@ -14,7 +15,7 @@ function SearchView(_args) {
         searchBar.setFocus();
     };
 
-    var searchBar = new SearchBar({keyword: opts.keyword}),
+    var searchBar = new SearchBar({keyword: params.keyword}),
     searchAutocomplete = Ti.UI.createTableView({
         visible: false,
         left: 0,
@@ -48,7 +49,8 @@ function SearchView(_args) {
         titaniumBarcode.scan({
             success: function (data) {
                 if (data && data.barcode) {
-                    alert(data.barcode);
+                    var value = 'EAN:'+data.barcode;
+                    searchHandler({value: value});
                 }
             },
             error: function (err) {
@@ -103,13 +105,8 @@ function SearchView(_args) {
     self.add(searchAutocomplete);
 
     function autoComplete (keyword) {
-        var sample_data = ['nexus', 'nokia', 'blackberry', 'iphone', 'surface', 'ipad', 'galaxy nexus', 'nexus one'],
-            pattern = new RegExp(keyword,'i'),
-            result = [],
+        var result = [],
             table_data = [];
-        result = sample_data.filter(function (el) {
-            return pattern.test(el);
-        });
 
         for (var i = 0, l=result.length; i < l; i++) {
             var row = Ti.UI.createTableViewRow({
@@ -125,10 +122,12 @@ function SearchView(_args) {
     }
 
     function searchHandler(e) {
-        var keyword = e.row ? e.row.title : e.source.value;
+        var keyword = e.row ? e.row.title : e.value;
         if (keyword) {
+            params.keyword = keyword;
+            params.page = 1;
             var SearchResultWindow = require('ui/common/SearchResultWindow'),
-                searchResultWindow = new SearchResultWindow({keyword: keyword, controller: controller});
+                searchResultWindow = new SearchResultWindow({params: params, controller: controller});
             controller.home();
             searchResultWindow.open();
         }

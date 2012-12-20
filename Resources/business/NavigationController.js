@@ -71,6 +71,7 @@ NavigationController.prototype.logout = function () {
 };
 
 NavigationController.prototype.openProfile = function () {
+    this.home();
     var ProfileWindow = require('ui/common/ProfileWindow'),
         win = new ProfileWindow({controller: this});
     win.open();

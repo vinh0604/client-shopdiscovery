@@ -37,11 +37,6 @@ function ShopListWindow (_args) {
     self.add(shopTableView);
 
     shopTableView.addEventListener('click', function (e) {
-        // if (Ti.Platform.name === 'android') {
-        //     searchBar.blur();
-        //     searchBar.hide();
-        //     searchBar.show();
-        // }
         var ShopWindow = require('ui/common/ShopWindow'),
             shopWindow = new ShopWindow({controller: controller, data: {id: e.rowData['_id']}});
         shopWindow.open();
@@ -63,10 +58,13 @@ function ShopListWindow (_args) {
             searchBar.show();
         },100);
         activityIndicator.show();
-        fetchData().then(function (result) {
+        fetchData().done(function (result) {
             activityIndicator.hide();
             return result;
-        }).then(appendData);
+        }).done(appendData).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
 
         // {id: 1, name: 'Sample Shop', photo: '/images/shop.png', address: 'Số 12, Đường Nguyễn Đình Chiểu, Quận 3, Thành phố Hồ Chí Minh', rating: 4, rating_count: 300, tags: ['điện thoại', 'máy tính bảng', 'phụ kiện']}
     });
@@ -76,7 +74,9 @@ function ShopListWindow (_args) {
         params.page = 1;
         shopTableView.setData([]);
         shopTableView.stopUpdate = false;
-        fetchData().then(appendData);
+        fetchData().done(appendData).fail(function (e) {
+            alert(e.error);
+        });
     }
 
     function fetchData () {
@@ -85,17 +85,13 @@ function ShopListWindow (_args) {
     }
 
     function appendData (result) {
-        if (result.error) {
-            alert(result.error);
-        } else {
-            ++ params.page;
-            for (var i = 0, l = result.rows.length; i < l; ++i) {
-                var row = new ShopRow({ data: result.rows[i] });
-                shopTableView.appendRow(row);
-            }
-            if (shopTableView.data[0].rowCount >= result.total) {
-                shopTableView.stopUpdate = true;
-            }
+        ++ params.page;
+        for (var i = 0, l = result.rows.length; i < l; ++i) {
+            var row = new ShopRow({ data: result.rows[i] });
+            shopTableView.appendRow(row);
+        }
+        if (!result.total || shopTableView.data[0].rowCount >= result.total) {
+            shopTableView.stopUpdate = true;
         }
     }
 

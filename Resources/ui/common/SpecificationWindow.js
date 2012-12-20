@@ -6,13 +6,13 @@ function SpecificationWindow (_args) {
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     // mock data
-    item =  {
-        id: 1,
-        code: '211323245',
-        name: 'Sample product name with some details',
-        category: 'Phone & Tablet > Smartphone',
-        features: {'Manufacturer': 'Samsung', 'Screen Size': '4.65 inche', 'Resolution': '768 x 1208', 'OS': 'Android Jelly Bean 4.2'}
-    };
+    // item =  {
+    //     id: 1,
+    //     barcode: '211323245',
+    //     name: 'Sample product name with some details',
+    //     category: ['Phone & Tablet','Smartphone'],
+    //     specifics: {'Manufacturer': 'Samsung', 'Screen Size': '4.65 inche', 'Resolution': '768 x 1208', 'OS': 'Android Jelly Bean 4.2'}
+    // };
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
     headerLabel = Ti.UI.createLabel(_.extend({text: L('specific')},theme.styles.header.label)),
@@ -27,7 +27,7 @@ function SpecificationWindow (_args) {
         backgroundColor: '#BABABA'
     }),
     productCodeLabel = Ti.UI.createLabel({
-        text: L('item_number') + ': ' + item.code,
+        text: L('item_number') + ': ' + (item.barcode ? item.barcode : ''),
         font: {fontWeight: 'bold', fontSize: 28},
         color: '#000',
         left: 10,
@@ -61,7 +61,7 @@ function SpecificationWindow (_args) {
         height: Ti.UI.SIZE
     }),
     categoryLabel = Ti.UI.createLabel({
-        text: item.category,
+        text: item.category.join(' > '),
         font: {fontSize: 28},
         color: '#000',
         left: 10,
@@ -90,7 +90,7 @@ function SpecificationWindow (_args) {
     specificationTitleRow.add(specificationTitleLabel);
     tableView.setData([productCodeRow,productNameRow,categoryTitleRow,categoryRow,specificationTitleRow]);
 
-    for (var key in item.features) {
+    for (var key in item.specifics) {
         var row = Ti.UI.createTableViewRow({
             height: Ti.UI.SIZE,
             className: 'featureRow'
@@ -102,7 +102,7 @@ function SpecificationWindow (_args) {
             width: 250
         }),
         featureValueLabel = Ti.UI.createLabel({
-            text: item.features[key],
+            text: item.specifics[key],
             color: '#000',
             left: 260,
             top: 5,

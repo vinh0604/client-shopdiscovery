@@ -18,7 +18,7 @@ function ProgressBar (_args) {
     config = _.extend(defaultConfig, _args.config),
     opts = _.extend(defaults, _args),
     self = Ti.UI.createView(config),
-    percent = (opts.current ? (opts.current * 100 / opts.total) : 0);
+    percent = (opts.current ? (opts.current * 100 / opts.total) : 0),
     progressView = Ti.UI.createView({
         touchEnabled: false,
         left: 0,
@@ -38,6 +38,11 @@ function ProgressBar (_args) {
         });
         self.add(label);
     }
+
+    self.setProgress = function (data) {
+        var percent = (data.current ? (data.current * 100 / data.total) : 0);
+        progressView.width = percent + '%';
+    };
     
     return self;
 }

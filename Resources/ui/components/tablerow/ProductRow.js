@@ -20,7 +20,7 @@ function ProductRow(_args) {
     }),
     leftView = Ti.UI.createView({
         touchEnabled: false,
-        right: 230,
+        right: 200,
         top: 0,
         left: 210,
         layout: 'vertical'
@@ -28,7 +28,7 @@ function ProductRow(_args) {
     rightView = Ti.UI.createView({
         touchEnabled: false,
         top: 0,
-        width: 220,
+        width: 180,
         right: 10,
         layout: 'vertical'
     }),
@@ -57,7 +57,7 @@ function ProductRow(_args) {
     priceLabel = Ti.UI.createLabel({
         touchEnabled: false,
         left: 0,
-        text: accounting.formatMoney(item.price, {symbol: item.price_unit}),
+        text: item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit}) : L('NA'),
         font: {fontWeight: 'bold', fontSize: 20},
         color: '#EB0C17'
     }),

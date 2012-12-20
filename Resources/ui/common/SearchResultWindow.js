@@ -1,6 +1,7 @@
 function SearchResultWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        SearchService = require('business/services/SearchService'),
         SearchBar = require('ui/components/SearchBar'),
         SortDialog = require('ui/common/SortDialog'),
         FilterWindow = require('ui/common/FilterWindow'),
@@ -8,13 +9,14 @@ function SearchResultWindow (_args) {
         InfiniteScrollTableView = require('ui/components/InfiniteScrollTableView'),
         ProductRow = require('ui/components/tablerow/ProductRow'),
         SearchWindow = require('ui/common/SearchWindow'),
+        opts = _args,
         controller = _args.controller,
+        params = _args.params,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     _.mixin( require('lib/underscore.deferred') );
-    self.keyword = _args.keyword;
 
-    var searchBar = new SearchBar({readOnly: true, keyword: self.keyword}),
+    var searchBar = new SearchBar({readOnly: true, keyword: params.keyword}),
     resultTableView = new InfiniteScrollTableView({
         config: {top: 140,bottom: 90},
         fetchDataFunc: fetchData,
@@ -25,57 +27,23 @@ function SearchResultWindow (_args) {
         height: 50,
         top: 90,
         left: 0,
-        width: theme.platformWidth
+        width: '100%'
     }),
     totalLabel = Ti.UI.createLabel({
         color: '#fff',
-        left: 10
+        left: 10,
+        text: ''
     }),
     customButtonBar = new CustomButtonBar({
         buttons: [L('sort'),L('refine')],
         handler: sortFilterHandler
-    });
+    }),
+    activityIndicator = Ti.UI.createActivityIndicator({
+        message: L('loading')
+    }),
+    searchService = new SearchService();
 
-    var sample_data = [
-        {photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '6500000', price_unit: 'VND', status: 'New', distance: '5', rating: 3, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '6400000', price_unit: 'VND', status: 'New', distance: '7', rating: 3.5, rating_count: 5},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4500000', price_unit: 'VND', status: 'Used', distance: '3', rating: 2.5, rating_count: 10},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '4700000', price_unit: 'VND', status: 'Used', distance: '0.7', rating: 4, rating_count: 2},
-        { photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '6800000', price_unit: 'VND', status: 'New', distance: '2', rating: 4.5, rating_count: 1}
-    ],
-    numRowPerLoad = 5,
-    tableRows = [],
-    row = null;
-
-    for (var i = 0; i < numRowPerLoad; ++i) {
-        row = new ProductRow({
-            data: sample_data[i]
-        });
-
-        tableRows.push(row);
-    }
-
-    var lastDataIndex = numRowPerLoad;
-
-    resultTableView.setData(tableRows);
-
-    totalLabel.setText(String.format(L('found'),sample_data.length));
+    // {photo:'/images/Phone.png', name: 'Sample Mobile Phone', category: 'Smartphone', shop: 'Mobile World', price: '6500000', price_unit: 'VND', status: 'New', distance: '5', rating: 3, rating_count: 2},
     resultHeaderView.add(totalLabel);
 
     self.add(searchBar);
@@ -84,50 +52,59 @@ function SearchResultWindow (_args) {
     self.add(customButtonBar);
 
     searchBar.addEventListener('click', function (e) {
-        searchWin = new SearchWindow({keyword: self.keyword, controller: controller});
+        searchWin = new SearchWindow({params: params, controller: controller});
         searchWin.open();
+    });
+
+    resultTableView.addEventListener('click', function (e) {
+        if (e.rowData) {
+            var ProductWindow = require('ui/common/ProductWindow'),
+                productWindow = new ProductWindow({
+                    controller: controller,
+                    data: {id: e.rowData._id}
+                });
+            productWindow.open();
+        }
     });
 
     self.addEventListener('open', function (e) {
         controller.register(self);
+        resultTableView.setData([]);
+
+        activityIndicator.show();
+        fetchData().done(function (result) {
+            activityIndicator.hide();
+            totalLabel.setText(String.format(L('found'),result.total));
+            return result;
+        }).done(appendData).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
     });
 
     function sortFilterHandler (e) {
         if (e.index) {
-            var filterWindow = new FilterWindow({});
+            var filterWindow = new FilterWindow({params: params});
             filterWindow.open();
         } else {
-            var sortDialog = new SortDialog({});
+            var sortDialog = new SortDialog({params: params});
             sortDialog.open();
         }
     }
 
     function fetchData () {
-        var deferred = new _.Deferred();
-
-        setTimeout(function () {
-            var result = [],
-                i = lastDataIndex,
-                l = lastDataIndex + numRowPerLoad;
-            for (; i < l && i < sample_data.length; ++i) {
-                result.push(sample_data[i]);
-            }
-            lastDataIndex = i;
-
-            deferred.resolve(result);
-        }, 2000);
-        
+        var deferred = searchService.search(params);
         return deferred;
     }
 
     function appendData (result) {
-        Ti.API.log(result);
-        for (var i = 0, l = result.length; i < l; ++i) {
-            var row = new ProductRow({
-                data: result[i]
-            });
-
+        ++ params.page;
+        for (var i = 0, l = result.rows.length; i < l; ++i) {
+            var row = new ProductRow({ data: result.rows[i] });
             resultTableView.appendRow(row);
+        }
+        if (!result.total || resultTableView.data[0].rowCount >= result.total) {
+            resultTableView.stopUpdate = true;
         }
     }
 

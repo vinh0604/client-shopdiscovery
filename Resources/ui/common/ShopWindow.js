@@ -40,12 +40,6 @@ function ShopWindow (_args) {
         width: Ti.UI.FILL,
         height: Ti.UI.FILL
     }),
-    photoScrollView = Ti.UI.createScrollView({
-        width: Ti.UI.FILL,
-        height: Ti.UI.FILL,
-        contentWidth: 'auto',
-        scrollType: 'horizontal'
-    }),
     nameRow = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE
     }),
@@ -207,7 +201,6 @@ function ShopWindow (_args) {
         message: L('loading')
     });
 
-    photoView.add(photoScrollView);
     photoRow.add(photoView);
 
     nameView.add(nameLabel);
@@ -238,6 +231,16 @@ function ShopWindow (_args) {
 
     self.add(tableView);
 
+    reviewRow.addEventListener('click', function (e) {
+        var ReviewWindow = require('ui/common/ReviewWindow'),
+            reviewWindow = new ReviewWindow({
+                controller: controller,
+                data: item,
+                type: APP_CONST.TYPE.SHOP
+            });
+        reviewWindow.open();
+    });
+
     descriptionRow.addEventListener('click', function (e) {
         var DescriptionWindow = require('ui/common/DescriptionWindow'),
             descriptionWindow = new DescriptionWindow({
@@ -256,6 +259,15 @@ function ShopWindow (_args) {
         locationWindow.open();
     });
 
+    productListRow.addEventListener('click', function (e) {
+        var ShopCategoryListWindow = require('ui/common/ShopCategoryListWindow'),
+            shopCategoryListWindow = new ShopCategoryListWindow({
+                controller: controller,
+                data: item
+            });
+        shopCategoryListWindow.open();
+    });
+
     self.addEventListener('open', function (e) {
         controller.register(self);
         activityIndicator.show();
@@ -264,11 +276,18 @@ function ShopWindow (_args) {
             setData();
             activityIndicator.hide();
         }).fail(function (e) {
+            activityIndicator.hide();
             alert(e.error);
         });
     });
 
     function setPhotos (photos) {
+        var photoScrollView = Ti.UI.createScrollView({
+            width: Ti.UI.FILL,
+            height: Ti.UI.FILL,
+            contentWidth: 'auto',
+            scrollType: 'horizontal'
+        });
         if (photos && photos.length) {
             for (var i = 0, l = photos.length; i < l; ++i) {
                 var imageView = Ti.UI.createImageView({
@@ -290,6 +309,7 @@ function ShopWindow (_args) {
             });
             photoScrollView.add(image);
         }
+        photoView.add(photoScrollView);
     }
 
     function addPhoneLabels (phones) {
@@ -306,7 +326,7 @@ function ShopWindow (_args) {
 
     function imageClickHandler (e) {
         var PhotoWindow = require('ui/common/PhotoWindow'),
-            photoWindow = new PhotoWindow({photos: item.photos, index: e.source._index, controller: controller});
+            photoWindow = new PhotoWindow({photos: item.photos, index: e.source._index});
 
         photoWindow.open();
     }

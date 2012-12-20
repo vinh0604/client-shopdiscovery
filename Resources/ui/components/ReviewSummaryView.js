@@ -3,7 +3,8 @@ function ReviewSummaryView (_args) {
         theme = require('helpers/theme'),
         RatingStarBar = require('ui/components/RatingStarBar'),
         ProgressBar = require('ui/components/ProgressBar'),
-        item = _args.data,
+        countLabels = {},
+        progressBars = {},
         defaults = {
             top: 10,
             left: 10,
@@ -16,9 +17,7 @@ function ReviewSummaryView (_args) {
     var ratingStarBar = new RatingStarBar({
         config: {left: 0, bottom: 20},
         size: 35,
-        max: 5,
-        rating: item.rating,
-        count: item.rating_count
+        max: 5
     });
 
     self.add(ratingStarBar);
@@ -38,13 +37,10 @@ function ReviewSummaryView (_args) {
         progressBar = new ProgressBar({
             config: {left: 10, width: 250, backgroundColor: '#FFF3D1', borderWidth: 0, height: 40},
             color: '#FFC31F',
-            current: item.star_count[i-1],
-            total: item.rating_count,
             showText: false
         }),
         starCountLabel = Ti.UI.createLabel({
             left: 10,
-            text: '(' + item.star_count[i-1] + ')',
             color: '#000',
             font: {fontSize: 28}
         });
@@ -57,8 +53,25 @@ function ReviewSummaryView (_args) {
         starView.add(progressBar);
         starView.add(starCountLabel);
 
+        countLabels[i] = starCountLabel;
+        progressBars[i] = progressBar;
+
         self.add(starView);
     }
+
+    self.setSummaryData = function (data) {
+        ratingStarBar.setRating({
+            rating: data.rating,
+            count: data.rating_count
+        });
+        for (var i = 1; i <= 5; ++i) {
+            countLabels[i].text = '(' + data.star_count[i] + ')';
+            progressBars[i].setProgress({
+                current: data.star_count[i],
+                total: data.rating_count
+            });
+        }
+    };
 
     return self;
 }

@@ -8,7 +8,7 @@
     <string name="scan">Scan</string>
     <string name="clear_history">Clear History</string>
     <string name="category">Category: %s</string>
-    <string name="distance">Distance: %s km</string>
+    <string name="distance">Dist.: %.2f kms</string>
     <string name="relevance">Relevance</string>
     <string name="popular">Most Popular</string>
     <string name="price_high_sort">Price: High to Low</string>
@@ -103,7 +103,7 @@
     <string name="specific">Item's specifics</string>
     <string name="origin">Origin</string>
     <string name="genuine">Genuine distribution</string>
-    <string name="imported">Imported</string>
+    <string name="imported">Hand luggage</string>
     <string name="shop">Shop</string>
     <string name="review">Review</string>
     <string name="buy">Buy this item</string>
@@ -161,4 +161,7 @@
     <string name="logging_out">Logging out...</string>
     <string name="authentication_fail">Authentication failed.</string>
     <string name="current_password_invalid">Current password is not correct.</string>
+    <string name="NA">N/A</string>
+    <string name="your_review">Your review</string>
+    <string name="product_text">Product: %s</string>
 </resources>

@@ -20,7 +20,7 @@ function MainWindow (_args) {
             left: 5
         },
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
-
+    
     var headerView = Ti.UI.createView(theme.styles.header.view),
     searchBar = new SearchBar({readOnly: true, top: 90}),
     featureTableView = Ti.UI.createTableView({
@@ -88,13 +88,30 @@ function MainWindow (_args) {
     // end mock
 
     searchBar.addEventListener('click', function (e) {
-        searchWin = new SearchWindow({controller: controller});
-        searchWin.open();
+        var params = {page:1, per_page:30, keyword:''};
+        if (Ti.Geolocation.locationServicesEnabled) {
+            Ti.Geolocation.purpose = 'Get Current Location';
+            Ti.Geolocation.getCurrentPosition(function(e) {
+                if (!e.error) {
+                    params.location = 'POINT('+e.coords.longitude+' '+e.coords.latitude+')';
+                }
+                searchWin = new SearchWindow({
+                    controller: controller,
+                    params: params
+                });
+                searchWin.open();
+            });
+        }
     });
     browseShopRow.addEventListener('click', function (e) {
         var ShopListWindow = require('ui/common/ShopListWindow'),
             shopListWindow = new ShopListWindow({controller: controller});
         shopListWindow.open();
+    });
+    browseCategoryRow.addEventListener('click', function (e) {
+        CategoryListWindow = require('ui/common/CategoryListWindow'),
+            categoryListWindow = new CategoryListWindow({controller: controller});
+        categoryListWindow.open();
     });
 
     self.addEventListener('open', function (e) {

@@ -41,6 +41,7 @@ function RatingBar (_args) {
             deselectStar(images[i]);
         }
         self._currentStar = index;
+        self.fireEvent('star:click',{source: self});
     }
 
     function selectStar (imageView) {
@@ -51,11 +52,11 @@ function RatingBar (_args) {
         imageView.image = '/images/star_off.png';
     }
 
+    self.getCurrentStar = function () {
+        return self._currentStar;
+    };
+
     return self;
 }
-
-RatingBar.prototype.getCurrentStar = function () {
-    return this._currentStar;
-};
 
 module.exports = RatingBar;

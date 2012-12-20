@@ -3,13 +3,12 @@ function PhotoWindow (_args) {
         theme = require('helpers/theme'),
         photos = _args.photos || [],
         index = _args.index,
-        controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     var photosView = Ti.UI.createScrollableView({
-        top: 0, 
-        left: 0, 
-        bottom: 0, 
+        top: 0,
+        left: 0,
+        bottom: 0,
         right: 0,
         showPagingControl:true
     }),
@@ -28,10 +27,6 @@ function PhotoWindow (_args) {
     }
 
     self.add(photosView);
-
-    self.addEventListener('open', function (e) {
-        controller.register(self);
-    });
 
     return self;
 }

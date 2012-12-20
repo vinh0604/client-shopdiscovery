@@ -1,4 +1,4 @@
-function CategoryListWindow (_args) {
+function ShopCategoryListWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
         opts = _args,
@@ -29,7 +29,7 @@ function CategoryListWindow (_args) {
 
     self.addEventListener('open', function (e) {
         controller.register(self);
-        loadData(categoryListView, {});
+        loadData(categoryListView, {shop_id: item.id});
 
         categoryListView.defocusSearchBar();
     });
@@ -55,23 +55,24 @@ function CategoryListWindow (_args) {
             viewStack.push(subCategoryListView);
             subCategoryListView.defocusSearchBar();
             subCategoryListView.addEventListener('row:clicked', categoryRowClickHandler);
-            loadData(subCategoryListView, {parent_id: e.rowData._id});
+            loadData(subCategoryListView, {shop_id: item.id, parent_id: e.rowData._id});
         } else {
-            var ProductListWindow = require('ui/common/ProductListWindow'),
-                productListWindow = new ProductListWindow({
+            var ShopProductListWindow = require('ui/common/ShopProductListWindow'),
+                spListWindow = new ShopProductListWindow({
                     controller: controller,
                     data: {
-                        id: e.rowData._id,
-                        name: e.rowData.title
+                        shop_id: item.id,
+                        category_id: e.rowData._id,
+                        category: e.rowData.title
                     }
                 });
-            productListWindow.open();
+            spListWindow.open();
         }
     }
 
     function loadData (listView, params) {
         activityIndicator.show();
-        categoryService.all(params).done(function (result) {
+        categoryService.shop(params).done(function (result) {
             listView.setTableData(result);
             listView.setBreadcrumb(sequences);
             activityIndicator.hide();
@@ -84,4 +85,4 @@ function CategoryListWindow (_args) {
     return self;
 }
 
-module.exports = CategoryListWindow;
+module.exports = ShopCategoryListWindow;

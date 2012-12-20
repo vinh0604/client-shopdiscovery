@@ -9,9 +9,9 @@ function DoneCancelButtonBar (_args) {
             left: 0,
             right: 0
         },
-        opts = _.extend(defaults, _args);
+        config = _.extend(defaults, _args.config);
 
-    var self = Ti.UI.createView(opts),
+    var self = Ti.UI.createView(config),
         buttonOptions = {
             color: '#fff',
             backgroundColor: 'transparent',
@@ -34,10 +34,10 @@ function DoneCancelButtonBar (_args) {
     self.parentWin = _args.parentWin;
 
     var cancelButton = Ti.UI.createButton(
-        _.extend({title: L('cancel')},buttonOptions)
+        _.defaults({title: L('cancel')},buttonOptions)
     ),
     doneButton = Ti.UI.createButton(
-        _.extend({title: L('done')},buttonOptions)
+        _.defaults({title: L('done'), color: 'gray', enabled: false},buttonOptions)
     ),
     buttonSeperators = Ti.UI.createView(seperatorOptions);
 
@@ -53,6 +53,10 @@ function DoneCancelButtonBar (_args) {
         }
     });
 
+    if (!_args.disabled) {
+        self.enableButton();
+    }
+
     self.add(cancelButton);
     self.add(buttonSeperators);
     self.add(doneButton);
@@ -60,6 +64,11 @@ function DoneCancelButtonBar (_args) {
     self.addEventListener('postlayout', function (e) {
         isReady = true;
     });
+
+    self.enableButton = function () {
+        doneButton.enabled = true;
+        doneButton.color = '#fff';
+    };
 
     return self;
 }

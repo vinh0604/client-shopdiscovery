@@ -1,29 +1,29 @@
 function ReviewWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        APP_CONST = require('business/constants'),
+        ReviewService = require('business/services/ReviewService'),
+        RatingStarBar = require('ui/components/RatingStarBar'),
         InfiniteScrollTableView = require('ui/components/InfiniteScrollTableView'),
         ReviewRow = require('ui/components/tablerow/ReviewRow'),
         ReviewSummaryView = require('ui/components/ReviewSummaryView'),
         WriteReviewWindow = require('ui/common/modal/WriteReviewWindow'),
         item = _args.data,
+        params = {
+            id: item.id,
+            reviewable_type: _args.type,
+            page: 1,
+            per_page: 30
+        },
         controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
-
-    // mock data
-    item =  {
-        id: 1,
-        name: 'Sample product name with some details',
-        rating: 4.2,
-        rating_count: 225,
-        star_count: [5,20,30,30,90]
-    };
 
     _.mixin( require('lib/underscore.deferred') );
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
     headerLabel = Ti.UI.createLabel(_.extend({text: L('reviews')},theme.styles.header.label)),
     tableView = new InfiniteScrollTableView({
-        config: {top: 90,bottom: 90},
+        config: {top: 90,bottom: 0},
         fetchDataFunc: fetchData,
         appendDataFunc: appendData
     }),
@@ -41,54 +41,93 @@ function ReviewWindow (_args) {
     reviewSummaryRow = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE
     }),
-    reviewSummaryView = new ReviewSummaryView({data: item}),
-    newReviewButton = Ti.UI.createButton({
-        bottom: 0,
-        height: 90,
-        left: 0,
-        right: 0,
-        title: L('new_review')
+    reviewSummaryView = new ReviewSummaryView({}),
+    yourReviewRow = Ti.UI.createTableViewRow({
+        height: 80
+    }),
+    yourReviewView = Ti.UI.createView({
+        height: '100%',
+        width: '100%'
+    }),
+    yourReviewLabel = Ti.UI.createLabel({
+        text: L('your_review'),
+        font: {fontWeight: 'bold', fontSize: 30},
+        color: '#000',
+        left: 10
+    }),
+    yourReviewStarBar = new RatingStarBar({
+        config: {right: 10, width: 250},
+        size: 45,
+        max: 5
+    }),
+    reviewService = new ReviewService(),
+    activityIndicator = Ti.UI.createActivityIndicator({
+        message: L('loading')
     });
 
     headerView.add(headerLabel);
 
     productNameRow.add(productNameLabel);
     reviewSummaryRow.add(reviewSummaryView);
-    tableView.setData([productNameRow, reviewSummaryRow]);
+    yourReviewView.add(yourReviewLabel);
+    yourReviewView.add(yourReviewStarBar);
+    yourReviewRow.add(yourReviewView);
 
     self.add(headerView);
     self.add(tableView);
-    self.add(newReviewButton);
 
-    newReviewButton.addEventListener('click', function (e) {
-        writeReviewWindow = new WriteReviewWindow({});
+    yourReviewStarBar.addEventListener('click', function (e) {
+        writeReviewWindow = new WriteReviewWindow({
+            data: {
+                reviewable_id: params.id,
+                reviewable_type: params.reviewable_type
+            },
+            handler: function (e) {
+                if (e.success) {
+                    params.page = 1;
+                    tableView.stopUpdate = false;
+                    loadData();
+                }
+            }
+        });
         writeReviewWindow.open({modal: true});
     });
 
     self.addEventListener('open', function (e) {
         controller.register(self);
-
-        var row_data = [
-            {id: 1, title: 'Sample Review Title', reviewer: {name: 'Vinh Bachsy'}, updated_date: '2012-11-17', content: 'This product is very impressive. The quality is good, the price is low, the customer care is very good.', rating: 4},
-            {id: 1, title: 'Sample Review Title', reviewer: {name: 'Vinh Bachsy'}, updated_date: '2012-11-17', content: 'This product is very impressive. The quality is good, the price is low, the customer care is very good.', rating: 4},
-            {id: 1, title: 'Sample Review Title', reviewer: {name: 'Vinh Bachsy'}, updated_date: '2012-11-17', content: 'This product is very impressive. The quality is good, the price is low, the customer care is very good.', rating: 4},
-            {id: 1, title: 'Sample Review Title', reviewer: {name: 'Vinh Bachsy'}, updated_date: '2012-11-17', content: 'This product is very impressive. The quality is good, the price is low, the customer care is very good.', rating: 4}
-        ];
-
-        for (var i = 0, l=row_data.length; i < l; ++i) {
-            var row = new ReviewRow({data: row_data[i]});
-            tableView.appendRow(row);
-        }
+        loadData();
     });
 
     function fetchData () {
-        var deferred = new _.Deferred();
-
+        var deferred = reviewService.all(params);
         return deferred;
     }
 
     function appendData (result) {
-        
+        ++params.page;
+        for (var i = 0, l = result.rows.length; i < l; ++i) {
+            var row = new ReviewRow({ data: result.rows[i] });
+            tableView.appendRow(row);
+        }
+        if ((tableView.data[0].rowCount + 3) >= result.total) {
+            tableView.stopUpdate = true;
+        }
+    }
+
+    function loadData () {
+        tableView.setData([productNameRow, reviewSummaryRow, yourReviewRow]);
+        activityIndicator.show();
+        reviewService.summary(params).done(function (result) {
+            activityIndicator.hide();
+            reviewSummaryView.setSummaryData(result);
+            yourReviewStarBar.setRating({rating: result.user_rating});
+        }).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
+        fetchData().done(appendData).fail(function (e) {
+            alert(e.error);
+        });
     }
 
     return self;
