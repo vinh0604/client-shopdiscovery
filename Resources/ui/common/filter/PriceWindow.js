@@ -3,6 +3,7 @@ function PriceWindow (_args) {
         theme = require('helpers/theme'),
         CustomButtonBar = require('ui/components/CustomButtonBar'),
         opts = _args,
+        params = _args.params,
         self = Ti.UI.createWindow({
             navBarHidden: true,
             backgroundColor: '#40000000'
@@ -35,6 +36,7 @@ function PriceWindow (_args) {
         width: 200,
         right: 10,
         top: 100,
+        value: params.min_price ? params.min_price : '',
         keyboardType: Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION
     }),
     toPriceLabel = Ti.UI.createLabel({
@@ -55,6 +57,7 @@ function PriceWindow (_args) {
         width: 200,
         right: 10,
         top: 200,
+        value: params.max_price ? params.max_price : '',
         keyboardType: Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION
     }),
     buttonBar = new CustomButtonBar({
@@ -62,10 +65,9 @@ function PriceWindow (_args) {
         buttons: ['Clear','Done'],
         handler: function (e) {
             if (e.index) {
-                e.from_price = fromPriceField.value;
-                e.to_price = toPriceField.value;
+                params.min_price = fromPriceField.value;
+                params.max_price = toPriceField.value;
                 self.close();
-                opts.handler(e);
             } else {
                 fromPriceField.value = '';
                 toPriceField.value = '';

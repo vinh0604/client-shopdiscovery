@@ -1,6 +1,6 @@
 var _ = require('lib/underscore'),
     theme = require('helpers/theme'),
-    RatingStarBar = require('ui/components/RatingStarBar'),
+    RatingStarBar = require('ui/components/StaticRatingStarBar'),
     APP_CONST = require('business/constants');
 
 function ShopRow (_args) {

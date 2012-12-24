@@ -53,10 +53,6 @@ function DoneCancelButtonBar (_args) {
         }
     });
 
-    if (!_args.disabled) {
-        self.enableButton();
-    }
-
     self.add(cancelButton);
     self.add(buttonSeperators);
     self.add(doneButton);
@@ -69,6 +65,10 @@ function DoneCancelButtonBar (_args) {
         doneButton.enabled = true;
         doneButton.color = '#fff';
     };
+
+    if (!_args.disabled) {
+        self.enableButton();
+    }
 
     return self;
 }

@@ -20,6 +20,13 @@ var CONSTANTS = {
             {code: 1, value: L('genuine')},
             {code: 2, value: L('imported')}
         ],
+        SORT_TYPE_ARRAY: [
+            {code: 1, value: L('relevance')},
+            {code: 2, value: L('price_low_sort')},
+            {code: 3, value: L('price_high_sort')},
+            {code: 4, value: L('distance_sort')},
+            {code: 5, value: L('review_sort')}
+        ],
         NOTIFY_TYPE: {
             1: L('promotion'),
             2: L('new_product'),

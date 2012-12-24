@@ -28,8 +28,9 @@ function SelectLocationWindow (_args) {
     }),
     doneCancelButtonBar = new DoneCancelButtonBar({
         parentWin: self,
-        handler: function (e) {
-            
+        handler: function () {
+            opts.handler(location);
+            self.close();
         }
     });
 
@@ -45,7 +46,7 @@ function SelectLocationWindow (_args) {
     myLocationButton.addEventListener('click', selectMyLocation);
 
     mapWebView.addEventListener('load', function (e) {
-        if (opts.location) {
+        if (!_(opts.location).isEmpty()) {
             Ti.App.fireEvent('app:locationMoved', {
                 latitude: opts.location.latitude,
                 longitude: opts.location.longitude

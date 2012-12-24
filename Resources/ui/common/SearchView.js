@@ -56,9 +56,7 @@ function SearchView(_args) {
             error: function (err) {
                 alert(err);
             },
-            cancel: function () {
-                alert('cancel');
-            }
+            cancel: function () {}
         });
     });
 

@@ -1,23 +1,33 @@
 function SortDialog (_args) {
-    var $$ = require('helpers/utility'),
-        self = this;
+    var _ = require('lib/underscore'),
+        APP_CONST = require('business/constants'),
+        params = _args.params,
+        opts = {
+            title: L('sort'),
+            options: [L('relevance'),L('price_low_sort'),L('price_high_sort'),L('distance_sort'),L('review_sort')]
+        };
 
-    self.handler = _args.handler;
-    self.params = _args.params;
+    if (params.sort) {
+        var sort_type = _(APP_CONST.DATA.SORT_TYPE_ARRAY).find( function(st) {
+          return st.code == params.sort;
+        });
+        if (sort_type) {
+            opts.selectedIndex = opts.options.indexOf(sort_type.value);
+        }
+    }
 
-    self.optionDialog = Ti.UI.createOptionDialog({
-        title: L('sort'),
-        options: [L('relevance'),L('popular'),L('price_low_sort'),L('price_high_sort'),L('distance_sort'),L('review_sort')]
-    });
+    var self = Ti.UI.createOptionDialog(opts);
 
-    self.optionDialog.addEventListener('click', function (e) {
-        if (self.handler && e.index != self.optionDialog.selectedIndex) {
-            handler($$.combine(self.params, {sort: e.index}));
+    self.addEventListener('click', function (e) {
+        if (e.index >= 0) {
+            params.sort = _(APP_CONST.DATA.SORT_TYPE_ARRAY).find( function(st) {
+              return st.value == self.options[e.index];
+            }).code;
+            self.fireEvent('sort:select');
         }
     });
+
+    return self;
 }
-SortDialog.prototype.open = function () {
-    this.optionDialog.show();
-};
 
 module.exports = SortDialog;

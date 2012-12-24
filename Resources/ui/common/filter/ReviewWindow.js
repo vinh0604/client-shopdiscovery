@@ -1,8 +1,10 @@
 function ReviewWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
-        RatingStarBar = require('ui/components/RatingStarBar'),
+        RatingStarBar = require('ui/components/StaticRatingStarBar'),
         opts = _args,
+        rows = [],
+        params = opts.params,
         self = Ti.UI.createWindow({
             navBarHidden: true,
             backgroundColor: '#40000000'
@@ -23,10 +25,11 @@ function ReviewWindow (_args) {
         top: 90
     });
 
-    for (var i = 4; i > 0; --i) {
+    for (var i = 4; i >= 0; --i) {
         var row = Ti.UI.createTableViewRow({
             height: 90,
-            className: 'starRow'
+            className: 'starRow',
+            _index: i ? i : null
         }),
         ratingStarBar = new RatingStarBar({max: 5, rating: i, size: 30, config: {left: 10}}),
         label = Ti.UI.createLabel({
@@ -40,7 +43,7 @@ function ReviewWindow (_args) {
         row.add(ratingStarBar);
         row.add(label);
 
-        reviewTableView.appendRow(row);
+        rows.push(row);
     }
 
     headerView.add(headerLabel);
@@ -48,6 +51,28 @@ function ReviewWindow (_args) {
     view.add(headerView);
     view.add(reviewTableView);
     self.add(view);
+
+    reviewTableView.addEventListener('click', function (e) {
+        if (e.rowData) {
+            params.min_score = e.rowData._index;
+            self.close();
+        }
+    });
+
+    self.addEventListener('click', function (e) {
+        if (e.source == self) {
+            self.close();
+        }
+    });
+
+    self.addEventListener('open', function (e) {
+        if (params.min_score && (params.min_score < 5)) {
+            rows[4 - params.min_score].rightImage = '/images/check.png';
+        } else {
+            rows[4].rightImage = '/images/check.png';
+        }
+        reviewTableView.setData(rows);
+    });
 
     return self;
 }

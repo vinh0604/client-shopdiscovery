@@ -1,7 +1,7 @@
 var _ = require('lib/underscore'),
     theme = require('helpers/theme'),
     accounting = require('lib/accounting'),
-    RatingStarBar = require('ui/components/RatingStarBar');
+    RatingStarBar = require('ui/components/StaticRatingStarBar');
 
 function ProductRow(_args) {
     var item = _args.data,

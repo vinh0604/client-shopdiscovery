@@ -36,6 +36,25 @@ function CategoryService (_args) {
         return deferred;
     };
 
+    self.list = function (data) {
+        var params = {};
+        if (data.category) {
+            params.category_id = data.category;
+        }
+        var deferred = new _.Deferred(),
+            api_deferred = api.request('GET','categories/list',params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
     return self;
 }
 

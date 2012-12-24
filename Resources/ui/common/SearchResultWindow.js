@@ -86,9 +86,11 @@ function SearchResultWindow (_args) {
         if (e.index) {
             var filterWindow = new FilterWindow({params: params});
             filterWindow.open();
+            filterWindow.addEventListener('filter:select', searchResetHandler);
         } else {
             var sortDialog = new SortDialog({params: params});
-            sortDialog.open();
+            sortDialog.show();
+            sortDialog.addEventListener('sort:select', searchResetHandler);
         }
     }
 
@@ -106,6 +108,21 @@ function SearchResultWindow (_args) {
         if (!result.total || resultTableView.data[0].rowCount >= result.total) {
             resultTableView.stopUpdate = true;
         }
+    }
+
+    function searchResetHandler (e) {
+        params.page = 1;
+        resultTableView.setData([]);
+        resultTableView.stopUpdate = false;
+        activityIndicator.show();
+        fetchData().done(function (result) {
+            activityIndicator.hide();
+            totalLabel.setText(String.format(L('found'),result.total));
+            return result;
+        }).done(appendData).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
     }
 
     return self;

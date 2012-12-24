@@ -1,8 +1,9 @@
 function CategoryWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        CategoryService = require('business/services/CategoryService'),
         opts = _args,
-        data = _args.data,
+        params = _args.params,
         self = Ti.UI.createWindow({
             navBarHidden: true,
             backgroundColor: '#40000000'
@@ -33,78 +34,99 @@ function CategoryWindow (_args) {
         color: '#000',
         touchEnabled: false
     }),
-    currentIndent = 10,
-    label = null;
+    service = new CategoryService();
 
-    allRow.add(allLabel);
-    categoryTableView.appendRow(allRow);
-
-    if (data.parent) {
-        var parentRow = Ti.UI.createTableViewRow({
-            height: 90
-        });
-        label = Ti.UI.createLabel({
-            left: currentIndent,
-            text: data.parent.name,
-            color: '#000',
-            touchEnabled: false
-        });
-        parentRow.add(label);
-        categoryTableView.appendRow(parentRow);
-        currentIndent += 40;
-    }
-    if (data.current) {
-        var currentRow = Ti.UI.createTableViewRow({
-            height: 90,
-            rightImage: '/images/check.png',
-            backgroundFocusedColor: '#fff',
-            backgroundSelectedColor: '#fff',
-            touchEnabled: false
-        });
-        label = Ti.UI.createLabel({
-            left: currentIndent,
-            text: data.current.name,
-            color: '#C6C6C6',
-            touchEnabled: false
-        });
-        currentRow.add(label);
-        categoryTableView.appendRow(currentRow);
-        currentIndent += 40;
-    } else{
+    if (!params.category){
         allRow.backgroundFocusedColor = '#fff';
         allRow.backgroundSelectedColor = '#fff';
         allRow.rightImage = '/images/check.png';
         allRow.setTouchEnabled(false);
         allLabel.setColor('#C6C6C6');
     }
-    if (data.children && data.children.length) {
-        var dataArr = data.children,
-            l = dataArr.length;
-        for (var i = 0; i < l; ++i) {
-            var row = Ti.UI.createTableViewRow({
-                height: 90,
-                className: 'categoryRow'
-            });
-            label = Ti.UI.createLabel({
-                left: currentIndent,
-                text: dataArr[i].name,
-                color: '#000',
-                touchEnabled: false
-            });
-            row.add(label);
-            categoryTableView.appendRow(row);
-        }
-    }
 
+    allRow.add(allLabel);
+    categoryTableView.appendRow(allRow);
     headerView.add(headerLabel);
-
     view.add(headerView);
     view.add(categoryTableView);
     self.add(view);
 
-    categoryTableView.addEventListener('click', function (e) {
-        
+    self.addEventListener('click', function (e) {
+        if (e.source == self) {
+            self.close();
+        }
     });
+
+    self.addEventListener('open', function (e) {
+        service.list(params).done(function (result) {
+            setCategoryData(result);
+            categoryTableView.addEventListener('click', function (e) {
+                if (e.rowData) {
+                    params.category = e.rowData._id;
+                    self.close();
+                }
+            });
+        }).fail(function (e) {
+            alert(e.error);
+        });
+    });
+
+    function setCategoryData (data) {
+        var currentIndent = 10,
+            label = null;
+        if (data.parent) {
+            var parentRow = Ti.UI.createTableViewRow({
+                _id: data.parent.id,
+                height: 90
+            });
+            label = Ti.UI.createLabel({
+                left: currentIndent,
+                text: data.parent.name,
+                color: '#000',
+                touchEnabled: false
+            });
+            parentRow.add(label);
+            categoryTableView.appendRow(parentRow);
+            currentIndent += 40;
+        }
+        if (data.category) {
+            var currentRow = Ti.UI.createTableViewRow({
+                _id: data.category.id,
+                height: 90,
+                rightImage: '/images/check.png',
+                backgroundFocusedColor: '#fff',
+                backgroundSelectedColor: '#fff',
+                touchEnabled: false
+            });
+            label = Ti.UI.createLabel({
+                left: currentIndent,
+                text: data.category.name,
+                color: '#C6C6C6',
+                touchEnabled: false
+            });
+            currentRow.add(label);
+            categoryTableView.appendRow(currentRow);
+            currentIndent += 40;
+        }
+        if (data.children) {
+            var children = data.children;
+            for (var i = 0, l = children.length; i < l; ++i) {
+                var row = Ti.UI.createTableViewRow({
+                    _id: children[i].id,
+                    height: 90,
+                    className: 'categoryRow'
+                });
+                label = Ti.UI.createLabel({
+                    left: currentIndent,
+                    text: children[i].name,
+                    color: '#000',
+                    touchEnabled: false
+                });
+                row.add(label);
+                categoryTableView.appendRow(row);
+            }
+        }
+    }
 
     return self;
 }

@@ -30,8 +30,14 @@ function SearchService (_args) {
     }
 
     self.search = function (data) {
-        var deferred = new _.Deferred();
-        var api_deferred = api.request('GET','search',data);
+        var deferred = new _.Deferred(),
+            params = {};
+        for (var key in data) {
+            if (data[key] || data[key] === 0) {
+                params[key] = data[key];
+            }
+        }
+        var api_deferred = api.request('GET','search',params);
 
         api_deferred.done(function (json) {
             var result = {

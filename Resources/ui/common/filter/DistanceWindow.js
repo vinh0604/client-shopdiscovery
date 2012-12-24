@@ -4,8 +4,9 @@ function DistanceWindow (_args) {
         CustomButtonBar = require('ui/components/CustomButtonBar'),
         SelectLocationWindow = require('ui/components/SelectLocationWindow'),
         GeoCoding = require('network/GeoCoding'),
-        opts = _args,
-        location = opts.location,
+        GEO = require('helpers/geo'),
+        params = _args.params,
+        location = params.location ? GEO.WKT.read(params.location) : {},
         self = Ti.UI.createWindow({
             navBarHidden: true,
             backgroundColor: '#40000000'
@@ -66,10 +67,9 @@ function DistanceWindow (_args) {
         buttons: [L('clear'),L('done')],
         handler: function (e) {
             if (e.index) {
-                e.location = null;
-                e.distance = distanceField.value;
+                params.location = 'POINT('+location.longitude+' '+location.latitude+')';
+                params.distance = distanceField.value;
                 self.close();
-                opts.handler(e);
             } else {
                 distanceField.value = '';
             }
@@ -77,31 +77,24 @@ function DistanceWindow (_args) {
     });
 
     locationButton.addEventListener('click', function (e) {
-        var selectLocationWindow = new SelectLocationWindow({location: location});
+        var selectLocationWindow = new SelectLocationWindow({
+            location: location,
+            handler: function (e) {
+                locationTextArea.value = e.address;
+                location = _(e).pick('latitude', 'longitude');
+            }
+        });
 
         selectLocationWindow.open();
     });
 
     self.addEventListener('open', function (e) {
-        if (location) {
+        if (params.location) {
             var latlng = location.latitude + ',' + location.longitude;
             getAddress(latlng);
-        } else {
-            location = {};
-            if (Ti.Geolocation.locationServicesEnabled) {
-                Ti.Geolocation.purpose = 'Get Current Location';
-                Ti.Geolocation.getCurrentPosition(function(e) {
-                    if (e.error) {
-                        Ti.API.error('Error: ' + e.error);
-                    } else {
-                        var latlng = e.coords.latitude + ',' + e.coords.longitude;
-                        _.extend(location, e.coords);
-                        getAddress(latlng);
-                    }
-                });
-            } else {
-                alert('Please enable location services');
-            }
+        }
+        if (params.distance) {
+            distanceField.value = params.distance;
         }
     });
 
