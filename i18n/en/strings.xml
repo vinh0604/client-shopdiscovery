@@ -164,4 +164,12 @@
     <string name="NA">N/A</string>
     <string name="your_review">Your review</string>
     <string name="product_text">Product: %s</string>
+    <string name="add_wishlist_success">Added to Wish List</string>
+    <string name="add_wishlist_fail">Failed to add to Wish List</string>
+    <string name="remove_wishlist_success">Removed from Wish List</string>
+    <string name="remove_wishlist_fail">Failed to removed from Wish List</string>
+    <string name="add_favorite_success">Marked as favorite</string>
+    <string name="add_favorite_fail">Failed to mark as favorite</string>
+    <string name="remove_favorite_success">Unmarked as favorite</string>
+    <string name="remove_favorite_fail">Failed to unmark as favorite</string>
 </resources>

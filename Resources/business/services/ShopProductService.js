@@ -1,6 +1,7 @@
 function ShopProductService (_args) {
     var _ = require('lib/underscore'),
         APP_CONST = require('business/constants'),
+        DB = require('business/database'),
         api = require('network/ShopDiscoveryAPI'),
         opts = _args,
         self = this;
@@ -81,6 +82,64 @@ function ShopProductService (_args) {
         api_deferred.done(function (json) {
             var result = convertDetailData(json);
             deferred.resolve(result);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.checkWishlist = function (id) {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('GET','wish_lists/' + id, params);
+
+        api_deferred.done(function (json) {
+            var result = json.favorite;
+            deferred.resolve(result);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.addWishlist = function (id) {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('POST','wish_lists/' + id, params);
+
+        api_deferred.done(function (json) {
+            if (json.success) {
+                deferred.resolve(json.success);
+            } else {
+                deferred.reject({error: L('add_wishlist_fail')});
+            }
+            
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.removeWishlist = function (id) {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('DELETE','wish_lists/' + id, params);
+
+        api_deferred.done(function (json) {
+            if (json.success) {
+                deferred.resolve(json.success);
+            } else {
+                deferred.reject({error: L('remove_wishlist_fail')});
+            }
         });
 
         api_deferred.fail(function (e) {

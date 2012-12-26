@@ -73,7 +73,8 @@ function ShopWindow (_args) {
     favoriteButton = Ti.UI.createButton({
         height: 128,
         width: 128,
-        backgroundImage: '/images/favorite_gray.png'
+        backgroundImage: '/images/favorite_gray.png',
+        _isCheck: false
     }),
     infoRow = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE,
@@ -279,6 +280,20 @@ function ShopWindow (_args) {
             activityIndicator.hide();
             alert(e.error);
         });
+        shopService.checkFavorite(item.id).done(function (result) {
+            if (result) {
+                favoriteButton._isCheck = true;
+                favoriteButton.backgroundImage = '/images/favorite_yellow.png';
+            }
+            favoriteButton.addEventListener('click', favoriteClickHandler);
+        }).fail(function (e) {
+            var toast = Ti.UI.createNotification({
+                duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                message: e.error.toString()
+            });
+            toast.show();
+            favoriteButton.addEventListener('click', favoriteClickHandler);
+        });
     });
 
     function setPhotos (photos) {
@@ -339,6 +354,42 @@ function ShopWindow (_args) {
         websiteValueLabel.text = item.website;
         setPhotos(item.photos);
         ratingStarBar.setRating({count: item.rating_count, rating: item.rating});
+    }
+
+    function favoriteClickHandler (e) {
+        if (favoriteButton._isCheck) {
+            shopService.removeFavorite(item.id).done(function (result) {
+                favoriteButton._isCheck = false;
+                favoriteButton.backgroundImage = '/images/favorite_gray.png';
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: L('remove_favorite_success')
+                });
+                toast.show();
+            }).fail(function (e) {
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: e.error.toString()
+                });
+                toast.show();
+            });
+        } else {
+            shopService.addFavorite(item.id).done(function (result) {
+                favoriteButton._isCheck = true;
+                favoriteButton.backgroundImage = '/images/favorite_yellow.png';
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: L('add_favorite_success')
+                });
+                toast.show();
+            }).fail(function (e) {
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: e.error.toString()
+                });
+                toast.show();
+            });
+        }
     }
 
     return self;

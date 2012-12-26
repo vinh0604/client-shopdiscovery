@@ -71,7 +71,8 @@ function ProductWindow (_args) {
     wishListButton = Ti.UI.createButton({
         height: 128,
         width: 128,
-        backgroundImage: '/images/heart_gray.png'
+        backgroundImage: '/images/heart_gray.png',
+        _isCheck: false
     }),
     infoRow = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE,
@@ -315,6 +316,20 @@ function ProductWindow (_args) {
             activityIndicator.hide();
             alert(e.error);
         });
+        shopProductService.checkWishlist(item.id).done(function (result) {
+            if (result) {
+                wishListButton._isCheck = true;
+                wishListButton.backgroundImage = '/images/heart_yellow.png';
+            }
+            wishListButton.addEventListener('click', wishListClickHandler);
+        }).fail(function (e) {
+            var toast = Ti.UI.createNotification({
+                duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                message: e.error.toString()
+            });
+            toast.show();
+            wishListButton.addEventListener('click', wishListClickHandler);
+        });
     });
 
     function setPhotos (photos) {
@@ -364,6 +379,42 @@ function ProductWindow (_args) {
         shopValueLabel.text = item.shop.name;
         setPhotos(item.photos);
         ratingStarBar.setRating({count: item.rating_count, rating: item.rating});
+    }
+
+    function wishListClickHandler (e) {
+        if (wishListButton._isCheck) {
+            shopProductService.removeWishlist(item.id).done(function (result) {
+                wishListButton._isCheck = false;
+                wishListButton.backgroundImage = '/images/heart_gray.png';
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: L('remove_wishlist_success')
+                });
+                toast.show();
+            }).fail(function (e) {
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: e.error.toString()
+                });
+                toast.show();
+            });
+        } else {
+            shopProductService.addWishlist(item.id).done(function (result) {
+                wishListButton._isCheck = true;
+                wishListButton.backgroundImage = '/images/heart_yellow.png';
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: L('add_wishlist_success')
+                });
+                toast.show();
+            }).fail(function (e) {
+                var toast = Ti.UI.createNotification({
+                    duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                    message: e.error.toString()
+                });
+                toast.show();
+            });
+        }
     }
 
     return self;

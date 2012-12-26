@@ -1,6 +1,7 @@
 function ShopService (_args) {
     var _ = require('lib/underscore'),
         GEO = require('helpers/geo'),
+        DB = require('business/database'),
         APP_CONST = require('business/constants'),
         api = require('network/ShopDiscoveryAPI'),
         opts = _args,
@@ -59,6 +60,64 @@ function ShopService (_args) {
                 }
             }
             deferred.resolve(result);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.checkFavorite = function (id) {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('GET','favorite_shops/' + id, params);
+
+        api_deferred.done(function (json) {
+            var result = json.favorite;
+            deferred.resolve(result);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.addFavorite = function (id) {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('POST','favorite_shops/' + id, params);
+
+        api_deferred.done(function (json) {
+            if (json.success) {
+                deferred.resolve(json.success);
+            } else {
+                deferred.reject({error: L('add_favorite_fail')});
+            }
+            
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.removeFavorite = function (id) {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('DELETE','favorite_shops/' + id, params);
+
+        api_deferred.done(function (json) {
+            if (json.success) {
+                deferred.resolve(json.success);
+            } else {
+                deferred.reject({error: L('remove_favorite_fail')});
+            }
         });
 
         api_deferred.fail(function (e) {

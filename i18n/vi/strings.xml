@@ -164,4 +164,12 @@
     <string name="NA">N/A</string>
     <string name="your_review">Đánh giá của bạn</string>
     <string name="product_text">Sản phẩm: %s</string>
+    <string name="add_wishlist_success">Đã thêm vào Wish List</string>
+    <string name="add_wishlist_fail">Thêm vào Wish List không thành công</string>
+    <string name="remove_wishlist_success">Đã xóa khỏi Wish List</string>
+    <string name="remove_wishlist_fail">Xóa khỏi Wish List không thành công</string>
+    <string name="add_favorite_success">Đã đánh dấu ưa thích</string>
+    <string name="add_favorite_fail">Đánh dấu ưa thích không thành công</string>
+    <string name="remove_favorite_success">Đã hủy đánh dấu ưa thích</string>
+    <string name="remove_favorite_fail">Hủy đánh dấu ưa thích không thành công</string>
 </resources>
