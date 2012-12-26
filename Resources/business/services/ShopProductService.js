@@ -149,6 +149,30 @@ function ShopProductService (_args) {
         return deferred;
     };
 
+    self.allWishlist = function () {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('GET','wish_lists/', params);
+
+        api_deferred.done(function (json) {
+            var result = [];
+            if (json.shop_products) {
+                for (var i = 0, l= json.shop_products.length; i<l ; ++i) {
+                    var shop_product = json.shop_products[i].shop_product,
+                        row_data = convertData(shop_product);
+                    result.push(row_data);
+                }
+            }
+            deferred.resolve(result);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
     return self;
 }
 

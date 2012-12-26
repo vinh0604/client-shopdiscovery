@@ -12,7 +12,6 @@ function SearchBar(_args) {
             paddingLeft: 10,
             paddingRight: 10,
             height: 90,
-            layout: 'horizontal',
             readOnly: false
         },
         opts = _.extend(defaults, _args),
@@ -42,11 +41,13 @@ function SearchBar(_args) {
         hintText: L('search'),
         opacity: 0,
         softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
-        width: theme.platformWidth - 160,
+        left: 80,
+        right: 80,
         editable: !opts.readOnly,
         value: opts.keyword ? opts.keyword : ''
     }),
     cancelButton = Ti.UI.createButton({
+        right: 20,
         width: 50,
         height: 50,
         backgroundImage: '/images/cancel.png',

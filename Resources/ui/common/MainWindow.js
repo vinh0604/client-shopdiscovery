@@ -113,6 +113,16 @@ function MainWindow (_args) {
             categoryListWindow = new CategoryListWindow({controller: controller});
         categoryListWindow.open();
     });
+    favoriteShopRow.addEventListener('click', function (e) {
+        FavoriteShopsWindow = require('ui/common/FavoriteShopsWindow'),
+            favoriteShopsWindow = new FavoriteShopsWindow({controller: controller});
+        favoriteShopsWindow.open();
+    });
+    wishListRow.addEventListener('click', function (e) {
+        WishListWindow = require('ui/common/WishListWindow'),
+            wishListWindow = new WishListWindow({controller: controller});
+        wishListWindow.open();
+    });
 
     self.addEventListener('open', function (e) {
         controller.register(self);

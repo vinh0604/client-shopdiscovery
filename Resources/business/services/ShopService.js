@@ -127,6 +127,33 @@ function ShopService (_args) {
         return deferred;
     };
 
+    self.allFavorite = function () {
+        var params = {auth_token: DB.getAuthToken()},
+            deferred = new _.Deferred(),
+            api_deferred = api.request('GET','favorite_shops',params);
+
+        api_deferred.done(function (json) {
+            var result = {
+                rows: [],
+                total: json.total
+            };
+            if (json.shops) {
+                for (var i = 0, l= json.shops.length; i<l ; ++i) {
+                    var shop = json.shops[i].shop,
+                        row_data = convertData(shop);
+                    result.rows.push(row_data);
+                }
+            }
+            deferred.resolve(result);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
     return self;
 }
 
