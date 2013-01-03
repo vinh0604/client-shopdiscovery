@@ -12,6 +12,7 @@ function ProductWindow (_args) {
     // mock data
     // item = {
     //     id: 1,
+    //     product_id: 1,
     //     photos: [
     //         {url: '/images/Phone.png'},
     //         {url: '/images/Phone.png'}],
@@ -222,6 +223,16 @@ function ProductWindow (_args) {
         title: L('buy'),
         font: {fontSize: '18dp', fontWeight: 'bold'}
     }),
+    allOfferRow =  Ti.UI.createTableViewRow({
+        height: 75
+    }),
+    allOfferLabel = Ti.UI.createLabel({
+        touchEnabled: false,
+        top: 10,
+        color: '#000',
+        text: L('view_all_offer'),
+        font: {fontSize: 30}
+    }),
     shopProductService = new ShopProductService(),
     activityIndicator = Ti.UI.createActivityIndicator({
         message: L('loading')
@@ -247,6 +258,7 @@ function ProductWindow (_args) {
     infoRow.add(conditionView);
     infoRow.add(warrantyView);
     infoRow.add(originView);
+    allOfferRow.add(allOfferLabel);
 
     reviewRow.add(reviewLabel);
     reviewRow.add(ratingStarBar);
@@ -256,7 +268,7 @@ function ProductWindow (_args) {
     shopRow.add(shopValueLabel);
     buyRow.add(buyButton);
 
-    tableView.setData([photoRow, nameRow, infoRow, reviewRow, descriptionRow, specificRow, shopRow, buyRow]);
+    tableView.setData([photoRow, nameRow, infoRow, reviewRow, descriptionRow, specificRow, shopRow, buyRow, allOfferRow]);
 
     self.add(tableView);
 
@@ -303,6 +315,18 @@ function ProductWindow (_args) {
                 data: {id: item.shop.id}
             });
         shopWindow.open();
+    });
+
+    allOfferRow.addEventListener('click', function (e) {
+        var SecondProductListWindow = require('ui/common/SecondProductListWindow'),
+            spListWindow = new SecondProductListWindow({
+                controller: controller,
+                data: {
+                    product_id: item.product_id,
+                    product: item.name
+                }
+            });
+        spListWindow.open();
     });
 
     self.addEventListener('open', function (e) {

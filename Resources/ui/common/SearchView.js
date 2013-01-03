@@ -35,10 +35,20 @@ function SearchView(_args) {
         text: L('scan'),
         color: '#000',
         left: 20
+    }),
+    speakRow = Ti.UI.createTableViewRow({
+        rightImage: '/images/microphone.png',
+        height: 90
+    }),
+    speakLabel = Ti.UI.createLabel({
+        text: L('speak'),
+        color: '#000',
+        left: 20
     });
 
     savedSearchRow.add(savedSearchLabel);
     scanRow.add(scanLabel);
+    speakRow.add(speakLabel);
 
     savedSearchRow.addEventListener('click', function (e) {
         var savedSearchWindow = new SavedSearchWindow({controller: controller});
@@ -60,10 +70,14 @@ function SearchView(_args) {
         });
     });
 
+    speakRow.addEventListener('click', function (e) {
+        
+    });
+
     searchBar.addSearchFieldEventListener('focus', function (e) {
         var currentValue = e.source.value;
         if (!currentValue) {
-            searchAutocomplete.setData([scanRow, savedSearchRow]);
+            searchAutocomplete.setData([scanRow, speakRow, savedSearchRow]);
         } else{
             searchAutocomplete.setData([]);
         }
@@ -80,7 +94,7 @@ function SearchView(_args) {
         var currentValue = e.source.value.trim();
 
         if (!currentValue) {
-            searchAutocomplete.setData([scanRow, savedSearchRow]);
+            searchAutocomplete.setData([scanRow, speakRow, savedSearchRow]);
         } else if (currentValue.length <= 2) {
             searchAutocomplete.setData([]);
         } else if (currentValue !=  last_search) {

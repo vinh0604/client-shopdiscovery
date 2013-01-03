@@ -39,6 +39,7 @@ function ShopProductService (_args) {
         data.status = status ? status.value : '';
         data.origin = origin ? origin.value : '';
         if (shop_product.product) {
+            data.product_id = shop_product.product.id;
             _.extend(data, _.pick(shop_product.product, 'name', 'category', 'barcode', 'specifics'));
         }
         if (shop_product.photos) {

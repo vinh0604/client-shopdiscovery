@@ -172,4 +172,6 @@
     <string name="add_favorite_fail">Failed to mark as favorite</string>
     <string name="remove_favorite_success">Unmarked as favorite</string>
     <string name="remove_favorite_fail">Failed to unmark as favorite</string>
+    <string name="view_all_offer">View all offers</string>
+    <string name="speak">Voice Input</string>
 </resources>

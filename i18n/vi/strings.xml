@@ -172,4 +172,6 @@
     <string name="add_favorite_fail">Đánh dấu ưa thích không thành công</string>
     <string name="remove_favorite_success">Đã hủy đánh dấu ưa thích</string>
     <string name="remove_favorite_fail">Hủy đánh dấu ưa thích không thành công</string>
+    <string name="view_all_offer">Xem trong những gian hàng khác</string>
+    <string name="speak">Nhập liệu bằng giọng nói</string>
 </resources>
