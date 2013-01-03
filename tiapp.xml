@@ -49,6 +49,9 @@
 			android:normalScreens="true"
 			android:largeScreens="true"
 			android:anyDensity="true" />
+            <application>
+                <activity android:name="org.mumumu.ti.android.speech.VoiceRecognitionActivity" />
+            </application>
 		</manifest>
 	</android>
     <mobileweb>
@@ -62,5 +65,6 @@
     <modules>
         <module platform="commonjs" version="2.3.0">ti.cloud</module>
 		<module version="0.3">com.mwaysolutions.barcode</module>
+        <module version="0.2">org.mumumu.ti.android.speech</module>
     </modules>
 </ti:app>

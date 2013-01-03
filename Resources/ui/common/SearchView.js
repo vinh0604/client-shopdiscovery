@@ -71,7 +71,26 @@ function SearchView(_args) {
     });
 
     speakRow.addEventListener('click', function (e) {
-        
+        if (Ti.Platform.name == "android") {
+            var speechModule = require('org.mumumu.ti.android.speech');
+            var voiceRecognitionProxy = speechModule.createVoiceRecognition();
+            var callback_func = function (e) {
+                var voice_recognition_enabled = e.voice_enabled;
+                var voice_results = e.voice_results;
+                if (!e.voice_canceled) {
+                    if (!voice_recognition_enabled) {
+                        alert("Voice recognition seems to be disabled.");
+                    } else if (voice_results[0]) {
+                        searchHandler({value: voice_results[0]});
+                    }
+                }
+            };
+            voiceRecognitionProxy.voiceRecognition({
+                "android.speech.extra.PROMPT": "please say something",
+                "android.speech.extra.LANGUAGE_MODEL": "free_form",
+                "callback": callback_func
+            });
+        }
     });
 
     searchBar.addSearchFieldEventListener('focus', function (e) {

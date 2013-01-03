@@ -5,11 +5,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.054000 seconds on emulator to get ready
+[DEBUG] waited 0.015000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\network\ShopDiscoveryAPI.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\network\ShopDiscoveryAPI.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ProductWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ProductWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -131,6 +131,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/house.png
 [DEBUG] from resource zip => assets/Resources/images/list.png
 [DEBUG] from resource zip => assets/Resources/images/mail.png
+[DEBUG] from resource zip => assets/Resources/images/microphone.png
 [DEBUG] from resource zip => assets/Resources/images/mylocation.png
 [DEBUG] from resource zip => assets/Resources/images/no_image.jpg
 [DEBUG] from resource zip => assets/Resources/images/notification.png
@@ -278,10 +279,13 @@ Logfile initialized
 [DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\com.mwaysolutions.barcode\0.3\libs\armeabi\libcom.mwaysolutions.barcode.so
 [DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\com.mwaysolutions.barcode\0.3\libs\armeabi-v7a\libcom.mwaysolutions.barcode.so
 [DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\com.mwaysolutions.barcode\0.3\libs\x86\libcom.mwaysolutions.barcode.so
+[DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\org.mumumu.ti.android.speech\0.2\libs\armeabi\liborg.mumumu.ti.android.speech.so
+[DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\org.mumumu.ti.android.speech\0.2\libs\armeabi-v7a\liborg.mumumu.ti.android.speech.so
+[DEBUG] installing native lib: D:\Mobile\client-shopdiscovery\modules\android\org.mumumu.ti.android.speech\0.2\libs\x86\liborg.mumumu.ti.android.speech.so
 [DEBUG] installing native SDK libs
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.018000 seconds on emulator to get ready
+[DEBUG] waited 0.015000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

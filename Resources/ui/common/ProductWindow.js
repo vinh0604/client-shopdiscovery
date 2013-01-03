@@ -228,10 +228,9 @@ function ProductWindow (_args) {
     }),
     allOfferLabel = Ti.UI.createLabel({
         touchEnabled: false,
-        top: 10,
         color: '#000',
         text: L('view_all_offer'),
-        font: {fontSize: 30}
+        font: {fontSize: 30, fontWeight: 'bold'}
     }),
     shopProductService = new ShopProductService(),
     activityIndicator = Ti.UI.createActivityIndicator({
