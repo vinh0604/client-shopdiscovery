@@ -105,9 +105,12 @@ function NewProductStep2Window (_args) {
     productNameRow.add(productNameLabel);
     categoryTitleRow.add(categoryTitleLabel);
     categoryRow.add(categoryLabel);
-    categoryRow.add(cartegoryChangeButton);
     specificTitleRow.add(specificTitleLabel);
-    specificRow.add(specificAddButton);
+    if (!opts.readOnly) {
+        categoryRow.add(cartegoryChangeButton);
+        specificRow.add(specificAddButton);
+        specificAddButton.addEventListener('click', specificAddButtonClickHandler);
+    }
 
     setupTableView();
 
@@ -115,8 +118,6 @@ function NewProductStep2Window (_args) {
 
     self.add(containerView);
     self.add(bottomBar);
-
-    specificAddButton.addEventListener('click', specificAddButtonClickHandler);
 
     function cancelContinueHandler (e) {
         if (e.index) {

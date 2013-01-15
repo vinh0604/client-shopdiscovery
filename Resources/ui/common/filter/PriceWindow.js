@@ -88,6 +88,12 @@ function PriceWindow (_args) {
 
     self.add(view);
 
+    self.addEventListener('click', function (e) {
+        if (e.source == self) {
+            self.close();
+        }
+    });
+
     return self;
 }
 

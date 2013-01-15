@@ -3,7 +3,8 @@ function NewProductWindow (_args) {
         theme = require('helpers/theme'),
         titaniumBarcode = require('com.mwaysolutions.barcode'),
         CustomButtonBar = require('ui/components/CustomButtonBar'),
-        NewProductStep2Window = require('ui/common/modal/NewProductStep2Window'),
+        ProductConfirmationWindow = require('ui/common/management/ProductConfirmationWindow'),
+        ProductManagementService = require('business/services/ProductManagementService'),
         controller = _args.controller,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
@@ -82,7 +83,8 @@ function NewProductWindow (_args) {
         right: 0,
         font: {fontSize: 28, fontWeight: 'bold'},
         color: '#000'
-    });
+    }),
+    service = new ProductManagementService();
 
     headerView.add(headerLabel);
 
@@ -118,6 +120,11 @@ function NewProductWindow (_args) {
         autocomplete_timer;
     nameField.addEventListener('change', function (e) {
         var currentValue = e.source.value.trim();
+        if (currentValue) {
+            bottomBar.enableButton(1, true);
+        } else {
+            bottomBar.enableButton(1, false);
+        }
 
         if (!currentValue || currentValue.length <= 2) {
             autoCompleteView.hide();
@@ -129,16 +136,10 @@ function NewProductWindow (_args) {
             autocomplete_timer = setTimeout(function()
             {
                 last_search = currentValue;
-                autoCompleteTableView.setData([]);
                 autoComplete(currentValue);
-                autoCompleteView.show();
             }, 300);
         }
         return false;
-    });
-
-    nameField.addEventListener('return', function (e) {
-        autoCompleteView.hide();
     });
 
     self.addEventListener('open', function (e) {
@@ -147,45 +148,55 @@ function NewProductWindow (_args) {
 
     function cancelContinueHandler (e) {
         if (e.index) {
-            var newProductStep2Window = new NewProductStep2Window({
-                data: {
-                    name: 'Sample product with some details',
-                    code: '123115545',
-                    category: {id: 1, name: 'Smartphone'},
-                    specific: {
-                        "Manufacturer" : "Samsung",
-                        "Display" : "1024x768",
-                        "DPI": "280"
-                    }
+            var dialog = Ti.UI.createAlertDialog({
+                title: L('new_product_confirm'),
+                message: L('confim_create_new_product'),
+                buttonNames: [L('cancel'), L('ok')]
+            });
+            dialog.addEventListener('click', function (e) {
+                if (e.index === 1) {
                 }
             });
-
-            newProductStep2Window.open({modal: true});
+            
         } else {
             self.close();
         }
     }
 
     function autoComplete (keyword) {
-        var sample_data = [
-            {id: 1, name: 'Sample Product with some details'},
-            {id: 1, name: 'Sample Product with some details'},
-            {id: 1, name: 'Sample Product with some details'}
-        ];
-
-        for (var i = 0, l=sample_data.length; i < l; i++) {
-            var row = Ti.UI.createTableViewRow({
-                height: 90,
-                title: sample_data[i].name,
-                color: '#000'
-            });
-            row.addEventListener('click', suggestionClickHandler);
-            autoCompleteTableView.appendRow(row);
-        }
+        service.all({keyword: keyword}).done(function (result) {
+            autoCompleteTableView.setData([]);
+            var rows = [];
+            for (var i = 0, l=result.length; i < l; i++) {
+                var row = Ti.UI.createTableViewRow({
+                    height: 90,
+                    _id: result[i].id,
+                    title: result[i].name,
+                    color: '#000'
+                });
+                row.addEventListener('click', suggestionClickHandler);
+                rows.push(row);
+            }
+            autoCompleteTableView.setData(rows);
+            autoCompleteView.show();
+        }).fail(function (e) {
+            alert(e.error);
+        });
     }
 
     function suggestionClickHandler (e) {
-        
+        if (e.rowData) {
+            openProductConfirm(true, e.rowData._id);
+        }
+    }
+
+    function openProductConfirm (readOnly, product_id) {
+        var productConfirmationWindow = new ProductConfirmationWindow({
+            readOnly: readOnly,
+            data: {id: product_id},
+            controller: controller
+        });
+        productConfirmationWindow.open();
     }
 
     return self;

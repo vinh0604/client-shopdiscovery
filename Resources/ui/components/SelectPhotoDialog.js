@@ -10,7 +10,7 @@ function SelectPhotoDialog (_args) {
         if (e.index == 1) {
             Titanium.Media.showCamera({
                 success:function(e) {
-                    opts.handler(e);                    
+                    opts.handler(e);
                 },
                 cancel:function() {
                     self.hide();
@@ -31,7 +31,7 @@ function SelectPhotoDialog (_args) {
         } else if (!e.index) {
             Titanium.Media.openPhotoGallery({
                 success:function(e) {
-                    opts.handler(e);                    
+                    opts.handler(e);
                 },
                 cancel:function() {
                     self.hide();

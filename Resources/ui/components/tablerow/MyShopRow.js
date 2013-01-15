@@ -1,6 +1,6 @@
 var _ = require('lib/underscore'),
     theme = require('helpers/theme'),
-    RatingStarBar = require('ui/components/RatingStarBar');
+    APP_CONST = require('business/constants');
 
 function ShopRow (_args) {
     var item = _args.data,
@@ -14,7 +14,7 @@ function ShopRow (_args) {
     var photoView = Ti.UI.createImageView({
         left: 0,
         touchEnabled: false,
-        image: item.photo,
+        image: item.photo ? item.photo : APP_CONST.DEFAULT.SHOP_PHOTO,
         height: 200,
         width: 200
     }),
@@ -29,9 +29,9 @@ function ShopRow (_args) {
         right: 10,
         width: 80,
         height: 80,
-        backgroundImage: '/images/trash_blue.png',
-        backgroundFocusedImage: '/images/trash_red.png',
-        backgroundSelectedImage: '/images/trash_red.png'
+        backgroundImage: item.is_owner ? '/images/trash_blue.png' : '/images/trash_gray.png',
+        backgroundFocusedImage: item.is_owner ? '/images/trash_red.png' : '/images/trash_gray.png',
+        backgroundSelectedImage: item.is_owner ? '/images/trash_red.png' : '/images/trash_gray.png'
     }),
     nameLabel = Ti.UI.createLabel({
         touchEnabled: false,
@@ -40,7 +40,6 @@ function ShopRow (_args) {
         font: {fontWeight: 'bold', fontSize: 20},
         color: '#000'
     }),
-    ratingStarBar = new RatingStarBar({max: 5, rating: item.rating, count: item.rating_count}),
     addressLabel = Ti.UI.createLabel({
         touchEnabled: false,
         left: 0,
@@ -57,7 +56,6 @@ function ShopRow (_args) {
     });
 
     detailView.add(nameLabel);
-    detailView.add(ratingStarBar);
     detailView.add(addressLabel);
     detailView.add(tagsLabel);
 
@@ -66,8 +64,10 @@ function ShopRow (_args) {
     self.add(deleteView);
 
     deleteView.addEventListener('click', function (e) {
-        e.item_id = item.id;
-        deleteHandler(e);
+        if (item.is_owner) {
+            e.item_id = item.id;
+            deleteHandler(e);
+        }
     });
 
     return self;

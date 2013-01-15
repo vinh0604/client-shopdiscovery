@@ -41,6 +41,7 @@ function SearchBar(_args) {
         hintText: L('search'),
         opacity: 0,
         softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
+        returnKeyType: Ti.UI.RETURNKEY_SEARCH,
         left: 80,
         right: 80,
         editable: !opts.readOnly,

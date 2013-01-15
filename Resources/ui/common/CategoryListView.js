@@ -62,9 +62,9 @@ function CategoryListView (_args) {
             var row_data = {
                 _id: d.id,
                 title: d.name,
-                rightImage: d['has_children?'] ? '/images/arrow_right.png' : '', 
+                rightImage: d['has_children?'] ? '/images/arrow_right.png' : '',
                 hasChild: d['has_children?'],
-                height: 90, 
+                height: 90,
                 color: '#000'
             };
 

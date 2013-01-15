@@ -36,6 +36,15 @@ function SearchView(_args) {
         color: '#000',
         left: 20
     }),
+    cameraRow = Ti.UI.createTableViewRow({
+        rightImage: '/images/camera.png',
+        height: 90
+    }),
+    cameraLabel = Ti.UI.createLabel({
+        text: L('snap'),
+        color: '#000',
+        left: 20
+    }),
     speakRow = Ti.UI.createTableViewRow({
         rightImage: '/images/microphone.png',
         height: 90
@@ -49,6 +58,7 @@ function SearchView(_args) {
     savedSearchRow.add(savedSearchLabel);
     scanRow.add(scanLabel);
     speakRow.add(speakLabel);
+    cameraRow.add(cameraLabel);
 
     savedSearchRow.addEventListener('click', function (e) {
         var savedSearchWindow = new SavedSearchWindow({controller: controller});
@@ -68,6 +78,21 @@ function SearchView(_args) {
             },
             cancel: function () {}
         });
+    });
+
+    cameraRow.addEventListener('click', function (e) {
+        var SelectPhotoDialog = require('ui/components/SelectPhotoDialog'),
+            PhotoRecognitionAPI = require('lib/PhotoRecognitionAPI'),
+            selectPhotoDialog = new SelectPhotoDialog({
+                handler: function (e) {
+                    PhotoRecognitionAPI.send(e.media).done(function (result) {
+                        searchHandler({value: result});
+                    });
+                    imageTemp = image = null;
+                }
+            });
+
+            selectPhotoDialog.show();
     });
 
     speakRow.addEventListener('click', function (e) {
@@ -96,7 +121,7 @@ function SearchView(_args) {
     searchBar.addSearchFieldEventListener('focus', function (e) {
         var currentValue = e.source.value;
         if (!currentValue) {
-            searchAutocomplete.setData([scanRow, speakRow, savedSearchRow]);
+            searchAutocomplete.setData([scanRow, cameraRow, speakRow, savedSearchRow]);
         } else{
             searchAutocomplete.setData([]);
         }
@@ -113,7 +138,7 @@ function SearchView(_args) {
         var currentValue = e.source.value.trim();
 
         if (!currentValue) {
-            searchAutocomplete.setData([scanRow, speakRow, savedSearchRow]);
+            searchAutocomplete.setData([scanRow, cameraRow, speakRow, savedSearchRow]);
         } else if (currentValue.length <= 2) {
             searchAutocomplete.setData([]);
         } else if (currentValue !=  last_search) {

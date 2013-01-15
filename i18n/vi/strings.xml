@@ -174,4 +174,27 @@
     <string name="remove_favorite_fail">Hủy đánh dấu ưa thích không thành công</string>
     <string name="view_all_offer">Xem trong những gian hàng khác</string>
     <string name="speak">Nhập liệu bằng giọng nói</string>
+    <string name="snap">Sứ dụng ảnh</string>
+    <string name="managers">Quản lý của cửa hàng</string>
+    <string name="order_management">Quản lý hóa đơn</string>
+    <string name="product_management">Quản lý sản phẩm</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="edit_shop">Cập nhật cửa hàng</string>
+    <string name="shop_name">Tên cửa hàng</string>
+    <string name="basic_info">Thông tin cơ bản</string>
+    <string name="street_address">Địa chỉ đường</string>
+    <string name="city">Tỉnh / Thành phố</string>
+    <string name="district">Quận / Huyện</string>
+    <string name="view_edit_description">Xem &amp; Cập nhật Mô tả</string>
+    <string name="edit_location">Cập nhật vị trí</string>
+    <string name="upload_photo">Tải ảnh lên</string>
+    <string name="uploading">Đang tải lên...</string>
+    <string name="confirm_delete_photo">Xóa ảnh này?</string>
+    <string name="confirm_delete_shop">Xóa cửa hàng này?</string>
+    <string name="update_selling_details">Cập nhật thông tin bán hàng</string>
+    <string name="update_promotion">Cập nhật khuyến mãi</string>
+    <string name="new_product_confirm">Xác nhận tạo sản phẩm</string>
+    <string name="confim_create_new_product">Thông tin sản phẩm chưa tồn tại. Bạn có muốn tạo sản phẩm mới?</string>
+    <string name="report_mistake">Báo cáo sai sót</string>
+    <string name="no_location_available">Không có thông tin vị trí</string>
 </resources>

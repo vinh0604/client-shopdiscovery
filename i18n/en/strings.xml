@@ -174,4 +174,27 @@
     <string name="remove_favorite_fail">Failed to unmark as favorite</string>
     <string name="view_all_offer">View all offers</string>
     <string name="speak">Voice Input</string>
+    <string name="snap">Snap</string>
+    <string name="managers">Shop Managers</string>
+    <string name="order_management">Order Management</string>
+    <string name="product_management">Product Management</string>
+    <string name="edit">Edit</string>
+    <string name="edit_shop">Edit Shop</string>
+    <string name="shop_name">Shop Name</string>
+    <string name="basic_info">Basic Informations</string>
+    <string name="street_address">Street Address</string>
+    <string name="city">City</string>
+    <string name="district">District</string>
+    <string name="view_edit_description">View &amp; Edit Description</string>
+    <string name="edit_location">Edit Location</string>
+    <string name="upload_photo">Upload Photo</string>
+    <string name="uploading">Uploading...</string>
+    <string name="confirm_delete_photo">Remove this photo?</string>
+    <string name="confirm_delete_shop">Remove this shop?</string>
+    <string name="update_selling_details">Update selling details</string>
+    <string name="update_promotion">Update promotion</string>
+    <string name="new_product_confirm">New Product Confirmation</string>
+    <string name="confim_create_new_product">The provided name is not matched any product. Do you want to create new product?</string>
+    <string name="report_mistake">Report mistake</string>
+    <string name="no_location_available">No Location Information Available</string>
 </resources>

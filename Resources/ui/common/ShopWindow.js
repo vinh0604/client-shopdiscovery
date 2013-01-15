@@ -252,12 +252,16 @@ function ShopWindow (_args) {
     });
 
     locationRow.addEventListener('click', function (e) {
-        var LocationWindow = require('ui/common/LocationWindow'),
+        if (item.location) {
+            var LocationWindow = require('ui/common/LocationWindow'),
             locationWindow = new LocationWindow({
                 controller: controller,
                 data: item
             });
-        locationWindow.open();
+            locationWindow.open();
+        } else {
+            alert(L('no_location_available'));
+        }
     });
 
     productListRow.addEventListener('click', function (e) {

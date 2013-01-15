@@ -88,6 +88,12 @@ function DistanceWindow (_args) {
         selectLocationWindow.open();
     });
 
+    self.addEventListener('click', function (e) {
+        if (e.source == self) {
+            self.close();
+        }
+    });
+
     self.addEventListener('open', function (e) {
         if (params.location) {
             var latlng = location.latitude + ',' + location.longitude;

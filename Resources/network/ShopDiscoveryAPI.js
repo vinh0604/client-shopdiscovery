@@ -49,6 +49,7 @@ var ShopDiscoveryAPI = (function () {
 
     return {
         HOST: HOST,
+        API_URL: API_URL,
         request: request
     };
 })();

@@ -27,6 +27,9 @@ NavigationController.prototype.registerMenu = function (win) {
         profile.addEventListener("click", function (e) {
             self.openProfile();
         });
+        my_shop.addEventListener("click", function (e) {
+            self.openMyShop();
+        });
     };
 };
 
@@ -74,6 +77,13 @@ NavigationController.prototype.openProfile = function () {
     this.home();
     var ProfileWindow = require('ui/common/ProfileWindow'),
         win = new ProfileWindow({controller: this});
+    win.open();
+};
+
+NavigationController.prototype.openMyShop = function () {
+    this.home();
+    var ShopManagementWindow = require('ui/common/ShopManagementWindow'),
+        win = new ShopManagementWindow({controller: this});
     win.open();
 };
 

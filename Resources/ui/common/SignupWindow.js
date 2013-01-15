@@ -12,43 +12,51 @@ function SignupWindow (_args) {
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
     headerLabel = Ti.UI.createLabel(_.extend({text: L('signup')},theme.styles.header.label)),
+    scrollView = Ti.UI.createScrollView({
+        top: 90,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        scrollType: 'vertical',
+        contentHeight: 'auto'
+    }),
     usernameField = Ti.UI.createTextField(_.extend({
-        top: 100,
+        top: 10,
         passwordMask: false,
         hintText: L('username')
     },theme.styles.textfield)),
-    usernameErrorLabel = Ti.UI.createLabel(_.extend({top: 180}, errorLabelProperties)),
+    usernameErrorLabel = Ti.UI.createLabel(_.extend({top: 90}, errorLabelProperties)),
     emailField = Ti.UI.createTextField(_.extend({
-        top: 210,
+        top: 120,
         passwordMask: false,
         keyboardType: Ti.UI.KEYBOARD_EMAIL,
         hintText: L('email')
     },theme.styles.textfield)),
-    emailErrorLabel = Ti.UI.createLabel(_.extend({top: 290}, errorLabelProperties)),
+    emailErrorLabel = Ti.UI.createLabel(_.extend({top: 200}, errorLabelProperties)),
     passwordField = Ti.UI.createTextField(_.extend({
-        top: 320,
+        top: 230,
         passwordMask: true,
         hintText: L('password')
     },theme.styles.textfield)),
-    passwordErrorLabel = Ti.UI.createLabel(_.extend({top: 400}, errorLabelProperties)),
+    passwordErrorLabel = Ti.UI.createLabel(_.extend({top: 310}, errorLabelProperties)),
     confirmPasswordField = Ti.UI.createTextField(_.extend({
-        top: 430,
+        top: 340,
         passwordMask: true,
         hintText: L('confirm_password')
     },theme.styles.textfield)),
-    confirmPasswordErrorLabel = Ti.UI.createLabel(_.extend({top: 510}, errorLabelProperties)),
+    confirmPasswordErrorLabel = Ti.UI.createLabel(_.extend({top: 420}, errorLabelProperties)),
     firstNameField = Ti.UI.createTextField(_.extend({
-        top: 540,
+        top: 450,
         passwordMask: false,
         hintText: L('first_name')
     },theme.styles.textfield)),
     lastNameField = Ti.UI.createTextField(_.extend({
-        top: 650,
+        top: 560,
         passwordMask: false,
         hintText: L('last_name')
     },theme.styles.textfield)),
     genderField = Ti.UI.createTextField(_.extend({
-        top: 760,
+        top: 670,
         editable: false,
         hintText: L('gender')
     },theme.styles.textfield)),
@@ -57,7 +65,7 @@ function SignupWindow (_args) {
         height: 90,
         left: 10,
         right: 10,
-        top: 870,
+        top: 780,
         backgroundColor: '#87B3FF',
         backgroundFocusedColor: '#87B3FF',
         backgroundSelectedColor: '#87B3FF',
@@ -77,21 +85,22 @@ function SignupWindow (_args) {
 
     headerView.add(headerLabel);
 
+    scrollView.add(usernameField);
+    scrollView.add(emailField);
+    scrollView.add(passwordField);
+    scrollView.add(confirmPasswordField);
+    scrollView.add(firstNameField);
+    scrollView.add(lastNameField);
+    scrollView.add(genderField);
+    scrollView.add(signupButton);
+
+    scrollView.add(usernameErrorLabel);
+    scrollView.add(emailErrorLabel);
+    scrollView.add(passwordErrorLabel);
+    scrollView.add(confirmPasswordErrorLabel);
+
     self.add(headerView);
-    self.add(usernameField);
-    self.add(emailField);
-    self.add(passwordField);
-    self.add(confirmPasswordField);
-    self.add(firstNameField);
-    self.add(lastNameField);
-    self.add(genderField);
-    self.add(signupButton);
-
-    self.add(usernameErrorLabel);
-    self.add(emailErrorLabel);
-    self.add(passwordErrorLabel);
-    self.add(confirmPasswordErrorLabel);
-
+    self.add(scrollView);
     genderField.addEventListener('focus', function (e) {
         genderOptionDialog.show();
     });
