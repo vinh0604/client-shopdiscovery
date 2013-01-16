@@ -6,6 +6,7 @@ function NewProductWindow (_args) {
         ProductConfirmationWindow = require('ui/common/management/ProductConfirmationWindow'),
         ProductManagementService = require('business/services/ProductManagementService'),
         controller = _args.controller,
+        shop_id = _args.shop_id,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
@@ -193,10 +194,24 @@ function NewProductWindow (_args) {
     function openProductConfirm (readOnly, product_id) {
         var productConfirmationWindow = new ProductConfirmationWindow({
             readOnly: readOnly,
+            shop_id: shop_id,
             data: {id: product_id},
-            controller: controller
+            controller: controller,
+            handler: afterCreateProductHandler
         });
         productConfirmationWindow.open();
+    }
+
+    function afterCreateProductHandler (result) {
+        self.close();
+        if (result.id) {
+            var ProductInfoWindow = require('ui/common/management/ProductInfoWindow'),
+                productInfoWindow = new ProductInfoWindow({
+                    controller: controller,
+                    data: {id: result.id}
+                });
+            productInfoWindow.open();
+        }
     }
 
     return self;

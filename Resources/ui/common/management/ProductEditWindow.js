@@ -1,18 +1,20 @@
-function ShopEditWindow (_args) {
+function ProductEditWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
         CustomButtonBar = require('ui/components/CustomButtonBar'),
-        ShopManagementService = require('business/services/ShopManagementService'),
+        ShopProductManagementService = require('business/services/ShopProductManagementService'),
+        APP_CONST = require('business/constants'),
         controller = _args.controller,
         handler = _args.handler,
         item = _({
-            
             description: ''
         }).extend(_args.data),
         new_data = {
+            status: item.status,
+            origin: item.origin,
             description: item.description,
-            added_photo: [],
-            deleted_photo: []
+            added_photos: [],
+            deleted_photos: []
         },
         currentPhotos = [],
         separatorProperties = {
@@ -123,7 +125,38 @@ function ShopEditWindow (_args) {
         buttons: [L('reset'),L('done')],
         handler: function (e) {
             if (e.index) {
-                
+                activityIndicator.show();
+                if (item.id) {
+                    service.update(item.id,_({
+                        price: priceField.value,
+                        warranty: warrantyField.value
+                    }).extend(new_data)).done(function (result) {
+                        activityIndicator.hide();
+                        self.close();
+                        if (_(handler).isFunction()) {
+                            handler(result);
+                        }
+                    }).fail(function (e) {
+                        alert(e.error);
+                        activityIndicator.hide();
+                    });
+                } else {
+                    service.create(_({
+                        price: priceField.value,
+                        warranty: warrantyField.value,
+                        shop_id: item.shop_id,
+                        product_id: item.product_id
+                    }).extend(new_data)).done(function (result) {
+                        activityIndicator.hide();
+                        self.close();
+                        if (_(handler).isFunction()) {
+                            handler(result);
+                        }
+                    }).fail(function (e) {
+                        alert(e.error);
+                        activityIndicator.hide();
+                    });
+                }
             } else {
                 reset();
             }
@@ -132,20 +165,20 @@ function ShopEditWindow (_args) {
     activityIndicator = Ti.UI.createActivityIndicator({
         message: L('processing')
     }),
-    service = new ShopManagementService({});
+    service = new ShopProductManagementService({});
 
     headerView.add(headerLabel);
     photoView.add(photoScrollView);
     photoWrapView.add(photoTitleLabel);
     photoWrapView.add(photoView);
     photoWrapView.add(addPhotoButton);
-    sellingDetailView.add(conditionField);
     sellingDetailView.add(priceField);
+    sellingDetailView.add(conditionField);
     sellingDetailView.add(warrantyField);
     sellingDetailView.add(originField);
     viewEditDescriptionView.add(viewEditDescriptionLabel);
 
-    scrollView.add(nameField);
+    scrollView.add(nameLabel);
     scrollView.add(Ti.UI.createView(separatorProperties));
     scrollView.add(photoWrapView);
     scrollView.add(Ti.UI.createView(separatorProperties));
@@ -175,9 +208,28 @@ function ShopEditWindow (_args) {
         descWin.open({modal: true});
     });
 
+    conditionField.addEventListener('click', conditionSelectHandler);
+    conditionField.addEventListener('focus', conditionSelectHandler);
+    originField.addEventListener('click', originSelectHandler);
+    originField.addEventListener('focus', originSelectHandler);
+
     self.addEventListener('open', function (e) {
         controller.register(self);
         reset();
+        if (!item.id) {
+            // check if product existed in shop
+            activityIndicator.show();
+            service.checkShopProduct(_(item).pick('shop_id', 'product_id')).done(function (result) {
+                if (result.id) {
+                    _(item).extend(result);
+                    reset();
+                }
+                activityIndicator.hide();
+            }).fail(function (e) {
+                alert(e.error);
+                activityIndicator.hide();
+            });
+        }
     });
 
     function setPhotos (photos) {
@@ -194,7 +246,24 @@ function ShopEditWindow (_args) {
     }
 
     function reset () {
-
+        var condition = _(APP_CONST.DATA.CONDITION_ARRAY).find( function(c) {
+            return c.code == item.status;
+        }), origin = _(APP_CONST.DATA.ORIGIN_ARRAY).find( function(c) {
+            return c.code == item.origin;
+        });
+        nameLabel.text = item.name;
+        priceField.value = item.price ? item.price.toString() : '';
+        warrantyField.value = item.warranty ? item.warranty.toString() : '';
+        conditionField.value = condition ? condition.value : '';
+        originField.value = origin ? origin.value : '';
+        setPhotos(item.photos);
+        new_data = {
+            status: item.status,
+            origin: item.origin,
+            description: item.description,
+            added_photos: [],
+            deleted_photos: []
+        };
     }
 
     function imageLongPressHandler (e) {
@@ -207,9 +276,9 @@ function ShopEditWindow (_args) {
             var photo_id = e.source._id;
             if (evt.index === 1 && photo_id) {
                 photoScrollView.remove(e.source);
-                new_data.deleted_photo.push(photo_id);
-                if (new_data.added_photo.indexOf(photo_id) >= 0) {
-                    new_data.added_photo.splice(new_data.added_photo.indexOf(photo_id),1);
+                new_data.deleted_photos.push(photo_id);
+                if (new_data.added_photos.indexOf(photo_id) >= 0) {
+                    new_data.added_photos.splice(new_data.added_photos.indexOf(photo_id),1);
                 }
             }
         });
@@ -222,7 +291,7 @@ function ShopEditWindow (_args) {
                 media: e.media,
                 handler: function (result) {
                     addPhoto({id: result.id, image: e.media});
-                    new_data.added_photo.push(result.id);
+                    new_data.added_photos.push(result.id);
                 }
             });
 
@@ -240,10 +309,46 @@ function ShopEditWindow (_args) {
         imageView.addEventListener('longpress', imageLongPressHandler);
         photoScrollView.add(imageView);
         currentPhotos.push(imageView);
-        new_data.added_photo.push(data.id);
+        new_data.added_photos.push(data.id);
+    }
+
+    function conditionSelectHandler (e) {
+        var conditionDialog = Ti.UI.createOptionDialog({
+            title: L('condition'),
+            options: _(APP_CONST.DATA.CONDITION_ARRAY).pluck('value')
+        });
+        conditionDialog.addEventListener('click', function (e) {
+            if (e.index >= 0) {
+                var selectedValue = conditionDialog.options[e.index],
+                    condition = _(APP_CONST.DATA.CONDITION_ARRAY).find( function(c) {
+                        return c.value == selectedValue;
+                    });
+                conditionField.value = condition.value;
+                new_data.status = condition.code;
+            }
+        });
+        conditionDialog.show();
+    }
+
+    function originSelectHandler (e) {
+        var originDialog = Ti.UI.createOptionDialog({
+            title: L('origin'),
+            options: _(APP_CONST.DATA.ORIGIN_ARRAY).pluck('value')
+        });
+        originDialog.addEventListener('click', function (e) {
+            if (e.index >= 0) {
+                var selectedValue = originDialog.options[e.index],
+                    origin = _(APP_CONST.DATA.ORIGIN_ARRAY).find( function(c) {
+                        return c.value == selectedValue;
+                    });
+                originField.value = origin.value;
+                new_data.origin = origin.code;
+            }
+        });
+        originDialog.show();
     }
 
     return self;
 }
 
-module.exports = ShopEditWindow;
+module.exports = ProductEditWindow;

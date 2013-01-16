@@ -9,7 +9,7 @@ Logfile initialized
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ProductManagementService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ProductManagementService.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\app.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\app.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png

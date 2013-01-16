@@ -20,7 +20,8 @@ function ProductInfoWindow (_args) {
             backgroundSelectedColor: '#87B3FF',
             color: '#fff',
             font: {fontSize: 35, fontWeight: 'bold'},
-            top: 10
+            top: 10,
+            bottom: 10
         },
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
@@ -93,7 +94,8 @@ function ProductInfoWindow (_args) {
     priceView = Ti.UI.createView({
         top: 5,
         left: 10,
-        right: 5
+        right: 5,
+        height: Ti.UI.SIZE
     }),
     priceLabel = Ti.UI.createLabel({
         left: 0,
@@ -106,12 +108,13 @@ function ProductInfoWindow (_args) {
         left: 200,
         right: 0,
         font: {fontSize: 28},
-        color: '#000'
+        color: 'red'
     }),
     conditionView = Ti.UI.createView({
         top: 5,
         left: 10,
-        right: 5
+        right: 5,
+        height: Ti.UI.SIZE
     }),
     conditionLabel = Ti.UI.createLabel({
         left: 0,
@@ -129,7 +132,8 @@ function ProductInfoWindow (_args) {
     warrantyView = Ti.UI.createView({
         top: 5,
         left: 10,
-        right: 5
+        right: 5,
+        height: Ti.UI.SIZE
     }),
     warrantyLabel = Ti.UI.createLabel({
         left: 0,
@@ -147,7 +151,8 @@ function ProductInfoWindow (_args) {
     originView = Ti.UI.createView({
         top: 5,
         left: 10,
-        right: 5
+        right: 5,
+        height: Ti.UI.SIZE
     }),
     originLabel = Ti.UI.createLabel({
         left: 0,
@@ -226,7 +231,15 @@ function ProductInfoWindow (_args) {
     self.add(scrollView);
 
     updateSellingDetailButton.addEventListener('click', function (e) {
-        
+        var ProductEditWindow = require('ui/common/management/ProductEditWindow'),
+            productEditWindow = new ProductEditWindow({
+                controller: controller,
+                data: _(item).pick('id', 'name', 'price', 'origin', 'warranty', 'status', 'photos'),
+                handler: function (result) {
+                    reloadData();
+                }
+            });
+        productEditWindow.open();
     });
 
     updatePromotionButton.addEventListener('click', function (e) {
@@ -236,6 +249,10 @@ function ProductInfoWindow (_args) {
     self.addEventListener('open', function (e) {
         controller.register(self);
         reloadData();
+    });
+
+    self.addEventListener('close', function (e) {
+        Ti.App.fireEvent('product_management:reload',e);
     });
 
     function setPhotos (photos) {
@@ -263,7 +280,21 @@ function ProductInfoWindow (_args) {
     }
 
     function setData () {
-        
+        nameLabel.text = item.name;
+        eanLabel.text = 'EAN: ' + (item.barcode ? item.barcode : L('NA'));
+        priceValueLabel.text = item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit}) : L('NA');
+        warrantyValueLabel.text = item.warranty ? (item.warranty + ' ' + L('month')) : L('NA');
+        var condition = _(APP_CONST.DATA.CONDITION_ARRAY).find( function(c) {
+            return c.code == item.status;
+        });
+        conditionValueLabel.text = condition ? condition.value : '';
+
+        var origin = _(APP_CONST.DATA.ORIGIN_ARRAY).find( function(c) {
+            return c.code == item.origin;
+        });
+        originValueLabel.text = origin ? origin.value : '';
+
+        setPhotos(item.photos);
     }
 
     function imageClickHandler (e) {

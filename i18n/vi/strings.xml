@@ -197,4 +197,6 @@
     <string name="confim_create_new_product">Thông tin sản phẩm chưa tồn tại. Bạn có muốn tạo sản phẩm mới?</string>
     <string name="report_mistake">Báo cáo sai sót</string>
     <string name="no_location_available">Không có thông tin vị trí</string>
+    <string name="select_category_hint">Chọn danh mục</string>
+    <string name="confirm_delete_product">Xóa sản phẩm này khỏi cửa hàng?</string>
 </resources>

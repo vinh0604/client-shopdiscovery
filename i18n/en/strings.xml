@@ -197,4 +197,6 @@
     <string name="confim_create_new_product">The provided name is not matched any product. Do you want to create new product?</string>
     <string name="report_mistake">Report mistake</string>
     <string name="no_location_available">No Location Information Available</string>
+    <string name="select_category_hint">Choose category</string>
+    <string name="confirm_delete_product">Remove this product from shop?</string>
 </resources>

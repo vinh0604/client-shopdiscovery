@@ -8,6 +8,8 @@ function ProductConfirmationWindow (_args) {
         opts = _args,
         item = _args.data,
         controller = _args.controller,
+        handler = _args.handler,
+        shop_id = _args.shop_id,
         buttonProperties = {
             borderRadius: 15,
             height: 70,
@@ -25,11 +27,13 @@ function ProductConfirmationWindow (_args) {
     var headerView = Ti.UI.createView({
         layout: 'vertical',
         height: Ti.UI.SIZE,
+        width: Ti.UI.FILL,
         left: 0,
         right: 0
     }),
     footerView = Ti.UI.createView({
         height: Ti.UI.SIZE,
+        width: Ti.UI.FILL,
         left: 0,
         right: 0
     }),
@@ -44,11 +48,11 @@ function ProductConfirmationWindow (_args) {
     productNameLabel = Ti.UI.createLabel({
         top: 10,
         left: 5,
-        font: {fontSize: 30},
+        font: {fontWeight: 'bold', fontSize: 30},
         color: '#000'
     }),
     productCodeLabel = Ti.UI.createLabel({
-        font: {fontWeight: 'bold', fontSize: 28},
+        font: {fontSize: 28},
         color: '#000',
         left: 5,
         top: 10
@@ -138,7 +142,18 @@ function ProductConfirmationWindow (_args) {
 
     function cancelContinueHandler (e) {
         if (e.index) {
-
+            var ProductEditWindow = require('ui/common/management/ProductEditWindow'),
+                productEditWindow = new ProductEditWindow({
+                    controller: controller,
+                    data: {shop_id: shop_id, product_id: item.id, name: item.name},
+                    handler: function (result) {
+                        self.close();
+                        if (_(handler).isFunction()) {
+                            handler(result);
+                        }
+                    }
+                });
+            productEditWindow.open();
         } else {
             self.close();
         }
@@ -154,7 +169,7 @@ function ProductConfirmationWindow (_args) {
 
         dialog.addEventListener('click', function (event) {
             if (event.index == 1) {
-                delete item.specific[e.source._key];
+                delete item.specifics[e.source._key];
                 setupSpecificRow();
             }
         });
@@ -169,7 +184,7 @@ function ProductConfirmationWindow (_args) {
                     var row = new SpecificRow({
                         data: result
                     });
-                    item.specific[result.name] = result.description;
+                    item.specifics[result.name] = result.description;
                     row.addEventListener('longclick', specificRowLongClickHandler);
                     tableView.appendRow(row);
                 }
@@ -188,7 +203,7 @@ function ProductConfirmationWindow (_args) {
 
     function setData () {
         productNameLabel.text = item.name;
-        productCodeLabel.text = 'EAN: ' + item.barcode;
+        productCodeLabel.text = 'EAN: ' + (item.barcode ? item.barcode : L('NA'));
         var categories = [];
         if (item.category) {
             if (_.isArray(item.category.ancestors)) {
@@ -201,11 +216,11 @@ function ProductConfirmationWindow (_args) {
     }
 
     function setupSpecificRow () {
-        if (item.specific) {
+        if (item.specifics) {
             tableRows = [];
-            for(var key in item.specific) {
+            for(var key in item.specifics) {
                 var row = new SpecificRow({
-                    data: {name: key, description: item.specific[key]}
+                    data: {name: key, description: item.specifics[key]}
                 });
                 tableRows.push(row);
                 if (!opts.readOnly) {
