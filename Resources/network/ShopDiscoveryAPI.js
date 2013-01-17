@@ -2,8 +2,8 @@ var ShopDiscoveryAPI = (function () {
     var _ = require('lib/underscore');
     _.mixin(require('lib/underscore.deferred'));
 
-    // var API_URL = 'http://123.21.157.250:3000/api/v1/',
-    //     HOST = 'http://123.21.157.250:3000';
+    // var API_URL = 'http://113.173.29.163:3000/api/v1/',
+    //     HOST = 'http://113.173.29.163:3000';
 
     var API_URL = 'http://192.168.1.10:3000/api/v1/',
         HOST = 'http://192.168.1.10:3000';

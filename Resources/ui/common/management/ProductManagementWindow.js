@@ -9,6 +9,7 @@ function ProductManagementWindow (_args) {
         APP_CONST = require('business/constants'),
         controller = _args.controller,
         item = _args.data,
+        productLoaded = false,
         categoryViewStack = [],
         sequences = [],
         zIndex = 1,
@@ -120,6 +121,19 @@ function ProductManagementWindow (_args) {
         Ti.App.addEventListener('product_management:reload', initializeCategoryView);
     });
 
+    self.addEventListener('android:back', function (e) {
+        if (productLoaded && (categoryViewStack.length > 0)) {
+            for(var i = 0, l = categoryViewStack.length; i<l; ++i) {
+                self.remove(categoryViewStack[i]);
+            }
+            categoryViewStack = [];
+            sequences = [];
+            zIndex = 1;
+        } else {
+            self.close();
+        }
+    });
+
     self.addEventListener('close', function (e) {
         Ti.App.removeEventListener('product_management:reload', initializeCategoryView);
     });
@@ -157,6 +171,7 @@ function ProductManagementWindow (_args) {
     }
 
     function loadProduct (category_id, category_name) {
+        productLoaded = true;
         tableView.setData([]);
         categoryLabel.text = String.format(L('category'), category_name);
         searchBar.visible = true;

@@ -81,11 +81,21 @@ function NewProductWindow (_args) {
         text: L('suggestion_product'),
         height: 60,
         left: 5,
-        right: 0,
+        right: 40,
         font: {fontSize: 28, fontWeight: 'bold'},
         color: '#000'
     }),
-    service = new ProductManagementService();
+    closeImageView = Ti.UI.createImageView({
+        image: '/images/cancel.png',
+        top: 5,
+        height: 32,
+        width: 32,
+        right: 5
+    }),
+    service = new ProductManagementService(),
+    activityIndicator = Ti.UI.createActivityIndicator({
+        message: L('loading')
+    });
 
     headerView.add(headerLabel);
 
@@ -97,6 +107,7 @@ function NewProductWindow (_args) {
     containerView.add(hintView);
 
     autoCompleteView.add(suggestionLabel);
+    autoCompleteView.add(closeImageView);
     autoCompleteView.add(autoCompleteTableView);
 
     self.add(headerView);
@@ -104,11 +115,24 @@ function NewProductWindow (_args) {
     self.add(bottomBar);
     self.add(autoCompleteView);
 
+    closeImageView.addEventListener('click', function (e) {
+        autoCompleteView.hide();
+    });
+
     scanImageView.addEventListener('click', function (e) {
         titaniumBarcode.scan({
             success: function (data) {
                 if (data && data.barcode) {
                     scanField.value = data.barcode;
+                    activityIndicator.show();
+                    service.barcode(data.barcode).done(function (result) {
+                        activityIndicator.hide();
+                        if (result.id) {
+                            openProductConfirm(true, result.id);
+                        }
+                    }).fail(function (e) {
+                        activityIndicator.hide();
+                    });
                 }
             },
             error: function (err) {
@@ -154,11 +178,21 @@ function NewProductWindow (_args) {
                 message: L('confim_create_new_product'),
                 buttonNames: [L('cancel'), L('ok')]
             });
-            dialog.addEventListener('click', function (e) {
-                if (e.index === 1) {
+            dialog.addEventListener('click', function (evt) {
+                if (evt.index === 1) {
+                    activityIndicator.show();
+                    service.create({name: nameField.value, barcode: scanField.value}).done(function (result) {
+                        activityIndicator.hide();
+                        if (result.id) {
+                            openProductConfirm(false, result.id);
+                        }
+                    }).fail(function (evt) {
+                        activityIndicator.hide();
+                        alert(evt.error);
+                    });
                 }
             });
-            
+            dialog.show();
         } else {
             self.close();
         }

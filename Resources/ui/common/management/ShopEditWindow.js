@@ -152,6 +152,7 @@ function ShopEditWindow (_args) {
         buttons: [L('reset'),L('done')],
         handler: function (e) {
             if (e.index) {
+                activityIndicator.show();
                 var params = {
                     name: nameField.value,
                     street_address: streetAddressField.value,
@@ -171,12 +172,14 @@ function ShopEditWindow (_args) {
                     deferred = service.create(params);
                 }
                 deferred.done(function (e) {
+                    activityIndicator.hide();
                     self.close();
                     if (_(handler).isFunction()) {
                         handler();
                     }
                 }).fail(function (e) {
                     alert(e.error);
+                    activityIndicator.hide();
                 });
             } else {
                 reset();
@@ -237,7 +240,7 @@ function ShopEditWindow (_args) {
     editLocationView.addEventListener('click', function (e) {
         var EditLocationWindow = require('ui/common/modal/EditLocationWindow'),
             locationWindow = new EditLocationWindow({
-                data: new_data,
+                data: {location: new_data.location, address: getFullAddress()},
                 handler: function (result) {
                     new_data.location = result.location;
                 }
@@ -324,6 +327,13 @@ function ShopEditWindow (_args) {
         photoScrollView.add(imageView);
         currentPhotos.push(imageView);
         new_data.added_photo.push(data.id);
+    }
+
+    function getFullAddress () {
+        var arr = [streetAddressField.value,
+                   districtField.value,
+                   cityField.value];
+        return _(arr).compact().join(', ');
     }
 
     return self;

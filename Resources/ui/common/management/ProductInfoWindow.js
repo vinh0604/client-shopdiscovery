@@ -193,6 +193,20 @@ function ProductInfoWindow (_args) {
     updatePromotionButton = Ti.UI.createButton(
         _({title: L('update_promotion')}).defaults(buttonProperties)
     ),
+    checkOfferView = Ti.UI.createView({
+        left: 0,
+        right: 0,
+        backgroundFocusedColor: '#FFA600',
+        backgroundSelectedColor: '#FFA600',
+        height: 90
+    }),
+    checkOfferLabel = Ti.UI.createLabel({
+        left: 5,
+        text: L('check_offer'),
+        font: {fontSize: 30},
+        touchEnabled: false,
+        color: '#000'
+    }),
     service = new ShopProductManagementService(),
     activityIndicator = Ti.UI.createActivityIndicator({
         message: L('loading')
@@ -219,6 +233,7 @@ function ProductInfoWindow (_args) {
     promotionView.add(promotionLabel);
     promotionView.add(promotionDetailView);
     promotionView.add(updatePromotionButton);
+    checkOfferView.add(checkOfferLabel);
 
     scrollView.add(photoView);
     scrollView.add(nameView);
@@ -226,6 +241,8 @@ function ProductInfoWindow (_args) {
     scrollView.add(sellingDetailView);
     scrollView.add(Ti.UI.createView(separatorProperties));
     scrollView.add(promotionView);
+    scrollView.add(Ti.UI.createView(separatorProperties));
+    scrollView.add(checkOfferView);
     scrollView.add(Ti.UI.createView(separatorProperties));
 
     self.add(scrollView);
@@ -244,6 +261,18 @@ function ProductInfoWindow (_args) {
 
     updatePromotionButton.addEventListener('click', function (e) {
         
+    });
+
+    checkOfferView.addEventListener('click', function (e) {
+        var SecondProductListWindow = require('ui/common/SecondProductListWindow'),
+            spListWindow = new SecondProductListWindow({
+                controller: controller,
+                data: {
+                    product_id: item.product_id,
+                    product: item.name
+                }
+            });
+        spListWindow.open();
     });
 
     self.addEventListener('open', function (e) {

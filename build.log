@@ -9,7 +9,7 @@ Logfile initialized
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\app.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\app.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\ProductConfirmationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\ProductConfirmationWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -47,6 +47,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/business/services/CategoryService.js
 [DEBUG] from resource zip => assets/Resources/business/services/LoginService.js
 [DEBUG] from resource zip => assets/Resources/business/services/LogoutService.js
+[DEBUG] from resource zip => assets/Resources/business/services/ManagerService.js
 [DEBUG] from resource zip => assets/Resources/business/services/PhotoService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProductManagementService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProductService.js
@@ -179,7 +180,6 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/DirectionListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/EditDescriptionWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/EditLocationWindow.js
-[DEBUG] from resource zip => assets/Resources/ui/common/modal/NewProductStep2Window.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/NewSpecificWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/PromotionFormWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/UploadPhotoWindow.js
@@ -194,6 +194,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/LocationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/LoginWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MainWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ManagersWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MapView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageDetailWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageInboxWindow.js
@@ -210,7 +211,6 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SearchWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SecondProductListWindow.js
-[DEBUG] from resource zip => assets/Resources/ui/common/SellingDetailWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SentMessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopCategoryListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ShopListWindow.js
@@ -221,6 +221,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/SortDialog.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SpecificationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/WishListWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ManagerRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MessageRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MyShopRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/NotificationRow.js
@@ -305,6 +306,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.013000 seconds on emulator to get ready
+[DEBUG] waited 0.014000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

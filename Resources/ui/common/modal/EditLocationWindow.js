@@ -7,6 +7,7 @@ function EditLocationWindow (_args) {
         GEO = require('helpers/geo'),
         opts = _args,
         location = _args.data.location ? GEO.WKT.read(_args.data.location) : {},
+        address = _args.data.address,
         self = Ti.UI.createWindow({
             navBarHidden: true,
             backgroundColor: '#40000000'
@@ -18,8 +19,7 @@ function EditLocationWindow (_args) {
         borderWidth : 2,
         left: 50,
         right: 50,
-        top : 100,
-        bottom: 100
+        height: 500
     }),
     headerView = Ti.UI.createView(theme.styles.popup.header.view),
     headerLabel = Ti.UI.createLabel(_.extend({text: L('select_location')},theme.styles.popup.header.label)),
@@ -36,6 +36,7 @@ function EditLocationWindow (_args) {
         height: 90,
         left: 10,
         right: 10,
+        enabled: false,
         title: L('select_location')
     }),
     bottomBar = new DoneCancelButtonBar({
@@ -77,17 +78,37 @@ function EditLocationWindow (_args) {
     });
 
     self.addEventListener('open', function (e) {
-        if (location) {
+        if (!_(location).isEmpty()) {
             var latlng = location.latitude + ',' + location.longitude;
             getAddress(latlng);
+        } else if (address) {
+            getLatLng(address);
         }
     });
 
     function getAddress (latlng) {
         GeoCoding.geocode({latlng: latlng}).done(function (result) {
             if (result[0]) {
-                locationTextArea.value = result[0].formatted_address;
+                locationField.value = result[0].formatted_address;
             }
+            locationButton.enabled = true;
+        }).fail(function (e) {
+            locationButton.enabled = true;
+        });
+    }
+
+    function getLatLng (address) {
+        GeoCoding.geocode({address: address}).done(function (result) {
+            if (result[0]) {
+                locationField.value = result[0].formatted_address;
+                location = {
+                    latitude: result[0].geometry.location.lat,
+                    longitude: result[0].geometry.location.lng
+                };
+            }
+            locationButton.enabled = true;
+        }).fail(function (e) {
+            locationButton.enabled = true;
         });
     }
 

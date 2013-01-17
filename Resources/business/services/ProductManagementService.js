@@ -57,6 +57,39 @@ function ProductManagementService (_args) {
         return deferred;
     };
 
+    self.create = function (params) {
+        params.auth_token = DB.getAuthToken();
+        var deferred = new _.Deferred(),
+            api_deferred = api.request('POST','products', params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.update = function (id,params) {
+        params.specifics = JSON.stringify(params.specifics);
+        params.auth_token = DB.getAuthToken();
+        var deferred = new _.Deferred(),
+            api_deferred = api.request('PUT','products/'+id, params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
     return self;
 }
 

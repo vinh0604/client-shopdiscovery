@@ -10,7 +10,7 @@ var GeoCoding = (function () {
 
     function geocode(_args) {
         var deferred = new _.Deferred(),
-            params = _.extend(_args, defaultParams),
+            params = _.defaults(_args, defaultParams),
             xhr = Ti.Network.createHTTPClient({
                 onload: function () {
                     var json = JSON.parse(this.responseText);

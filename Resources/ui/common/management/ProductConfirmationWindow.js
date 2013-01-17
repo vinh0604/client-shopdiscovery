@@ -4,12 +4,17 @@ function ProductConfirmationWindow (_args) {
         APP_CONST = require('business/constants'),
         CustomButtonBar = require('ui/components/CustomButtonBar'),
         SpecificRow = require('ui/components/tablerow/SpecificRow'),
+        CategoryListView = require('ui/common/CategoryListView'),
         ProductManagementService = require('business/services/ProductManagementService'),
+        CategoryService = require('business/services/CategoryService'),
         opts = _args,
         item = _args.data,
         controller = _args.controller,
         handler = _args.handler,
         shop_id = _args.shop_id,
+        zIndex = 1,
+        categoryViewStack = [],
+        sequences = [],
         buttonProperties = {
             borderRadius: 15,
             height: 70,
@@ -20,7 +25,8 @@ function ProductConfirmationWindow (_args) {
             backgroundSelectedColor: '#87B3FF',
             color: '#fff',
             font: {fontSize: 35, fontWeight: 'bold'},
-            top: 10
+            top: 10,
+            bottom: 10
         },
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
@@ -98,6 +104,7 @@ function ProductConfirmationWindow (_args) {
         handler: cancelContinueHandler
     }),
     service = new ProductManagementService(),
+    categoryService = new CategoryService(),
     activityIndicator = Ti.UI.createActivityIndicator({
         message: L('loading')
     });
@@ -140,23 +147,52 @@ function ProductConfirmationWindow (_args) {
         });
     });
 
-    function cancelContinueHandler (e) {
-        if (e.index) {
-            var ProductEditWindow = require('ui/common/management/ProductEditWindow'),
-                productEditWindow = new ProductEditWindow({
-                    controller: controller,
-                    data: {shop_id: shop_id, product_id: item.id, name: item.name},
-                    handler: function (result) {
-                        self.close();
-                        if (_(handler).isFunction()) {
-                            handler(result);
-                        }
-                    }
-                });
-            productEditWindow.open();
+    self.addEventListener('android:back', function (e) {
+        if (categoryViewStack.length > 0) {
+            for(var i = 0, l = categoryViewStack.length; i<l; ++i) {
+                self.remove(categoryViewStack[i]);
+            }
+            categoryViewStack = [];
+            sequences = [];
+            zIndex = 1;
         } else {
             self.close();
         }
+    });
+
+    function cancelContinueHandler (e) {
+        if (e.index) {
+            if (opts.readOnly) {
+                openEditWindow();
+            } else{
+                activityIndicator.show();
+                service.update(item.id,{category_id: item.category_id, specifics: item.specifics}).done(function (result) {
+                    activityIndicator.hide();
+                    openEditWindow();
+                }).fail(function (e) {
+                    activityIndicator.hide();
+                    alert(e.error);
+                });
+            }
+            
+        } else {
+            self.close();
+        }
+    }
+
+    function openEditWindow () {
+        var ProductEditWindow = require('ui/common/management/ProductEditWindow'),
+            productEditWindow = new ProductEditWindow({
+                controller: controller,
+                data: {shop_id: shop_id, product_id: item.id, name: item.name},
+                handler: function (result) {
+                    self.close();
+                    if (_(handler).isFunction()) {
+                        handler(result);
+                    }
+                }
+            });
+        productEditWindow.open();
     }
 
     function specificRowLongClickHandler (e) {
@@ -194,7 +230,7 @@ function ProductConfirmationWindow (_args) {
     }
 
     function cartegoryChangeButtonClickHandler (e) {
-        
+        initializeCategoryView(e);
     }
 
     function reportMistakeButtonClickHandler (e) {
@@ -229,8 +265,53 @@ function ProductConfirmationWindow (_args) {
             }
             tableView.setData(tableRows);
         } else {
-            item.specific = {};
+            item.specifics = {};
         }
+    }
+
+    function initializeCategoryView (e) {
+        var categoryListView = new CategoryListView({config: {zIndex: zIndex}});
+        categoryListView.addEventListener('row:clicked', categoryRowClickHandler);
+        self.add(categoryListView);
+        categoryViewStack.push(categoryListView);
+        loadCategory(categoryListView, {});
+        categoryListView.defocusSearchBar();
+    }
+
+    function categoryRowClickHandler (e) {
+        sequences.push(e.rowData.title);
+        if (e.rowData.hasChild) {
+            ++ zIndex;
+            var subCategoryListView = new CategoryListView({
+                config: {zIndex: zIndex}
+            });
+            self.add(subCategoryListView);
+            categoryViewStack.push(subCategoryListView);
+            subCategoryListView.defocusSearchBar();
+            subCategoryListView.addEventListener('row:clicked', categoryRowClickHandler);
+            loadCategory(subCategoryListView, {parent_id: e.rowData._id});
+        } else {
+            categoryLabel.text = sequences.join(' > ');
+            item.category_id = e.rowData._id;
+            for(var i = 0, l = categoryViewStack.length; i<l; ++i) {
+                self.remove(categoryViewStack[i]);
+            }
+            categoryViewStack = [];
+            sequences = [];
+            zIndex = 1;
+        }
+    }
+
+    function loadCategory (listView, params) {
+        activityIndicator.show();
+        categoryService.all(params).done(function (result) {
+            listView.setTableData(result);
+            listView.setBreadcrumb(sequences);
+            activityIndicator.hide();
+        }).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
     }
 
     return self;
