@@ -18,7 +18,7 @@
         NavigationController = require('business/NavigationController');
     
     // var Window = require('ui/common/LoginWindow'),
-    var Window = require('ui/common/management/ShopInfoWindow'),
+    var Window = require('ui/common/PromotionWindow'),
         controller = new NavigationController();
     // Android uses platform-specific properties to create windows.
     // All other platforms follow a similar UI pattern.
@@ -30,7 +30,6 @@
     // }
     // var win = new Window({controller: controller});
     var win = new Window({
-        data: {id: 11},
         controller: controller
     });
 

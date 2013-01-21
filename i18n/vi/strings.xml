@@ -199,4 +199,13 @@
     <string name="no_location_available">Không có thông tin vị trí</string>
     <string name="select_category_hint">Chọn danh mục</string>
     <string name="confirm_delete_product">Xóa sản phẩm này khỏi cửa hàng?</string>
+    <string name="shop_managers">Quản lý cửa hàng</string>
+    <string name="add">Thêm</string>
+    <string name="confirm_delete_manager">Xóa quản lý này khỏi cửa hàng?</string>
+    <string name="check_offer">Tham khảo giá bán sản phẩm</string>
+    <string name="active">Hiệu lực</string>
+    <string name="inactive">Không hiệu lực</string>
+    <string name="status">Trạng thái</string>
+    <string name="expired_date">Ngày hết hạn</string>
+    <string name="end_at">Kết thúc vào</string>
 </resources>

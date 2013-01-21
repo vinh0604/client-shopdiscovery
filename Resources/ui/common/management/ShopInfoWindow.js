@@ -142,6 +142,15 @@ function ShopInfoWindow (_args) {
     self.add(tableView);
     self.add(editButton);
 
+    managersRow.addEventListener('click', function (e) {
+        var ManagersWindow = require('ui/common/ManagersWindow'),
+            managersWindow = new ManagersWindow({
+                controller: controller,
+                data: item
+            });
+        managersWindow.open();
+    });
+
     productManagementRow.addEventListener('click', function (e) {
         var ProductManagementWindow = require('ui/common/management/ProductManagementWindow'),
             productMngtWindow = new ProductManagementWindow({

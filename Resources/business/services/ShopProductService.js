@@ -29,7 +29,7 @@ function ShopProductService (_args) {
     }
 
     function convertDetailData (shop_product) {
-        var data = _.pick(shop_product,'id', 'price', 'warranty', 'shop', 'description'),
+        var data = _.pick(shop_product,'id', 'price', 'warranty', 'shop', 'description', 'promotion'),
             status = _.find(APP_CONST.DATA.CONDITION_ARRAY, function (c) {
                 return c.code == shop_product.status;
             }),

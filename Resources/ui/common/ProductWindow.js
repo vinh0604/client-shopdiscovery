@@ -1,6 +1,7 @@
 function ProductWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        moment = require('lib/moment'),
         accounting = require('lib/accounting'),
         ShopProductService = require('business/services/ShopProductService'),
         RatingStarBar = require('ui/components/RatingStarBar'),
@@ -24,6 +25,7 @@ function ProductWindow (_args) {
     //     origin: 'Hand luggage',
     //     category: {id: 1, name: 'Category', ancestors: ['Parent']},
     //     shop: {id: 1, name: 'Sample Shop Name with some details'},
+    //     promotion: {id: 1, price: 1500000, active: true, },
     //     specifics: {},
     //     rating: 4.2,
     //     rating_count: 200
@@ -75,6 +77,7 @@ function ProductWindow (_args) {
         backgroundImage: '/images/heart_gray.png',
         _isCheck: false
     }),
+    promotionRow = null,
     infoRow = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE,
         layout: 'vertical'
@@ -402,6 +405,52 @@ function ProductWindow (_args) {
         shopValueLabel.text = item.shop.name;
         setPhotos(item.photos);
         ratingStarBar.setRating({count: item.rating_count, rating: item.rating});
+        if (item.promotion && item.promotion.active) {
+            setPromotion(item.promotion);
+            priceValueLabel.color = '#ddd';
+        } else if (promotionRow) {
+            tableView.deleteRow(2);
+            promotionRow = null;
+            priceValueLabel.color = '#000';
+        }
+    }
+
+    function setPromotion (promotion) {
+        promotionRow = Ti.UI.createTableViewRow({
+            height: Ti.UI.SIZE
+        }),
+        dealPriceLabel = Ti.UI.createLabel({
+            top: 10,
+            left: 10,
+            font: {fontSize: 24},
+            text: L('deal_price_text')
+        }),
+        dealPriceValueLabel = Ti.UI.createLabel({
+            top: 10,
+            left: 210,
+            font: {fontSize: 24, fontWeight: 'bold'},
+            color: 'red',
+            text: promotion.price ? accounting.formatMoney(promotion.price, {symbol: item.price_unit}) : L('NA')
+        }),
+        expireLabel = Ti.UI.createLabel({
+            top: 45,
+            left: 10,
+            bottom: 10,
+            font: {fontSize: 24},
+            text: L('expired_date')
+        }),
+        expireValueLabel = Ti.UI.createLabel({
+            top: 45,
+            left: 210,
+            font: {fontSize: 24},
+            color: '#000',
+            text: moment(promotion.expires).format('MM-DD-YYYY HH:mm')
+        });
+        promotionRow.add(dealPriceLabel);
+        promotionRow.add(dealPriceValueLabel);
+        promotionRow.add(expireLabel);
+        promotionRow.add(expireValueLabel);
+        tableView.insertRowAfter(1, promotionRow);
     }
 
     function wishListClickHandler (e) {

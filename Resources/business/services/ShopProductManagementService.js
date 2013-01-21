@@ -7,7 +7,7 @@ function ShopManagementService (_args) {
         self = this;
 
     function convertData (shop_product) {
-        var data = _.pick(shop_product,'id', 'price', 'warranty', 'shop', 'description', 'status', 'origin');
+        var data = _.pick(shop_product,'id', 'price', 'warranty', 'shop', 'description', 'status', 'origin', 'promotion');
         if (shop_product.product) {
             data.product_id = shop_product.product.id;
             _.extend(data, _.pick(shop_product.product, 'name', 'category', 'barcode', 'specifics'));

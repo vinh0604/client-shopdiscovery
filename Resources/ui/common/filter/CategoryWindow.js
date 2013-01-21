@@ -60,14 +60,17 @@ function CategoryWindow (_args) {
     self.addEventListener('open', function (e) {
         service.list(params).done(function (result) {
             setCategoryData(result);
-            categoryTableView.addEventListener('click', function (e) {
-                if (e.rowData) {
-                    params.category = e.rowData._id;
+            categoryTableView.addEventListener('click', function (evt) {
+                if (evt.rowData) {
+                    params.category = evt.rowData._id;
                     self.close();
+                    if (_(opts.handler).isFunction()) {
+                        opts.handler(evt);
+                    }
                 }
             });
-        }).fail(function (e) {
-            alert(e.error);
+        }).fail(function (evt) {
+            alert(evt.error);
         });
     });
 

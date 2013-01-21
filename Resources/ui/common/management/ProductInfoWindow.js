@@ -1,6 +1,7 @@
 function ProductInfoWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        moment = require('lib/moment'),
         accounting = require('lib/accounting'),
         ShopProductManagementService = require('business/services/ShopProductManagementService'),
         APP_CONST = require('business/constants'),
@@ -185,10 +186,57 @@ function ProductInfoWindow (_args) {
     }),
     promotionDetailView = Ti.UI.createView({
         top: 5,
-        left: 0,
-        right: 0,
-        layout: 'vertical',
-        height: Ti.UI.SIZE
+        left: 10,
+        right: 10,
+        height: 0,
+        bottom: 5
+    }),
+    promotionStatusLabel = Ti.UI.createLabel({
+        text: L('status'),
+        font: {fontSize: 28},
+        top: 5,
+        left: 0
+    }),
+    promotionStatusValueLabel = Ti.UI.createLabel({
+        left: 200,
+        font: {fontSize: 28},
+        top: 5
+    }),
+    promotionPriceLabel = Ti.UI.createLabel({
+        text: L('deal_price_text'),
+        font: {fontSize: 28},
+        top: 45,
+        left: 0
+    }),
+    promotionPriceValueLabel = Ti.UI.createLabel({
+        left: 200,
+        font: {fontSize: 28},
+        color: 'red',
+        top: 45
+    }),
+    promotionAmountLabel = Ti.UI.createLabel({
+        text: L('amount'),
+        font: {fontSize: 28},
+        top: 85,
+        left: 0
+    }),
+    promotionAmountValueLabel = Ti.UI.createLabel({
+        left: 200,
+        font: {fontSize: 28},
+        color: '#000',
+        top: 85
+    }),
+    promotionExpireLabel = Ti.UI.createLabel({
+        text: L('expired_date'),
+        font: {fontSize: 28},
+        top: 125,
+        left: 0
+    }),
+    promotionExpireValueLabel = Ti.UI.createLabel({
+        left: 200,
+        font: {fontSize: 28},
+        color: '#000',
+        top: 125
     }),
     updatePromotionButton = Ti.UI.createButton(
         _({title: L('update_promotion')}).defaults(buttonProperties)
@@ -220,6 +268,14 @@ function ProductInfoWindow (_args) {
     warrantyView.add(warrantyValueLabel);
     originView.add(originLabel);
     originView.add(originValueLabel);
+    promotionDetailView.add(promotionStatusLabel);
+    promotionDetailView.add(promotionStatusValueLabel);
+    promotionDetailView.add(promotionPriceLabel);
+    promotionDetailView.add(promotionPriceValueLabel);
+    promotionDetailView.add(promotionAmountLabel);
+    promotionDetailView.add(promotionAmountValueLabel);
+    promotionDetailView.add(promotionExpireLabel);
+    promotionDetailView.add(promotionExpireValueLabel);
 
     photoView.add(photoScrollView);
     nameView.add(nameLabel);
@@ -260,7 +316,14 @@ function ProductInfoWindow (_args) {
     });
 
     updatePromotionButton.addEventListener('click', function (e) {
-        
+        var PromotionFormWindow = require('ui/common/modal/PromotionFormWindow'),
+            promotionFormWindow = new PromotionFormWindow({
+                data: item.promotion,
+                shop_product_id: item.id,
+                handler: reloadData
+            });
+
+        promotionFormWindow.open({modal: true});
     });
 
     checkOfferView.addEventListener('click', function (e) {
@@ -324,6 +387,23 @@ function ProductInfoWindow (_args) {
         originValueLabel.text = origin ? origin.value : '';
 
         setPhotos(item.photos);
+
+        if (item.promotion) {
+            var promotion = item.promotion;
+            promotionDetailView.height = 170;
+            if (promotion.active) {
+                promotionStatusValueLabel.color = 'green';
+                promotionStatusValueLabel.text = L('active');
+            } else {
+                promotionStatusValueLabel.color = 'red';
+                promotionStatusValueLabel.text = L('inactive');
+            }
+            promotionPriceValueLabel.text = promotion.price ? accounting.formatMoney(promotion.price, {symbol: item.price_unit}) : L('NA');
+            promotionAmountValueLabel.text = promotion.amount ? promotion.amount : L('NA');
+            promotionExpireValueLabel.text = moment(promotion.expires).format('MM-DD-YYYY HH:mm');
+        } else {
+            promotionDetailView.height = 0;
+        }
     }
 
     function imageClickHandler (e) {

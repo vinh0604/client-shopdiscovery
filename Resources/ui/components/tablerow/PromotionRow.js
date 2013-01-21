@@ -1,6 +1,7 @@
 var _ = require('lib/underscore'),
     theme = require('helpers/theme'),
     accounting = require('lib/accounting'),
+    moment = require('lib/moment'),
     ProgressBar = require('ui/components/ProgressBar');
 
 function PromotionRow (_args) {
@@ -37,7 +38,7 @@ function PromotionRow (_args) {
         left: 0,
         font: {fontSize: 20},
         text: L('price')+': '+accounting.formatMoney(item.price, {symbol: item.price_unit}),
-        color: '#000'
+        color: '#ddd'
     }),
     dealPriceLabel = Ti.UI.createLabel({
         touchEnabled: false,
@@ -45,11 +46,19 @@ function PromotionRow (_args) {
         text: String.format(L('deal_price'),accounting.formatMoney(item.deal_price, {symbol: item.price_unit})),
         font: {fontSize: 20},
         color: '#EB0C17'
+    }),
+    endTimeLabel = Ti.UI.createLabel({
+        touchEnabled: false,
+        left: 0,
+        text: L('end_at') + ' ' + moment(item.expires).format('MM-DD-YYYY HH:mm'),
+        font: {fontSize: 20},
+        color: '#000'
     });
 
     detailView.add(nameLabel);
     detailView.add(priceLabel);
     detailView.add(dealPriceLabel);
+    detailView.add(endTimeLabel);
     if (item.amount > 0) {
         var progessBar = new ProgressBar({config: {top: 5, left: 0, height: 30}, current: item.bid_count, total: item.amount});
         detailView.add(progessBar);
