@@ -374,7 +374,7 @@ function ProductInfoWindow (_args) {
     function setData () {
         nameLabel.text = item.name;
         eanLabel.text = 'EAN: ' + (item.barcode ? item.barcode : L('NA'));
-        priceValueLabel.text = item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit}) : L('NA');
+        priceValueLabel.text = item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit, format:"%v %s"}) : L('NA');
         warrantyValueLabel.text = item.warranty ? (item.warranty + ' ' + L('month')) : L('NA');
         var condition = _(APP_CONST.DATA.CONDITION_ARRAY).find( function(c) {
             return c.code == item.status;
@@ -398,7 +398,7 @@ function ProductInfoWindow (_args) {
                 promotionStatusValueLabel.color = 'red';
                 promotionStatusValueLabel.text = L('inactive');
             }
-            promotionPriceValueLabel.text = promotion.price ? accounting.formatMoney(promotion.price, {symbol: item.price_unit}) : L('NA');
+            promotionPriceValueLabel.text = promotion.price ? accounting.formatMoney(promotion.price, {symbol: item.price_unit, format:"%v %s"}) : L('NA');
             promotionAmountValueLabel.text = promotion.amount ? promotion.amount : L('NA');
             promotionExpireValueLabel.text = moment(promotion.expires).format('MM-DD-YYYY HH:mm');
         } else {

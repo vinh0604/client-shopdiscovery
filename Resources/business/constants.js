@@ -27,6 +27,16 @@ var CONSTANTS = {
             {code: 4, value: L('distance_sort')},
             {code: 5, value: L('review_sort')}
         ],
+        NOTIFICATION_ARRAY: [
+            {code: 1, value: L('promotion')},
+            {code: 2, value: L('new_product')},
+            {code: 3, value: ''}
+        ],
+        NOTIFICATION_TYPE: {
+            PROMOTION: 1,
+            NEW_PRODUCT: 2,
+            PRICE_CHANGE: 3
+        },
         NOTIFY_TYPE: {
             1: L('promotion'),
             2: L('new_product'),

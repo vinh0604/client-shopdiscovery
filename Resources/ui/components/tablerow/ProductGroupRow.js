@@ -52,7 +52,7 @@ function ProductGroupRow(_args) {
     }),
     priceLabel = Ti.UI.createLabel({
         touchEnabled: false,
-        text: accounting.formatMoney(item.min_price, {symbol: item.price_unit}),
+        text: accounting.formatMoney(item.min_price, {symbol: item.price_unit, format:"%v %s"}),
         font: {fontSize: 20},
         color: '#EB0C17'
     });

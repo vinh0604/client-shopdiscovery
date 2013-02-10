@@ -1,18 +1,16 @@
 function SavedSearchWindow (_args) {
-    var $$ = require('helpers/utility'),
+    var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
+        DB = require('business/database'),
         SearchResultWindow = require('ui/common/SearchResultWindow'),
         controller = _args.controller,
-        self = Ti.UI.createWindow($$.combine({backgroundColor: '#fff'},theme.styles.Window));
+        self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
-    var sample_data = [
-            {keyword: 'nexus 7'},
-            {keyword: 'galaxy note'},
-            {keyword: 'kindle fire'}
-        ],
+    var data = DB.getSearchHistories(),
         tableRows = [];
 
     var keywordTableView = Ti.UI.createTableView({
+        top: 90,
         left: 0,
         right: 0,
         bottom: 90
@@ -26,30 +24,25 @@ function SavedSearchWindow (_args) {
         title: L('clear_history')
     });
 
-    headerView.add(headerLabel);
-    keywordTableView.setHeaderView(headerView);
-
-    for (var i = 0, l = sample_data.length; i < l; ++i) {
+    for (var i = 0, l = data.length; i < l; ++i) {
         var row = Ti.UI.createTableViewRow({
-            height: 90
-        }),
-        label = Ti.UI.createLabel({
+            height: 90,
             color: '#000',
-            text: sample_data[i].keyword,
-            left: 20
+            title: data[i]
         });
-
-        row.add(label);
         row.addEventListener('click', searchHandler);
 
         tableRows.push(row);
     }
-    keywordTableView.setData(tableRows);
 
+    keywordTableView.setData(tableRows);
+    headerView.add(headerLabel);
+    self.add(headerView);
     self.add(keywordTableView);
     self.add(clearButton);
 
     clearButton.addEventListener('click', function (e) {
+        DB.removeSearchHistories();
         keywordTableView.setData([]);
     });
 
@@ -58,12 +51,13 @@ function SavedSearchWindow (_args) {
     });
 
     function searchHandler(e) {
-        var keyword = sample_data[e.index].keyword;
-        if (keyword) {
-            var searchResultWindow = new SearchResultWindow({keyword: keyword, controller: controller});
+        if (e.rowData) {
+            var params = {page: 1, per_page:30, keyword:e.rowData.title},
+                searchResultWindow = new SearchResultWindow({params: params, controller: controller});
             controller.home();
             searchResultWindow.open();
         }
+        
     }
 
     return self;

@@ -81,8 +81,8 @@ function MainWindow (_args) {
     self.add(featureTableView);
 
     // mock indicator
-    notificationIndicatorLabel.text = '10';
-    messageIndicatorLabel.text = '1';
+    notificationIndicatorLabel.text = '0';
+    messageIndicatorLabel.text = '0';
     notificationRow.add(notificationIndicatorLabel);
     messageRow.add(messageIndicatorLabel);
     // end mock
@@ -123,10 +123,25 @@ function MainWindow (_args) {
             wishListWindow = new WishListWindow({controller: controller});
         wishListWindow.open();
     });
+    notificationRow.addEventListener('click', function (e) {
+        NotificationWindow = require('ui/common/NotificationWindow'),
+            notificationWindow = new NotificationWindow({controller: controller});
+        notificationWindow.open();
+    });
 
     self.addEventListener('open', function (e) {
         controller.register(self);
+        checkMessageNotification(e);
     });
+
+    function checkMessageNotification (e) {
+        var NotificationService = require('business/services/NotificationService'),
+            notificationService = new NotificationService();
+
+        notificationService.check().done(function (result) {
+            notificationIndicatorLabel.text = result.count;
+        });
+    }
 
     return self;
 }

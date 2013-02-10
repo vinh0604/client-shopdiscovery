@@ -208,4 +208,7 @@
     <string name="status">Status</string>
     <string name="expired_date">Expired date</string>
     <string name="end_at">End at</string>
+    <string name="promotion_notification">There is a new promotion for %1$s at %2$s</string>
+    <string name="new_product_notification">%1$s adds %2$s to its catalog</string>
+    <string name="price_change_notification">%1$s starts selling %2$s at %3$s</string>
 </resources>

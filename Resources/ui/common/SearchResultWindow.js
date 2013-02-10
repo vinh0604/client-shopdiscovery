@@ -71,6 +71,11 @@ function SearchResultWindow (_args) {
         controller.register(self);
         resultTableView.setData([]);
 
+        (function () {
+            var DB = require('business/database');
+            DB.updateSearchHistory(params.keyword);
+        })();
+
         activityIndicator.show();
         fetchData().done(function (result) {
             activityIndicator.hide();

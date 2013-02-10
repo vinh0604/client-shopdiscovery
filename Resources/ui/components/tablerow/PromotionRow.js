@@ -37,13 +37,13 @@ function PromotionRow (_args) {
         touchEnabled: false,
         left: 0,
         font: {fontSize: 20},
-        text: L('price')+': '+accounting.formatMoney(item.price, {symbol: item.price_unit}),
+        text: L('price')+': '+accounting.formatMoney(item.price, {symbol: item.price_unit, format:"%v %s"}),
         color: '#ddd'
     }),
     dealPriceLabel = Ti.UI.createLabel({
         touchEnabled: false,
         left: 0,
-        text: String.format(L('deal_price'),accounting.formatMoney(item.deal_price, {symbol: item.price_unit})),
+        text: String.format(L('deal_price'),accounting.formatMoney(item.deal_price, {symbol: item.price_unit, format:"%v %s"})),
         font: {fontSize: 20},
         color: '#EB0C17'
     }),

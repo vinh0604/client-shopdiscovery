@@ -57,7 +57,7 @@ function ProductRow(_args) {
     priceLabel = Ti.UI.createLabel({
         touchEnabled: false,
         left: 0,
-        text: item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit}) : L('NA'),
+        text: item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit, format:"%v %s"}) : L('NA'),
         font: {fontWeight: 'bold', fontSize: 20},
         color: '#EB0C17'
     }),

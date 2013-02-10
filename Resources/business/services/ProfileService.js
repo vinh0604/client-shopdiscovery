@@ -66,7 +66,7 @@ function LogoutService (_args) {
                                 return obj.value == data.gender;
                             }).code,
                 phone: data.phone,
-                // identity: data.identity,
+                identity: data.identity,
                 address: data.address
             };
         params.contact = JSON.stringify(contact);

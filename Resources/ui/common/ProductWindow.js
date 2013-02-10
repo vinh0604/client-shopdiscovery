@@ -398,7 +398,7 @@ function ProductWindow (_args) {
 
     function setData () {
         nameLabel.text = item.name;
-        priceValueLabel.text = item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit}) : L('NA');
+        priceValueLabel.text = item.price ? accounting.formatMoney(item.price, {symbol: item.price_unit, format:"%v %s"}) : L('NA');
         conditionValueLabel.text = item.status;
         originValueLabel.text = item.origin;
         warrantyValueLabel.text = item.warranty ? (item.warranty + ' ' + L('month')) : L('NA');
@@ -430,7 +430,7 @@ function ProductWindow (_args) {
             left: 210,
             font: {fontSize: 24, fontWeight: 'bold'},
             color: 'red',
-            text: promotion.price ? accounting.formatMoney(promotion.price, {symbol: item.price_unit}) : L('NA')
+            text: promotion.price ? accounting.formatMoney(promotion.price, {symbol: item.price_unit, format:"%v %s"}) : L('NA')
         }),
         expireLabel = Ti.UI.createLabel({
             top: 45,

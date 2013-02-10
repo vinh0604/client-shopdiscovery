@@ -5,11 +5,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.009000 seconds on emulator to get ready
+[DEBUG] waited 0.010000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\PromotionService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\PromotionService.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\business\database.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\database.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -48,6 +48,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/business/services/LoginService.js
 [DEBUG] from resource zip => assets/Resources/business/services/LogoutService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ManagerService.js
+[DEBUG] from resource zip => assets/Resources/business/services/NotificationService.js
 [DEBUG] from resource zip => assets/Resources/business/services/PhotoService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProductManagementService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProductService.js
@@ -307,6 +308,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.012000 seconds on emulator to get ready
+[DEBUG] waited 0.013000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen
