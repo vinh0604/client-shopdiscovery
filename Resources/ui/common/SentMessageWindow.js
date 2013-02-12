@@ -28,7 +28,12 @@ function SentMessageWindow (_args) {
     messageTableView.addEventListener('click', function (e) {
         if (e.rowData) {
             var MessageDetailWindow = require('ui/common/MessageDetailWindow'),
-                detailWindow = new MessageDetailWindow({controller: controller, data: {id: e.rowData['_id']}});
+                detailWindow = new MessageDetailWindow({
+                    controller: controller,
+                    data: {id: e.rowData['_id']},
+                    handler: reloadData,
+                    sentMessage: true
+                });
             detailWindow.open();
         }
     });
@@ -49,14 +54,7 @@ function SentMessageWindow (_args) {
         //     var row = new SentMessageRow({data: data[i]});
         //     messageTableView.appendRow(row);
         // }
-        activityIndicator.show();
-        fetchData().done(function (result) {
-            activityIndicator.hide();
-            return result;
-        }).done(appendData).fail(function (e) {
-            activityIndicator.hide();
-            alert(e.error);
-        });
+        reloadData();
     });
 
     function fetchData () {
@@ -67,12 +65,26 @@ function SentMessageWindow (_args) {
     function appendData (result) {
         ++ params.page;
         for (var i = 0, l = result.rows.length; i < l; ++i) {
-            var row = new MessageRow({ data: result.rows[i] });
+            var row = new SentMessageRow({ data: result.rows[i] });
             messageTableView.appendRow(row);
         }
         if (!result.total || messageTableView.data[0].rowCount >= result.total) {
             messageTableView.stopUpdate = true;
         }
+    }
+
+    function reloadData () {
+        params.page = 1;
+        messageTableView.setData([]);
+        messageTableView.stopUpdate = false;
+        activityIndicator.show();
+        fetchData().done(function (result) {
+            activityIndicator.hide();
+            return result;
+        }).done(appendData).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
     }
 
     return self;

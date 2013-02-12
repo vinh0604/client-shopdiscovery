@@ -212,4 +212,6 @@
     <string name="new_product_notification">%1$s adds %2$s to its catalog</string>
     <string name="price_change_notification">%1$s starts selling %2$s at %3$s</string>
     <string name="message_sent">Message sent</string>
+    <string name="message_deleted">Message deleted</string>
+    <string name="confirm_delete_message">Delete this message?</string>
 </resources>

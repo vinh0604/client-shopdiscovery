@@ -5,8 +5,17 @@ function MessageService() {
         APP_CONST = require('business/constants'),
         self = this;
 
-    function convertData(message_receiver) {
-        var data = {};
+    function convertData(message) {
+        var data = _(message).pick('id','title', 'content', 'sent_date', 'headline');
+        data.unread = message['unread?'];
+        if (message.user) {
+            data.sender = message.user;
+        }
+        if (message.receivers) {
+            data.receivers = _(message.receivers).map( function( r) {
+                return r.receiver.username;
+            });
+        }
         return data;
     }
 
@@ -20,10 +29,10 @@ function MessageService() {
                 rows: [],
                 total: json.total
             };
-            if (json.message_receivers) {
-                for (var i = 0, l= json.message_receivers.length; i<l ; ++i) {
-                    var message_receiver = json.message_receivers[i].message_receiver,
-                        row_data = convertData(message_receiver);
+            if (json.messages) {
+                for (var i = 0, l= json.messages.length; i<l ; ++i) {
+                    var message = json.messages[i].message,
+                        row_data = convertData(message);
                     result.rows.push(row_data);
                 }
             }
@@ -43,17 +52,17 @@ function MessageService() {
     self.all_sent = function (params) {
         params.auth_token = DB.getAuthToken();
         var deferred = new _.Deferred(),
-            api_deferred = api.request('GET','messages',params);
+            api_deferred = api.request('GET','messages/sent',params);
 
         api_deferred.done(function (json) {
             var result = {
                 rows: [],
                 total: json.total
             };
-            if (json.message_receivers) {
-                for (var i = 0, l= json.message_receivers.length; i<l ; ++i) {
-                    var message_receiver = json.message_receivers[i].message_receiver,
-                        row_data = convertData(message_receiver);
+            if (json.messages) {
+                for (var i = 0, l= json.messages.length; i<l ; ++i) {
+                    var message = json.messages[i].message,
+                        row_data = convertData(message);
                     result.rows.push(row_data);
                 }
             }
@@ -92,10 +101,14 @@ function MessageService() {
     self.get = function (id) {
         var params = {auth_token: DB.getAuthToken()};
         var deferred = new _.Deferred(),
-            api_deferred = api.request('PUT','messages/'+id,params);
+            api_deferred = api.request('GET','messages/'+id,params);
 
         api_deferred.done(function (json) {
-            deferred.resolve(json);
+            var result = {};
+            if (json.message) {
+                result = convertData(json.message);
+            }
+            deferred.resolve(result);
         });
 
         api_deferred.fail(function (e) {

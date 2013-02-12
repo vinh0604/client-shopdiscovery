@@ -8,8 +8,11 @@ function ShopService (_args) {
         self = this;
 
     function convertData (shop) {
-        var data = _.pick(shop, 'id', 'name', 'description', 'phones', 'creator', 'website');
+        var data = _.pick(shop, 'id', 'name', 'description', 'phones', 'website');
         data.address = shop.full_address;
+        if (shop.user) {
+            data.creator = shop.user;
+        }
         if (shop.photo) {
             data.photo = api.HOST + shop.photo.url;
         }

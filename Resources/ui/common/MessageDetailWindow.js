@@ -5,6 +5,7 @@ function MessageDetailWindow (_args) {
         MessageService = require('business/services/MessageService'),
         controller = _args.controller,
         data = _args.data,
+        handler = _args.handler,
         isSentMessage = !!_args.sentMessage,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff', layout: 'vertical'},theme.styles.Window));
 
@@ -124,24 +125,22 @@ function MessageDetailWindow (_args) {
     self.add(contentView);
 
     deleteButton.addEventListener('click', function (e) {
-        activityIndicator.show();
-        messageService.remove(data.id, {sent: isSentMessage}).done(function (result) {
-            activityIndicator.hide();
-            var toast = Ti.UI.createNotification({
-                duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
-                message: L('message_deleted')
-            });
-            toast.show();
-            self.close();
-        }).fail(function (e) {
-            activityIndicator.hide();
-            alert(e.error);
+        var confirmDialog = Ti.UI.createAlertDialog({
+            buttonNames: [L('cancel'), L('ok')],
+            title: L('delete_confirmation'),
+            message: L('confirm_delete_message')
         });
+        confirmDialog.addEventListener('click', function (evt) {
+            if (evt.index === 1) {
+                deleteHandler();
+            }
+        });
+        confirmDialog.show();
     });
 
     replyButton.addEventListener('click', function (e) {
         var ComposeMessageWindow = require('ui/common/ComposeMessageWindow'),
-            composeWindow = new ComposeMessageWindow({controller: controller, defaultSender: data.sender.username});
+            composeWindow = new ComposeMessageWindow({controller: controller, defaultSender: {username: data.sender.username, title: data.title}});
         composeWindow.open();
     });
 
@@ -174,6 +173,25 @@ function MessageDetailWindow (_args) {
         dateValueLabel.text = moment(data.sent_date, "YYYY-MM-DD").format("MM/DD/YY");
         subjectValueLabel.text = data.title;
         contentWebView.html = '<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />' + data.content;
+    }
+
+    function deleteHandler () {
+        activityIndicator.show();
+        messageService.remove(data.id, {sent: isSentMessage}).done(function (result) {
+            activityIndicator.hide();
+            var toast = Ti.UI.createNotification({
+                duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                message: L('message_deleted')
+            });
+            toast.show();
+            self.close();
+            if (_(handler).isFunction()) {
+                handler();
+            }
+        }).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
     }
 
     return self;

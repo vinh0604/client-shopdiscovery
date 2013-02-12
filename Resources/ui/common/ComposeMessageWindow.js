@@ -86,13 +86,28 @@ function ComposeMessageWindow (_args) {
     self.add(contentField);
     self.add(buttonBar);
 
+    toField.addEventListener('change', enableDisableDoneButton);
+    subjectField.addEventListener('change', enableDisableDoneButton);
+
     self.addEventListener('open', function (e) {
         if (defaultSender) {
             toField.enabled = false;
-            toField.value = defaultSender;
+            toField.value = defaultSender.username;
+            if (defaultSender.title) {
+                subjectField.value = 'RE: ' + defaultSender.title;
+            }
         }
         controller.register(self);
     });
+
+    function enableDisableDoneButton (e) {
+        var receivers = toField.value.trim().split(/ *[,;] */g);
+        if (receivers.length && subjectField.value.trim()) {
+            buttonBar.enableButton(1, true);
+        } else {
+            buttonBar.enableButton(1, false);
+        }
+    }
 
     return self;
 }

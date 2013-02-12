@@ -41,6 +41,10 @@ NavigationController.prototype.register = function (win) {
 
     win.addEventListener('close', function (e) {
         self.windowStack.pop();
+        // Ti.API.info('Windows stack: ' + self.windowStack.length);
+        // if (self.windowStack.length === 1) {
+        //     this.windowStack[0].fireEvent('new:recheck');
+        // }
     });
 };
 

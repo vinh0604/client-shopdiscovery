@@ -134,6 +134,8 @@ function MainWindow (_args) {
         messageWindow.open();
     });
 
+    self.addEventListener('new:recheck', checkMessageNotification);
+
     self.addEventListener('open', function (e) {
         controller.register(self);
         checkMessageNotification(e);
@@ -145,12 +147,10 @@ function MainWindow (_args) {
             MessageService = require('business/services/MessageService'),
             messageService = new MessageService();
 
-        messageService.check().done(function (result) {
-            messageIndicatorLabel.text = result.count;
-        });
-
-        notificationService.check().done(function (result) {
-            notificationIndicatorLabel.text = result.count;
+        _.when(notificationService.check(), messageService.check()).done(function (notificationResult, messageResult) {
+            notificationIndicatorLabel.text = notificationResult.count;
+            messageIndicatorLabel.text = messageResult.count;
+            featureTableView.setData([notificationRow,messageRow,browseCategoryRow,browseShopRow,favoriteShopRow,wishListRow,dealRow]);
         });
     }
 

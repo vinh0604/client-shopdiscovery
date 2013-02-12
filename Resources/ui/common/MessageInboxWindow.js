@@ -28,7 +28,11 @@ function MessageInboxWindow (_args) {
     messageTableView.addEventListener('click', function (e) {
         if (e.rowData) {
             var MessageDetailWindow = require('ui/common/MessageDetailWindow'),
-                detailWindow = new MessageDetailWindow({controller: controller, data: {id: e.rowData['_id']}});
+                detailWindow = new MessageDetailWindow({
+                    controller: controller,
+                    data: {id: e.rowData['_id']},
+                    handler: reloadData
+                });
             detailWindow.open();
         }
     });
@@ -49,14 +53,7 @@ function MessageInboxWindow (_args) {
         //     var row = new MessageRow({data: data[i]});
         //     messageTableView.appendRow(row);
         // }
-        activityIndicator.show();
-        fetchData().done(function (result) {
-            activityIndicator.hide();
-            return result;
-        }).done(appendData).fail(function (e) {
-            activityIndicator.hide();
-            alert(e.error);
-        });
+        reloadData();
     });
 
     function fetchData () {
@@ -73,6 +70,20 @@ function MessageInboxWindow (_args) {
         if (!result.total || messageTableView.data[0].rowCount >= result.total) {
             messageTableView.stopUpdate = true;
         }
+    }
+
+    function reloadData () {
+        params.page = 1;
+        messageTableView.setData([]);
+        messageTableView.stopUpdate = false;
+        activityIndicator.show();
+        fetchData().done(function (result) {
+            activityIndicator.hide();
+            return result;
+        }).done(appendData).fail(function (e) {
+            activityIndicator.hide();
+            alert(e.error);
+        });
     }
 
     return self;

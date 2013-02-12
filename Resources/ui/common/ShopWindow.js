@@ -190,11 +190,12 @@ function ShopWindow (_args) {
         height: 90,
         left: 10,
         right: 10,
-        backgroundColor: '#4086FF',
+        backgroundColor: '#87B3FF',
         backgroundFocusedColor: '#87B3FF',
         backgroundSelectedColor: '#87B3FF',
         color: '#fff',
         title: L('send_message_to_shop'),
+        enabled: false,
         font: {fontSize: '18dp', fontWeight: 'bold'}
     }),
     shopService = new ShopService(),
@@ -271,6 +272,14 @@ function ShopWindow (_args) {
                 data: item
             });
         shopCategoryListWindow.open();
+    });
+
+    sendMessageButton.addEventListener('click', function (e) {
+        if (item.creator) {
+            var ComposeMessageWindow = require('ui/common/ComposeMessageWindow'),
+                composeWindow = new ComposeMessageWindow({controller: controller, defaultSender: {username: item.creator.username}});
+            composeWindow.open();
+        }
     });
 
     self.addEventListener('open', function (e) {
@@ -358,6 +367,10 @@ function ShopWindow (_args) {
         websiteValueLabel.text = item.website;
         setPhotos(item.photos);
         ratingStarBar.setRating({count: item.rating_count, rating: item.rating});
+        if (item.creator) {
+            sendMessageButton.enabled = true;
+            sendMessageButton.backgroundColor = '#4086FF';
+        }
     }
 
     function favoriteClickHandler (e) {

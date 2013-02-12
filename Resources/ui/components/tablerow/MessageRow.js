@@ -16,7 +16,7 @@ function MessageRow (_args) {
         top: 10,
         color: '#000',
         left: 10,
-        text: '>> ' + item.sender
+        text: L('from') + ': ' + item.sender.full_name
     }),
     subjectLabel = Ti.UI.createLabel({
         touchEnabled: false,

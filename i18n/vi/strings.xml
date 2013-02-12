@@ -212,4 +212,6 @@
     <string name="new_product_notification">%1$s bổ sung sản phẩm %2$s vào danh mục bán</string>
     <string name="price_change_notification">%1$s bắt đầu bán %2$s với giá %3$s</string>
     <string name="message_sent">Gửi tin thành công</string>
+    <string name="message_deleted">Xóa tin thành công</string>
+    <string name="confirm_delete_message">Xóa tin nhắn này?</string>
 </resources>

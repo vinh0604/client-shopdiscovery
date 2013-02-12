@@ -42,6 +42,7 @@ function MessageWindow (_args) {
         height: 45,
         width: 75,
         borderRadius: 15,
+        text: 0,
         touchEnabled: false
     }),
     newMessageButton = Ti.UI.createButton({
@@ -68,6 +69,7 @@ function MessageWindow (_args) {
             sentWindow.open();
         } else {
             var inboxWindow = new MessageInboxWindow({controller: controller});
+            inboxWindow.addEventListener('close', checkMessage);
             inboxWindow.open();
         }
     });
@@ -88,6 +90,7 @@ function MessageWindow (_args) {
 
         messageService.check().done(function (result) {
             messageIndicatorLabel.text = result.count;
+            messageFolderTableView.setData([inboxRow, sentRow]);
         });
     }
 
