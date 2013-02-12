@@ -2,7 +2,9 @@ function ComposeMessageWindow (_args) {
     var _ = require('lib/underscore'),
         theme = require('helpers/theme'),
         CustomButtonBar = require('ui/components/CustomButtonBar'),
+        MessageService = require('business/services/MessageService'),
         controller = _args.controller,
+        defaultSender = _args.defaultSender,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     var topTableView = Ti.UI.createTableView({
@@ -46,11 +48,32 @@ function ComposeMessageWindow (_args) {
         buttons: [L('cancel'),L('done')],
         handler: function (e) {
             if (e.index) {
-                
+                var params = {
+                    title: subjectField.value,
+                    content: contentField.value,
+                    receivers: toField.value.trim().split(/ *[,;] */g)
+                };
+                activityIndicator.show();
+                service.compose(params).done(function (result) {
+                    activityIndicator.hide();
+                    var toast = Ti.UI.createNotification({
+                        duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                        message: L('message_sent')
+                    });
+                    toast.show();
+                    self.close();
+                }).fail(function (e) {
+                    activityIndicator.hide();
+                    alert(e.error);
+                });
             } else {
                 self.close();
             }
         }
+    }),
+    service = new MessageService(),
+    activityIndicator = Ti.UI.createActivityIndicator({
+        message: L('processing')
     });
 
     toRow.add(toLabel);
@@ -64,6 +87,10 @@ function ComposeMessageWindow (_args) {
     self.add(buttonBar);
 
     self.addEventListener('open', function (e) {
+        if (defaultSender) {
+            toField.enabled = false;
+            toField.value = defaultSender;
+        }
         controller.register(self);
     });
 

@@ -128,6 +128,11 @@ function MainWindow (_args) {
             notificationWindow = new NotificationWindow({controller: controller});
         notificationWindow.open();
     });
+    messageRow.addEventListener('click', function (e) {
+        MessageWindow = require('ui/common/MessageWindow'),
+            messageWindow = new MessageWindow({controller: controller});
+        messageWindow.open();
+    });
 
     self.addEventListener('open', function (e) {
         controller.register(self);
@@ -136,7 +141,13 @@ function MainWindow (_args) {
 
     function checkMessageNotification (e) {
         var NotificationService = require('business/services/NotificationService'),
-            notificationService = new NotificationService();
+            notificationService = new NotificationService(),
+            MessageService = require('business/services/MessageService'),
+            messageService = new MessageService();
+
+        messageService.check().done(function (result) {
+            messageIndicatorLabel.text = result.count;
+        });
 
         notificationService.check().done(function (result) {
             notificationIndicatorLabel.text = result.count;

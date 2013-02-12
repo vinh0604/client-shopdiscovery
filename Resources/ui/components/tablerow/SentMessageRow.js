@@ -10,38 +10,39 @@ function SentMessageRow (_args) {
             className: 'messageDetail'
         });
 
-    var imageView = Ti.UI.createImageView({
-        left: 0,
-        height: 120,
-        touchEnabled: false,
-        image: item.photo,
-        width: 120
-    }),
-    subjectLabel = Ti.UI.createLabel({
+    var subjectLabel = Ti.UI.createLabel({
         touchEnabled: false,
         top: 10,
         color: '#000',
-        left: 130,
+        left: 10,
         font: {fontSize: 24},
-        text: item.subject
+        text: item.title
     }),
     toLabel = Ti.UI.createLabel({
         touchEnabled: false,
-        bottom: 10,
+        top: 40,
         color: '#000',
-        left: 130,
+        left: 10,
         font: {fontSize: 24, fontWeight: 'bold'},
         text: L('to') + ': '
     }),
     receiverLabel = Ti.UI.createLabel({
         touchEnabled: false,
-        bottom: 10,
+        top: 40,
         right: 10,
         color: '#000',
-        left: 170,
+        left: 50,
         ellipsize: true,
         font: {fontSize: 24},
         text: item.receivers.join(', ')
+    }),
+    headlineLabel = Ti.UI.createLabel({
+        touchEnabled: false,
+        bottom: 10,
+        color: '#c6c6c6',
+        left: 10,
+        font: {fontSize: 24},
+        text: item.headline
     }),
     dateLabel = Ti.UI.createLabel({
         touchEnabled: false,
@@ -50,10 +51,10 @@ function SentMessageRow (_args) {
         text: moment(item.sent_date, "YYYY-MM-DD").format("MM/DD/YY")
     });
 
-    self.add(imageView);
     self.add(subjectLabel);
     self.add(toLabel);
     self.add(receiverLabel);
+    self.add(headlineLabel);
     self.add(dateLabel);
 
     return self;

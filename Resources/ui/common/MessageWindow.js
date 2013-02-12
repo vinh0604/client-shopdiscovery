@@ -54,7 +54,6 @@ function MessageWindow (_args) {
 
     headerView.add(headerLabel);
 
-    messageIndicatorLabel.text = '10';
     inboxRow.add(inboxLabel);
     inboxRow.add(messageIndicatorLabel);
     messageFolderTableView.setData([inboxRow, sentRow]);
@@ -80,7 +79,17 @@ function MessageWindow (_args) {
 
     self.addEventListener('open', function (e) {
         controller.register(self);
+        checkMessage(e);
     });
+
+    function checkMessage (e) {
+        var MessageService = require('business/services/MessageService'),
+            messageService = new MessageService();
+
+        messageService.check().done(function (result) {
+            messageIndicatorLabel.text = result.count;
+        });
+    }
 
     return self;
 }

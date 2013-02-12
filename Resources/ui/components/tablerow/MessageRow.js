@@ -7,30 +7,32 @@ function MessageRow (_args) {
         self = Ti.UI.createTableViewRow({
             _id: item.id,
             height: 120,
-            className: 'messageDetail'
+            className: 'messageDetail',
+            backgroundColor: item.unread ? '#504086FF' : '#fff'
         });
 
-    var imageView = Ti.UI.createImageView({
-        left: 0,
-        height: 120,
-        touchEnabled: false,
-        image: item.photo,
-        width: 120
-    }),
-    senderLabel = Ti.UI.createLabel({
+    var senderLabel = Ti.UI.createLabel({
         touchEnabled: false,
         top: 10,
         color: '#000',
-        left: 130,
-        text: item.sender
+        left: 10,
+        text: '>> ' + item.sender
     }),
     subjectLabel = Ti.UI.createLabel({
         touchEnabled: false,
-        bottom: 10,
+        top: 40,
         color: '#000',
-        left: 130,
+        left: 10,
         font: {fontSize: 24},
-        text: item.subject
+        text: item.title
+    }),
+    headlineLabel = Ti.UI.createLabel({
+        touchEnabled: false,
+        bottom: 10,
+        color: '#c6c6c6',
+        left: 10,
+        font: {fontSize: 24},
+        text: item.headline
     }),
     dateLabel = Ti.UI.createLabel({
         touchEnabled: false,
@@ -39,9 +41,9 @@ function MessageRow (_args) {
         text: moment(item.sent_date, "YYYY-MM-DD").format("MM/DD/YY")
     });
 
-    self.add(imageView);
     self.add(senderLabel);
     self.add(subjectLabel);
+    self.add(headlineLabel);
     self.add(dateLabel);
 
     return self;
