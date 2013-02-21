@@ -1,6 +1,6 @@
 Logfile initialized
 [INFO] logfile = D:\Mobile\client-shopdiscovery\build.log
-[DEBUG] C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\builder.py install A-Shop Discovery C:\Program Files\Android\android-sdk D:\Mobile\client-shopdiscovery com.vinhmob.shopdiscovery 6
+[DEBUG] C:\Users\USER\AppData\Roaming\Titanium\mobilesdk\win32\2.1.3.GA\android\builder.py install A-Shop Discovery C:\Program Files\Android\android-sdk D:\Mobile\client-shopdiscovery com.vinhmob.shopdiscovery 5
 [INFO] Titanium SDK version: 2.1.3 (10/02/12 16:16 15997d0)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
@@ -9,7 +9,7 @@ Logfile initialized
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\business\NavigationController.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\NavigationController.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\BackgroundWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\BackgroundWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -187,6 +187,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/PromotionFormWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/UploadPhotoWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/WriteReviewWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/BackgroundWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/CategoryListView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/CategoryListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ChangePasswordWindow.js
@@ -309,6 +310,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.013000 seconds on emulator to get ready
+[DEBUG] waited 0.016000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

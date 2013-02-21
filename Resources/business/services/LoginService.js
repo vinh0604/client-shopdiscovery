@@ -45,6 +45,11 @@ function LoginService (_args) {
         return deferred;
     };
 
+    self.getCurrentUser = function () {
+        var DB = require('business/database');
+        return DB.getCurrentUser();
+    };
+
     return self;
 }
 

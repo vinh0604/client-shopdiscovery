@@ -50,7 +50,7 @@ NavigationController.prototype.register = function (win) {
 
 NavigationController.prototype.home = function () {
     var windows = this.windowStack.concat([]);
-    for(var i = 1, l = windows.length; i < l; i++) {
+    for(var i = windows.length - 1; i > 0; --i) {
         windows[i].close();
     }
     this.windowStack = [this.windowStack[0]];
@@ -69,9 +69,10 @@ NavigationController.prototype.logout = function () {
             win = new LoginWindow({controller: self}),
             windows = self.windowStack.concat([]);
         win.open();
-        for(var i = 0, l = windows.length; i < l; i++) {
+        for(var i = windows.length - 1; i >= 0; --i) {
             windows[i].close();
         }
+        self.windowStack = [];
     }).fail(function (e) {
         alert(e.error);
     });

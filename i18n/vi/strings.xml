@@ -214,4 +214,6 @@
     <string name="message_sent">Gửi tin thành công</string>
     <string name="message_deleted">Xóa tin thành công</string>
     <string name="confirm_delete_message">Xóa tin nhắn này?</string>
+    <string name="shop_discovery">Shop Discovery</string>
+    <string name="press_back_exit">Nhấn phím Back lần nữa để thoát</string>
 </resources>

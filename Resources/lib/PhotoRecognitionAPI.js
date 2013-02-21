@@ -44,7 +44,7 @@ PhotoRecognitionAPI = (function () {
                 message = 'api_key'+API_KEY+
                             'json1'+
                             'time_stamp'+params.time_stamp;
-                params.api_sig = CryptoJS.HmacSHA1(message, SECRET_KEY);
+                params.api_sig = CryptoJS.HmacSHA1(message, SECRET_KEY).toString();
                 update_xhr.send(params);
             } else {
                 deferred.reject({error: json.data.comment});
@@ -64,7 +64,7 @@ PhotoRecognitionAPI = (function () {
                     'img'+image.nativePath+
                     'json1'+
                     'time_stamp'+params.time_stamp;
-        params.api_sig = CryptoJS.HmacSHA1(message, SECRET_KEY);
+        params.api_sig = CryptoJS.HmacSHA1(message, SECRET_KEY).toString();
         xhr.send(params);
 
         return deferred;

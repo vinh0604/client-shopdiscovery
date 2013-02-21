@@ -16,8 +16,9 @@ var DB = {
             userRs = db.execute('SELECT * FROM search_histories ORDER BY last_search_date DESC'),
             result = [];
 
-        if (userRs.isValidRow()) {
+        while (userRs.isValidRow()) {
             result.push(userRs.fieldByName('keyword'));
+            userRs.next();
         }
         userRs.close();
         db.close();
@@ -42,6 +43,21 @@ var DB = {
         }
         historyRs.close();
         db.close();
+    },
+    getCurrentUser: function () {
+        var db = Ti.Database.install('/database/appdata', 'appdata'),
+            userRs = db.execute('SELECT * FROM users LIMIT 1'),
+            user = null;
+
+        if (userRs.isValidRow()) {
+            user = {
+                username: userRs.fieldByName('username'),
+                password: userRs.fieldByName('password')
+            };
+        }
+        userRs.close();
+        db.close();
+        return user;
     }
 };
 

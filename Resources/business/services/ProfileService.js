@@ -36,7 +36,7 @@ function LogoutService (_args) {
 
         api_deferred.done(function (json) {
             var result = {
-                photo: api.HOST + json.avatar.url,
+                photo: json.avatar.url ? (api.HOST + json.avatar.url) : APP_CONST.DEFAULT.USER_PHOTO,
                 first_name: json.contact.first_name,
                 last_name: json.contact.last_name,
                 gender: json.contact.gender,

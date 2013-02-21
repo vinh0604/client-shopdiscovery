@@ -106,10 +106,12 @@ function SearchResultWindow (_args) {
 
     function appendData (result) {
         ++ params.page;
+        var rows = [];
         for (var i = 0, l = result.rows.length; i < l; ++i) {
             var row = new ProductRow({ data: result.rows[i] });
-            resultTableView.appendRow(row);
+            rows.push(row);
         }
+        resultTableView.appendRow(rows);
         if (!result.total || resultTableView.data[0].rowCount >= result.total) {
             resultTableView.stopUpdate = true;
         }

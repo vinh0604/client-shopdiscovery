@@ -19,9 +19,11 @@ function MainWindow (_args) {
             color: '#666',
             left: 5
         },
+        exitFlag = false,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
     
     var headerView = Ti.UI.createView(theme.styles.header.view),
+    headerLabel = Ti.UI.createLabel(_.extend({text: L('shop_discovery')},theme.styles.header.label)),
     searchBar = new SearchBar({readOnly: true, top: 90}),
     featureTableView = Ti.UI.createTableView({
         left: 0,
@@ -71,6 +73,8 @@ function MainWindow (_args) {
         color: '#666',
         leftImage: '/images/sale.png'
     });
+
+    headerView.add(headerLabel);
 
     notificationRow.add(notificationLabel);
     messageRow.add(messageLabel);
@@ -133,8 +137,30 @@ function MainWindow (_args) {
             messageWindow = new MessageWindow({controller: controller});
         messageWindow.open();
     });
+    dealRow.addEventListener('click', function (e) {
+        PromotionWindow = require('ui/common/PromotionWindow'),
+            promotionWindow = new PromotionWindow({controller: controller});
+        promotionWindow.open();
+    });
 
     self.addEventListener('new:recheck', checkMessageNotification);
+
+    self.addEventListener('android:back', function (e) {
+        if (exitFlag) {
+            self.close();
+            controller.backgroundWindow.close();
+        } else {
+            var toast = Ti.UI.createNotification({
+                duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                message: L('press_back_exit')
+            });
+            toast.show();
+            exitFlag = true;
+            setTimeout(function () {
+                exitFlag = false;
+            }, 5000);
+        }
+    });
 
     self.addEventListener('open', function (e) {
         controller.register(self);

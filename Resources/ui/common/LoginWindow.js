@@ -5,6 +5,7 @@ function LoginWindow (_args) {
         SignupWindow = require('ui/common/SignupWindow'),
         MainWindow = require('ui/common/MainWindow'),
         controller = _args.controller,
+        exitFlag = false,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
 
     var headerView = Ti.UI.createView(theme.styles.header.view),
@@ -81,6 +82,23 @@ function LoginWindow (_args) {
     signupButton.addEventListener('click', function (e) {
         var signupWindow = new SignupWindow({controller: controller});
         signupWindow.open();
+    });
+
+    self.addEventListener('android:back', function (e) {
+        if (exitFlag) {
+            self.close();
+            controller.backgroundWindow.close();
+        } else {
+            var toast = Ti.UI.createNotification({
+                duration: Ti.UI.NOTIFICATION_DURATION_SHORT,
+                message: L('press_back_exit')
+            });
+            toast.show();
+            exitFlag = true;
+            setTimeout(function () {
+                exitFlag = false;
+            }, 5000);
+        }
     });
 
     function enableDisableLoginButton (e) {
