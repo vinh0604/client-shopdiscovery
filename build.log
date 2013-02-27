@@ -5,11 +5,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.011000 seconds on emulator to get ready
+[DEBUG] waited 0.010000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\BackgroundWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\BackgroundWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\OrderRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\OrderRow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -50,6 +50,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/business/services/ManagerService.js
 [DEBUG] from resource zip => assets/Resources/business/services/MessageService.js
 [DEBUG] from resource zip => assets/Resources/business/services/NotificationService.js
+[DEBUG] from resource zip => assets/Resources/business/services/OrderService.js
 [DEBUG] from resource zip => assets/Resources/business/services/PhotoService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProductManagementService.js
 [DEBUG] from resource zip => assets/Resources/business/services/ProductService.js
@@ -173,7 +174,10 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/DistanceWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/PriceWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/filter/ReviewWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/management/CompletedOrderWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/management/NewOrderWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/management/NewProductWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/management/OrderManagementWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/management/ProductConfirmationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/management/ProductEditWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/management/ProductInfoWindow.js
@@ -184,6 +188,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/EditDescriptionWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/EditLocationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/NewSpecificWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/modal/PlaceOrderWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/PromotionFormWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/UploadPhotoWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/modal/WriteReviewWindow.js
@@ -229,6 +234,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MessageRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/MyShopRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/NotificationRow.js
+[DEBUG] from resource zip => assets/Resources/ui/components/tablerow/OrderRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ProductGroupRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ProductManagementRow.js
 [DEBUG] from resource zip => assets/Resources/ui/components/tablerow/ProductRow.js
@@ -310,6 +316,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.016000 seconds on emulator to get ready
+[DEBUG] waited 0.017000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

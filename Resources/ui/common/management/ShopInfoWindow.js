@@ -151,6 +151,15 @@ function ShopInfoWindow (_args) {
         managersWindow.open();
     });
 
+    orderManagementRow.addEventListener('click', function (e) {
+        var OrderManagementWindow = require('ui/common/management/OrderManagementWindow'),
+            orderMngtWindow = new OrderManagementWindow({
+                controller: controller,
+                data: item
+            });
+        orderMngtWindow.open();
+    });
+
     productManagementRow.addEventListener('click', function (e) {
         var ProductManagementWindow = require('ui/common/management/ProductManagementWindow'),
             productMngtWindow = new ProductManagementWindow({

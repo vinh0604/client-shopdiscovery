@@ -106,7 +106,7 @@
     <string name="imported">Hand luggage</string>
     <string name="shop">Shop</string>
     <string name="review">Review</string>
-    <string name="buy">Buy this item</string>
+    <string name="buy">Order this item</string>
     <string name="month">month(s)</string>
     <string name="reviews">Reviews</string>
     <string name="new_review">Write a review</string>
@@ -216,4 +216,13 @@
     <string name="confirm_delete_message">Delete this message?</string>
     <string name="shop_discovery">Shop Discovery</string>
     <string name="press_back_exit">Tap Back again to exit</string>
+    <string name="product_ordering">Product Ordering</string>
+    <string name="enter_order_amount">Enter order amount</string>
+    <string name="order_success">Order sucessfully created. Please wait for response from the shop.</string>
+    <string name="order_fail">Can not create order.</string>
+    <string name="shipment_contact">Shipment Contact</string>
+    <string name="new_order">New Orders</string>
+    <string name="completed_order">Completed Orders</string>
+    <string name="ordered_by">Ordered by</string>
+    <string name="ordered_at">Ordered at</string>
 </resources>

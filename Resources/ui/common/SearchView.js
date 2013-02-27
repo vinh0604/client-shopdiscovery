@@ -5,6 +5,7 @@ function SearchView(_args) {
         titaniumBarcode = require('com.mwaysolutions.barcode'),
         SearchBar = require('ui/components/SearchBar'),
         SavedSearchWindow = require('ui/common/SavedSearchWindow'),
+        SearchService = require('business/services/SearchService'),
         defaults = {backgroundColor:'#ffffff'},
         opts = _.extend(defaults, _args),
         params = opts.params,
@@ -53,7 +54,8 @@ function SearchView(_args) {
         text: L('speak'),
         color: '#000',
         left: 20
-    });
+    }),
+    service = new SearchService();
 
     savedSearchRow.add(savedSearchLabel);
     scanRow.add(scanLabel);
@@ -161,24 +163,23 @@ function SearchView(_args) {
     self.add(searchAutocomplete);
 
     function autoComplete (keyword) {
-        var result = [],
-            table_data = [];
-
-        for (var i = 0, l=result.length; i < l; i++) {
-            var row = Ti.UI.createTableViewRow({
-                height: 90,
-                title: result[i],
-                color: '#000'
-            });
-            row.addEventListener('click', searchHandler);
-            table_data.push(row);
-        }
-
-        searchAutocomplete.setData(table_data);
+        service.get_suggestions({keyword: keyword}).done(function (result) {
+            var rows = [];
+            for (var i = 0, l=result.length; i < l; i++) {
+                var row = Ti.UI.createTableViewRow({
+                    height: 90,
+                    title: result[i],
+                    color: '#000'
+                });
+                row.addEventListener('click', searchHandler);
+                rows.push(row);
+            }
+            searchAutocomplete.setData(rows);
+        });
     }
 
     function searchHandler(e) {
-        var keyword = e.row ? e.row.title : e.value;
+        var keyword = e.rowData ? e.rowData.title : e.value;
         if (keyword) {
             params.keyword = keyword;
             params.page = 1;

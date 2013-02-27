@@ -61,6 +61,21 @@ function SearchService (_args) {
         return deferred;
     };
 
+    self.get_suggestions = function (params) {
+        var deferred = new _.Deferred();
+        var api_deferred = api.request('GET','suggestions/',params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
     return self;
 }
 

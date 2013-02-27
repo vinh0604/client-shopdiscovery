@@ -216,4 +216,13 @@
     <string name="confirm_delete_message">Xóa tin nhắn này?</string>
     <string name="shop_discovery">Shop Discovery</string>
     <string name="press_back_exit">Nhấn phím Back lần nữa để thoát</string>
+    <string name="product_ordering">Đặt hàng</string>
+    <string name="enter_order_amount">Nhập số lượng đặt</string>
+    <string name="order_success">Đặt hàng thành công. Xin chờ phản hồi của cửa hàng.</string>
+    <string name="order_fail">Không thể đặt hàng.</string>
+    <string name="shipment_contact">Thông tin đặt hàng</string>
+    <string name="new_order">Đơn đặt hàng mới</string>
+    <string name="completed_order">Đơn đặt hàng đã hoàn tất</string>
+    <string name="ordered_by">Đặt hàng bởi</string>
+    <string name="ordered_at">Đặt lúc</string>
 </resources>

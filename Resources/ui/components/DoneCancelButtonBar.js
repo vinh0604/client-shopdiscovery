@@ -66,6 +66,11 @@ function DoneCancelButtonBar (_args) {
         doneButton.color = '#fff';
     };
 
+    self.disableButton = function () {
+        doneButton.enabled = false;
+        doneButton.color = 'gray';
+    };
+
     if (!_args.disabled) {
         self.enableButton();
     }

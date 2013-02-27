@@ -42,6 +42,13 @@ var CONSTANTS = {
             2: L('new_product'),
             3: L('transaction')
         },
+        ORDER_STATUS: {
+            NEW: 1,
+            WAITED: 2,
+            CONFIRMED: 3,
+            FINISHED: 4,
+            CANCELED: 5
+        },
         CONDITION: {
             0: L('not_specified'),
             1: L('new_label'),

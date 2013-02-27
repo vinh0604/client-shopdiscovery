@@ -219,9 +219,10 @@ function ProductWindow (_args) {
         height: 90,
         left: 10,
         right: 10,
-        backgroundColor: '#4086FF',
+        backgroundColor: '#87B3FF',
         backgroundFocusedColor: '#87B3FF',
         backgroundSelectedColor: '#87B3FF',
+        enabled: false,
         color: '#fff',
         title: L('buy'),
         font: {fontSize: '18dp', fontWeight: 'bold'}
@@ -331,6 +332,12 @@ function ProductWindow (_args) {
         spListWindow.open();
     });
 
+    buyButton.addEventListener('click', function (e) {
+        var PlaceOrderWindow = require('ui/common/modal/PlaceOrderWindow');
+            placeOrderWindow = new PlaceOrderWindow({data: item});
+        placeOrderWindow.open({modal: true});
+    });
+
     self.addEventListener('open', function (e) {
         controller.register(self);
         activityIndicator.show();
@@ -405,6 +412,10 @@ function ProductWindow (_args) {
         shopValueLabel.text = item.shop.name;
         setPhotos(item.photos);
         ratingStarBar.setRating({count: item.rating_count, rating: item.rating});
+        if (item.price > 0) {
+            buyButton.backgroundColor = '#4086FF';
+            buyButton.enabled = true;
+        }
         if (item.promotion && item.promotion.active) {
             setPromotion(item.promotion);
             priceValueLabel.color = '#ddd';

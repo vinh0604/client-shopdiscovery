@@ -172,6 +172,7 @@ function MessageDetailWindow (_args) {
         toValueLabel.text = data.receivers.join(', ');
         dateValueLabel.text = moment(data.sent_date, "YYYY-MM-DD").format("MM/DD/YY");
         subjectValueLabel.text = data.title;
+        topTableView.setData([infoRow,subjectRow]);
         contentWebView.html = '<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />' + data.content;
     }
 
