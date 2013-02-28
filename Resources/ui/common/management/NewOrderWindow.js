@@ -3,6 +3,7 @@ function NewOrderWindow (_args) {
         theme = require('helpers/theme'),
         OrderService = require('business/services/OrderService'),
         OrderRow = require('ui/components/tablerow/OrderRow'),
+        OrderDetailWindow = require('ui/common/management/OrderDetailWindow'),
         controller = _args.controller,
         item = _args.data,
         self = Ti.UI.createWindow(_.extend({backgroundColor: '#fff'},theme.styles.Window));
@@ -22,6 +23,17 @@ function NewOrderWindow (_args) {
     headerView.add(headerLabel);
     self.add(headerView);
     self.add(tableView);
+
+    tableView.addEventListener('click', function (e) {
+        if (e.rowData) {
+            var orderDetailWindow = new OrderDetailWindow({
+                controller: controller,
+                data: {id: e.rowData._id},
+                closeHandler: loadData
+            });
+            orderDetailWindow.open();
+        }
+    });
 
     self.addEventListener('open', function (e) {
         controller.register(self);

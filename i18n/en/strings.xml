@@ -225,4 +225,20 @@
     <string name="completed_order">Completed Orders</string>
     <string name="ordered_by">Ordered by</string>
     <string name="ordered_at">Ordered at</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="total">Total</string>
+    <string name="shipment_info">Shipment Information</string>
+    <string name="deliver_type">Delivery Options</string>
+    <string name="ship_date">Ship Date</string>
+    <string name="ship_fee">Ship Fee</string>
+    <string name="proceed">Proceed</string>
+    <string name="deliver_shop">Deliver at shop</string>
+    <string name="deliver_home">Deliver at home</string>
+    <string name="customer">Customer</string>
+    <string name="order_cancellation">Order Cancellation</string>
+    <string name="confirm_cancel_order">Cancel this order?</string>
+    <string name="order_processing">Order Processing</string>
+    <string name="confirm_proceed_order">Proceed this order?</string>
+    <string name="order_cancel_notification">%1$s has canceled your order for %2$s</string>
+    <string name="order_confirm_notification">%1$s has confirmed your order for %2$s</string>
 </resources>

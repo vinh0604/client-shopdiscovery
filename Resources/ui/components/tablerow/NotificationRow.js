@@ -30,6 +30,13 @@ function NotificationRow (_args) {
                 break;
             case APP_CONST.DATA.NOTIFICATION_TYPE.PRICE_CHANGE:
                 contents.push(L('price_change_notification'));
+                break;
+            case APP_CONST.DATA.NOTIFICATION_TYPE.ORDER_CANCEL:
+                contents.push(L('order_cancel_notification'));
+                break;
+            case APP_CONST.DATA.NOTIFICATION_TYPE.ORDER_CONFIRM:
+                contents.push(L('order_confirm_notification'));
+                break;
         }
         item.full_content.forEach(function (c) {
             if (c.type == 'Money') {
@@ -40,7 +47,6 @@ function NotificationRow (_args) {
         });
         content = String.format.apply(String, contents);
     })();
-    
 
     var contentView = Ti.UI.createView({
         touchEnabled: false,

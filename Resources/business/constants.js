@@ -30,12 +30,20 @@ var CONSTANTS = {
         NOTIFICATION_ARRAY: [
             {code: 1, value: L('promotion')},
             {code: 2, value: L('new_product')},
-            {code: 3, value: ''}
+            {code: 3, value: ''},
+            {code: 4, value: ''},
+            {code: 5, value: ''}
+        ],
+        DELIVERY_ARRAY: [
+            {code: 1, value: L('deliver_shop')},
+            {code: 2, value: L('deliver_home')}
         ],
         NOTIFICATION_TYPE: {
             PROMOTION: 1,
             NEW_PRODUCT: 2,
-            PRICE_CHANGE: 3
+            PRICE_CHANGE: 3,
+            ORDER_CANCEL: 4,
+            ORDER_CONFIRM: 5
         },
         NOTIFY_TYPE: {
             1: L('promotion'),

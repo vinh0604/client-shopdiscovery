@@ -127,6 +127,20 @@ function PlaceOrderWindow (_args) {
 
     amountField.addEventListener('change', enableDisableDoneButton);
 
+    genderField.addEventListener('focus', function (e) {
+        genderOptionDialog.show();
+    });
+    genderField.addEventListener('click', function (e) {
+        genderOptionDialog.show();
+    });
+
+    genderOptionDialog.addEventListener('click', function (e) {
+        if (e.index >= 0) {
+            genderField.setValue(genderOptionDialog.getOptions()[e.index]);
+            phoneField.focus();
+        }
+    });
+
     self.addEventListener('open', function (e) {
         var ProfileService = require('business/services/ProfileService'),
             service = new ProfileService();

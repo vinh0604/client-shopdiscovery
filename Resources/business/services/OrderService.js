@@ -87,6 +87,61 @@ function OrderService (_args) {
         return deferred;
     };
 
+    self.get_order = function (order_id) {
+        var params = {
+                auth_token: DB.getAuthToken()
+            },
+            deferred = new _.Deferred(),
+            api_deferred = api.request('GET','orders/'+order_id,params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.cancel_order = function (order_id) {
+        var params = {
+                auth_token: DB.getAuthToken(),
+                status: APP_CONST.DATA.ORDER_STATUS.CANCELED
+            },
+            deferred = new _.Deferred(),
+            api_deferred = api.request('PUT','orders/'+order_id,params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
+    self.confirm_order = function (order_id, params) {
+        params.order_shipment = JSON.stringify(params.order_shipment);
+        params.auth_token = DB.getAuthToken();
+        params.status = APP_CONST.DATA.ORDER_STATUS.CONFIRMED;
+        var deferred = new _.Deferred(),
+            api_deferred = api.request('PUT','orders/'+order_id,params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
     return self;
 }
 

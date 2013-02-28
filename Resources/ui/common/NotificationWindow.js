@@ -36,6 +36,8 @@ function NotificationWindow (_args) {
             var ProductWindow = require('ui/common/ProductWindow'),
                 productWindow = new ProductWindow({controller: controller, data: {id: e.rowData['_source_id']}});
             productWindow.open();
+        } else if (e._source_type == 'Order') {
+            // open Order Detail Window
         }
     });
 

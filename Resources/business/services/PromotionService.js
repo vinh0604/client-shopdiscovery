@@ -20,7 +20,7 @@ function PromotionService (_args) {
             data.deal_price = shop_product.promotion.price;
             data.amount = shop_product.promotion.amount;
             data.expires = shop_product.promotion.expires;
-            data.bid_count = 0;
+            data.bid_count = shop_product.promotion.bid_count;
         }
         data.price_unit = 'VND';
         return data;
