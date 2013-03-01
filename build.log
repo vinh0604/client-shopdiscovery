@@ -5,11 +5,13 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.014000 seconds on emulator to get ready
+[DEBUG] waited 0.017000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\PromotionService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\PromotionService.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\OrderService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\OrderService.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\CompletedOrderWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\CompletedOrderWindow.js
+[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\OrderDetailInfoWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\OrderDetailInfoWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
@@ -210,6 +212,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageInboxWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/MessageWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/NotificationWindow.js
+[DEBUG] from resource zip => assets/Resources/ui/common/OrderDetailInfoWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/PhotoWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ProductListWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ProductWindow.js
@@ -318,6 +321,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.012000 seconds on emulator to get ready
+[DEBUG] waited 0.013000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

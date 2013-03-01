@@ -32,12 +32,17 @@ function NotificationWindow (_args) {
     self.add(notificationTableView);
 
     notificationTableView.addEventListener('click', function (e) {
-        if (e._source_type == 'ShopProduct') {
+        if (!e.rowData) {
+            return;
+        }
+        if (e.rowData._source_type == 'ShopProduct') {
             var ProductWindow = require('ui/common/ProductWindow'),
                 productWindow = new ProductWindow({controller: controller, data: {id: e.rowData['_source_id']}});
             productWindow.open();
-        } else if (e._source_type == 'Order') {
-            // open Order Detail Window
+        } else if (e.rowData._source_type == 'Order') {
+            var OrderDetailInfoWindow = require('ui/common/OrderDetailInfoWindow'),
+                orderDetailInfoWindow = new OrderDetailInfoWindow({controller: controller, data: {id: e.rowData['_source_id']}});
+            orderDetailInfoWindow.open();
         }
     });
 

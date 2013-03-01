@@ -142,6 +142,24 @@ function OrderService (_args) {
         return deferred;
     };
 
+    self.pay_order = function (order_id) {
+        var params = {
+                auth_token: DB.getAuthToken()
+            },
+            deferred = new _.Deferred(),
+            api_deferred = api.request('POST','orders/'+order_id+'/payment',params);
+
+        api_deferred.done(function (json) {
+            deferred.resolve(json);
+        });
+
+        api_deferred.fail(function (e) {
+            deferred.reject(e);
+        });
+
+        return deferred;
+    };
+
     return self;
 }
 

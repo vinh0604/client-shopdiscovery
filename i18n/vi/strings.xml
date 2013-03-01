@@ -241,4 +241,8 @@
     <string name="confirm_proceed_order">Chấp nhận xử lý đơn đặt hàng này?</string>
     <string name="order_cancel_notification">%1$s đã hủy đơn đặt hàng của bạn cho sản phẩm %2$s</string>
     <string name="order_confirm_notification">%1$s đã chấp nhận đơn đặt hàng của bạn cho sản phẩm %2$s</string>
+    <string name="delivery">Cách giao hàng</string>
+    <string name="canceled">Đã hủy</string>
+    <string name="confirmed">Đã xác nhận</string>
+    <string name="finished">Đã hoàn tất</string>
 </resources>

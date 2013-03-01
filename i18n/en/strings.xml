@@ -241,4 +241,8 @@
     <string name="confirm_proceed_order">Proceed this order?</string>
     <string name="order_cancel_notification">%1$s has canceled your order for %2$s</string>
     <string name="order_confirm_notification">%1$s has confirmed your order for %2$s</string>
+    <string name="delivery">Delivery</string>
+    <string name="canceled">Canceled</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="finished">Finished</string>
 </resources>

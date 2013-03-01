@@ -38,6 +38,11 @@ var CONSTANTS = {
             {code: 1, value: L('deliver_shop')},
             {code: 2, value: L('deliver_home')}
         ],
+        ORDER_STATUS_ARRAY: [
+            {code: 3, value: L('confirmed')},
+            {code: 4, value: L('finished')},
+            {code: 5, value: L('canceled')}
+        ],
         NOTIFICATION_TYPE: {
             PROMOTION: 1,
             NEW_PRODUCT: 2,
