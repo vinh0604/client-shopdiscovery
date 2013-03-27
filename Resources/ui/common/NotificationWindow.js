@@ -58,6 +58,12 @@ function NotificationWindow (_args) {
         });
     });
 
+    self.addEventListener('close', function (e) {
+        if (controller.windowStack[0]) {
+            controller.windowStack[0].fireEvent('new:recheck');
+        }
+     });
+
     function fetchData () {
         var deferred = notificationService.all(params);
         return deferred;

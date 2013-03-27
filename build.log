@@ -5,15 +5,239 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.017000 seconds on emulator to get ready
+[DEBUG] waited 0.050000 seconds on emulator to get ready
 [DEBUG] com.vinhmob.shopdiscovery installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\OrderService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\OrderService.js
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\CompletedOrderWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\CompletedOrderWindow.js
-[TRACE] COPYING MODIFIED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\OrderDetailInfoWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\OrderDetailInfoWindow.js
+[INFO] Detected change in tiapp.xml, or assets deleted. Forcing full re-build...
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\android\appicon.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\android\default.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\default.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\app.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\app.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\constants.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\constants.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\database.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\database.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\NavigationController.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\NavigationController.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\CategoryService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\CategoryService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\LoginService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\LoginService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\LogoutService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\LogoutService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ManagerService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ManagerService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\MessageService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\MessageService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\NotificationService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\NotificationService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\OrderService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\OrderService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\PhotoService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\PhotoService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ProductManagementService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ProductManagementService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ProductService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ProductService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ProfileService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ProfileService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\PromotionService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\PromotionService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ReviewService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ReviewService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\SearchService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\SearchService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ShopManagementService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ShopManagementService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ShopProductManagementService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ShopProductManagementService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ShopProductService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ShopProductService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\ShopService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\ShopService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\business\services\SignupService.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\business\services\SignupService.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\database\appdata => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\database\appdata
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\helpers\geo.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\helpers\geo.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\helpers\theme.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\helpers\theme.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\helpers\utility.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\helpers\utility.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_down_blue.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_down_blue.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_down_gray.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_down_gray.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_down_red.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_down_red.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_left.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_left.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_right.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_right.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_up.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_up.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_up_blue.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_up_blue.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_up_gray.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_up_gray.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\arrow_up_red.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\arrow_up_red.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\barcode.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\barcode.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\camera.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\camera.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\cancel.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\cancel.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\check.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\check.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\favorites.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\favorites.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\favorite_gray.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\favorite_gray.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\favorite_yellow.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\favorite_yellow.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\heart.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\heart.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\heart_gray.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\heart_gray.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\heart_yellow.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\heart_yellow.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\house.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\house.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\list.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\list.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-00.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-00.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-01.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-01.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-02.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-02.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-03.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-03.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-04.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-04.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-05.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-05.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-06.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-06.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-07.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-07.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-08.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-08.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-09.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-09.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-10.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-10.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-11.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-11.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-12.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-12.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-13.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-13.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-14.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-14.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-15.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-15.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-16.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-16.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-17.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-17.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-18.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-18.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-19.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-19.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-20.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-20.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-21.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-21.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-22.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-22.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-23.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-23.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-24.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-24.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-25.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-25.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-26.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-26.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-27.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-27.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-28.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-28.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-29.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-29.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-30.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-30.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-31.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-31.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-32.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-32.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-33.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-33.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-34.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-34.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-35.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-35.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-36.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-36.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-37.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-37.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-38.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-38.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-39.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-39.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-40.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-40.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-41.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-41.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-42.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-42.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-43.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-43.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-44.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-44.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-45.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-45.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-46.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-46.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\loading\loading-47.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\loading\loading-47.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\mail.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\mail.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\microphone.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\microphone.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\mylocation.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\mylocation.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\notification.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\notification.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\no_image.jpg => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\no_image.jpg
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\Phone.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\Phone.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\pin.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\pin.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\power.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\power.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\round.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\round.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\sale.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\sale.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\search_icon.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\search_icon.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\shop.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\shop.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\star.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\star.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\star_half.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\star_half.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\star_off.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\star_off.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\trash_blue.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\trash_blue.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\trash_gray.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\trash_gray.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\trash_red.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\trash_red.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\undo_blue.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\undo_blue.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\undo_red.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\undo_red.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\images\user.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\images\user.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\KS_nav_ui.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\KS_nav_ui.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\KS_nav_views.png => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\KS_nav_views.png
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\lib\accounting.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\lib\accounting.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\lib\direction.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\lib\direction.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\lib\hmac-sha1.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\lib\hmac-sha1.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\lib\moment.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\lib\moment.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\lib\PhotoRecognitionAPI.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\lib\PhotoRecognitionAPI.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\lib\underscore.deferred.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\lib\underscore.deferred.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\lib\underscore.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\lib\underscore.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\map.html => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\map.html
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\network\GeoCoding.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\network\GeoCoding.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\network\ShopDiscoveryAPI.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\network\ShopDiscoveryAPI.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\BackgroundWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\BackgroundWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\CategoryListView.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\CategoryListView.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\CategoryListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\CategoryListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ChangePasswordWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ChangePasswordWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ComposeMessageWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ComposeMessageWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\DescriptionWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\DescriptionWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\FavoriteShopsWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\FavoriteShopsWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\filter\CategoryWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\filter\CategoryWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\filter\ConditionWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\filter\ConditionWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\filter\DistanceWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\filter\DistanceWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\filter\PriceWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\filter\PriceWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\filter\ReviewWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\filter\ReviewWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\FilterWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\FilterWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\LocationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\LocationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\LoginWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\LoginWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\MainWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\MainWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\CompletedOrderWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\CompletedOrderWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\NewOrderWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\NewOrderWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\NewProductWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\NewProductWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\OrderDetailWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\OrderDetailWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\OrderManagementWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\OrderManagementWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\ProductConfirmationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\ProductConfirmationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\ProductEditWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\ProductEditWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\ProductInfoWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\ProductInfoWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\ProductManagementWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\ProductManagementWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\ShopEditWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\ShopEditWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\management\ShopInfoWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\management\ShopInfoWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ManagersWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ManagersWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\MapView.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\MapView.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\MessageDetailWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\MessageDetailWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\MessageInboxWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\MessageInboxWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\MessageWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\MessageWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\DirectionListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\DirectionListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\EditDescriptionWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\EditDescriptionWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\EditLocationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\EditLocationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\NewSpecificWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\NewSpecificWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\PlaceOrderWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\PlaceOrderWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\PromotionFormWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\PromotionFormWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\UploadPhotoWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\UploadPhotoWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\modal\WriteReviewWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\modal\WriteReviewWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\NotificationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\NotificationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\OrderDetailInfoWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\OrderDetailInfoWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\PhotoWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\PhotoWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ProductListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ProductListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ProductWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ProductWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ProfileWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ProfileWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\PromotionWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\PromotionWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ReviewWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ReviewWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SavedSearchWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SavedSearchWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SearchResultWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SearchResultWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SearchView.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SearchView.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SearchWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SearchWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SecondProductListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SecondProductListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SentMessageWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SentMessageWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ShopCategoryListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ShopCategoryListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ShopListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ShopListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ShopManagementWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ShopManagementWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ShopProductListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ShopProductListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\ShopWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\ShopWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SignupWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SignupWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SortDialog.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SortDialog.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\SpecificationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\SpecificationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\common\WishListWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\common\WishListWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\ContactView.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\ContactView.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\CustomButtonBar.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\CustomButtonBar.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\DatePickerDialog.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\DatePickerDialog.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\DoneCancelButtonBar.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\DoneCancelButtonBar.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\InfiniteScrollTableView.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\InfiniteScrollTableView.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\ProgressBar.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\ProgressBar.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\Rating.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\Rating.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\RatingBar.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\RatingBar.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\RatingStarBar.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\RatingStarBar.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\ReviewSummaryView.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\ReviewSummaryView.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\SearchBar.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\SearchBar.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\SelectLocationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\SelectLocationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\SelectPhotoDialog.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\SelectPhotoDialog.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\StaticRatingStarBar.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\StaticRatingStarBar.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\ManagerRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\ManagerRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\MessageRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\MessageRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\MyShopRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\MyShopRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\NotificationRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\NotificationRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\OrderRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\OrderRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\ProductGroupRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\ProductGroupRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\ProductManagementRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\ProductManagementRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\ProductRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\ProductRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\PromotionRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\PromotionRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\ReviewRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\ReviewRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\SentMessageRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\SentMessageRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\ShopRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\ShopRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\tablerow\SpecificRow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\tablerow\SpecificRow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\components\TimePickerDialog.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\components\TimePickerDialog.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\handheld\android\ApplicationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\handheld\android\ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\handheld\ApplicationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\handheld\ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: D:\Mobile\client-shopdiscovery\Resources\ui\tablet\ApplicationWindow.js => D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\ui\tablet\ApplicationWindow.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
+[DEBUG] app stylesheet => D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\ApplicationStylesheet.java
 [DEBUG] copying app icon: D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\appicon.png
 [DEBUG] generating theme.xml
 [DEBUG] found drawable-long-land-hdpi splash screen at D:\Mobile\client-shopdiscovery\Resources\android\images\res-long-land-hdpi\default.png
@@ -38,11 +262,12 @@ Logfile initialized
 [DEBUG] copying D:\Mobile\client-shopdiscovery\Resources\android\images\res-notlong-port-mdpi\default.png splash screen to D:\Mobile\client-shopdiscovery\build\android\res\drawable-notlong-port-mdpi\background.png
 [DEBUG] found splash screen at D:\Mobile\client-shopdiscovery\build\android\bin\assets\Resources\default.png
 [TRACE] Writing out AndroidManifest.xml
+[DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\ApplicationStylesheet.java to javac build list
 [DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\AShopDiscoveryActivity.java to javac build list
 [DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\AShopDiscoveryAppInfo.java to javac build list
 [DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\AShopDiscoveryApplication.java to javac build list
 [DEBUG] adding D:\Mobile\client-shopdiscovery\build\android\gen\com\vinhmob\shopdiscovery\R.java to javac build list
-[DEBUG] Building Java Sources: "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryActivity.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryAppInfo.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryApplication.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\R.java"
+[DEBUG] Building Java Sources: "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\ApplicationStylesheet.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryActivity.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryAppInfo.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\AShopDiscoveryApplication.java" "D:\\Mobile\\client-shopdiscovery\\build\\android\\gen\\com\\vinhmob\\shopdiscovery\\R.java"
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: D:\Mobile\client-shopdiscovery\build\android\bin\app-unsigned.apk
@@ -321,6 +546,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.013000 seconds on emulator to get ready
+[DEBUG] waited 0.014000 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

@@ -60,6 +60,12 @@ function ShopManagementWindow (_args) {
         reloadData();
     });
 
+    self.addEventListener('close', function (e) {
+        if (controller.windowStack[0]) {
+            controller.windowStack[0].fireEvent('new:recheck');
+        }
+     });
+
     function deleteHandler (e) {
         var confirmDialog = Ti.UI.createAlertDialog({
             buttonNames: [L('cancel'), L('ok')],

@@ -123,7 +123,7 @@ function SearchView(_args) {
     searchBar.addSearchFieldEventListener('focus', function (e) {
         var currentValue = e.source.value;
         if (!currentValue) {
-            searchAutocomplete.setData([scanRow, cameraRow, speakRow, savedSearchRow]);
+            searchAutocomplete.setData([scanRow, speakRow, savedSearchRow]);
         } else{
             searchAutocomplete.setData([]);
         }
@@ -140,7 +140,7 @@ function SearchView(_args) {
         var currentValue = e.source.value.trim();
 
         if (!currentValue) {
-            searchAutocomplete.setData([scanRow, cameraRow, speakRow, savedSearchRow]);
+            searchAutocomplete.setData([scanRow, speakRow, savedSearchRow]);
         } else if (currentValue.length <= 2) {
             searchAutocomplete.setData([]);
         } else if (currentValue !=  last_search) {

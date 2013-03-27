@@ -84,6 +84,12 @@ function MessageWindow (_args) {
         checkMessage(e);
     });
 
+    self.addEventListener('close', function (e) {
+        if (controller.windowStack[0]) {
+            controller.windowStack[0].fireEvent('new:recheck');
+        }
+     });
+
     function checkMessage (e) {
         var MessageService = require('business/services/MessageService'),
             messageService = new MessageService();

@@ -2,11 +2,11 @@ var ShopDiscoveryAPI = (function () {
     var _ = require('lib/underscore');
     _.mixin(require('lib/underscore.deferred'));
 
-    // var API_URL = 'http://113.173.18.200:3000/api/v1/',
-    //     HOST = 'http://113.173.18.200:3000';
-
     var API_URL = 'http://192.168.1.10:3000/api/v1/',
         HOST = 'http://192.168.1.10:3000';
+
+    // var API_URL = 'http://113.172.45.9:3000/api/v1/',
+        // HOST = 'http://113.172.45.9:3000';
 
     function request(method, path, params) {
         var deferred = new _.Deferred(),
